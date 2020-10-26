@@ -1,0 +1,194 @@
+// Fonts
+@import url('https://fonts.googleapis.com/css?family=Nunito');
+
+// Variables
+@import 'variables';
+
+// Bootstrap
+@import '~bootstrap/scss/bootstrap';
+
+@import '~@fortawesome/fontawesome-free/css/all.css';
+
+*{
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: sans-serif;
+}
+
+body{
+  width:100%;
+  min-height: 100vh;
+}
+
+@import 'partials/header';
+
+@import 'partials/sections';
+
+@import 'partials/carousel';
+
+.bg_main_image{
+  position:relative;
+
+  overflow: hidden;
+
+  width:100vw;
+  min-height:280px;
+
+  .jumbo{
+    position: absolute;
+      width:100%
+    }
+}
+
+
+.flex{
+  display: flex;
+  justify-content: space-around;
+}
+
+.inline-block{
+  display: inline-block;
+}
+.block{
+  display: block;
+}
+.none{
+  display: none;
+}
+
+.margin25{
+  margin: 25px;
+}
+
+.first-block span{
+  margin: 20px;
+  color: white;
+}
+.margin60{
+  margin-top: 60px;
+}
+
+.border-div{
+  border-left: 1px solid grey;
+}
+a{
+  text-decoration: none;
+}
+.search{
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
+  border-radius: 40px;
+  height: 50px;
+  width: 50px;
+  background-color: #FF385C;
+  // transform: translate(0, -5px);
+  margin:0;
+  padding: 0;
+}
+.fa-search{
+  color: white;
+}
+#globe-div{
+  width: 100px;
+  height: 100px;
+  background-color: red;
+}
+
+#mycreate input{
+}
+.form-control-file{
+  display: inline-block;
+}
+#serv-agiunt {
+  padding-top: 20px;
+  display: flex;
+  justify-content: space-around;
+  flex-wrap: wrap;
+}
+#my-serv-ag{
+  margin-top:30px;
+}
+#mycreate-btn, #myupdate-btn{
+  display: block;
+  margin:auto;
+}
+#img-inp{
+    display: inline-block;
+}
+    #my-img-inp{
+      // width: 150px;
+      margin-top: 15px;
+      margin-bottom: 15px;
+
+        & > img{
+          width:60%;
+          overflow: hidden;
+        }
+    }
+
+#form-img-layout{
+  display: flex;
+  flex-wrap:wrap;
+}
+#img-show{
+  width: 60%;
+  margin:auto;
+  margin-bottom: 20px;
+}
+#img-show img{
+  width:100%;
+}
+#card-body-show ul{
+  list-style: none;
+}
+.image, .image-edit{
+  width:300px;
+  height:200px;
+  overflow: hidden;
+  border-radius: 8px;
+
+  &>img{
+    width:120%;
+    position: relative;
+    right: 17px;
+    transform: translate(0%,0%);
+  }
+}
+
+#my_dashboard{
+  width:60%;
+  top:10%;
+}
+
+.white-radius{
+  text-align: center;
+  width: 60px;
+  height: 40px;
+  background-color: white;
+  border-radius: 30px;
+}
+
+.white-radius-center{
+  margin-top:80px;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  text-align: center!important;
+  width: 40%;
+  height: 60px;
+  background-color: white;
+  border-radius: 30px;
+  padding:5px 5px 5px 15px;
+}
+
+.white-radius-center p{
+  color: grey;
+}
+
+#my-box{
+  top:20%;
+  box-shadow: 0px 0px 10px 0px rgba(0,0,0,0.4);
+  border-radius: 9px;
+}
