@@ -15521,6 +15521,9 @@ a.text-dark:focus {
 body {
   width: 100%;
   min-height: 100vh;
+  background-image: url(/images/jumbo.jpg?3760848bab31a6e935c55ed38dd9c9ec);
+  background-size: cover;
+  background-attachment: fixed;
 }
 
 header {
@@ -15645,7 +15648,6 @@ header .dropdown-menu.dropdown-menu-right {
 
 section#section_edit,
 section#section_create {
-  background-image: url(/images/modern_pattern.jpg?0fdcd714e2b27b9cec9613d4a93c2177);
   background-repeat: repeat-y;
   background-repeat: repeat-x;
   background-repeat-y: repeat;
@@ -15658,7 +15660,6 @@ section#section_show {
 }
 
 section#section_home {
-  background-image: url(/images/jumbo3.jpg?dc293f5a6c3d518c6d44ead2737d046a);
   background-repeat: repeat-y;
   background-repeat: repeat-x;
   background-repeat-y: repeat;
@@ -15667,7 +15668,6 @@ section#section_home {
 }
 
 section#section_home #div-search {
-  background-image: url(/images/jumbo2.jpg?fdf8e573cf991bac3ef3b25f9f85a0cc);
   background-size: cover;
   height: 300px;
   background-position: 0px 480px;
@@ -15686,7 +15686,6 @@ section#section_user_apartment_list {
   background-position: 0 0;
   padding-top: 80px;
   width: 100vw;
-  background-image: url(/images/house_pattern.jpg?667bc8908bb5b7cb7ffb33816cf78113);
   background-repeat: repeat-y;
   background-repeat: repeat-x;
   background-repeat-y: repeat;
