@@ -29,3 +29,12 @@ Route::post('/store', 'UserController@store')-> name('apart.store');
 Route::get('/destroyImage/{id}','UserController@destroyImage') -> name('destroy');
 Route::get('/delete/{id}', 'UserController@delete')-> name('apart.delete');
 Route::get('/apart/{id}', 'UserController@show')-> name('apart.show');
+
+Route::get('/apart/{id}', 'GuestController@show')-> name('apart.show');
+Route::post('/aparts','GuestController@latlng') -> name('aparts.search');
+
+Route::get('/aparts', function () {
+    return view('welcome');
+});
+
+Route::get('/api/aparts', 'GuestController@index') -> name('apart-api-index');

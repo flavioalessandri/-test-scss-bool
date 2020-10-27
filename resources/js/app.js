@@ -1,6 +1,9 @@
 
 require('./bootstrap');
 
+// require('./js/app1');
+// require('./js/app2');
+
 window.Vue = require('vue');
 window.$ = require('jquery');
 
@@ -69,7 +72,7 @@ function init(){
   });
 
 
-  console.log("CIAO");
+  console.log("APP JS");
 
   $('.next').on('click', nextCarouselImg);
 

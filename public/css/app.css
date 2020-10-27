@@ -15675,13 +15675,6 @@ section#section_home #div-search {
   -webkit-filter: drop-shadow(5px 5px 5px rgba(0, 0, 0, 0.3));
 }
 
-section#section_home #div-search #mysearch {
-  background-color: transparent;
-  border: none;
-  outline: none;
-  width: 60%;
-}
-
 section#section_user_apartment_list {
   background-position: 0 0;
   padding-top: 80px;
@@ -15938,5 +15931,52 @@ a {
   top: 20%;
   box-shadow: 0px 0px 10px 0px rgba(0, 0, 0, 0.4);
   border-radius: 9px;
+}
+
+#lat-form,
+#lng-form,
+#mylatitude,
+#mylongitude {
+  position: absolute;
+  visibility: hidden;
+  z-index: -99;
+}
+
+.formSearch {
+  width: 100%;
+}
+
+button.search {
+  align-items: center;
+}
+
+#mySliderRadius {
+  width: 100%;
+  margin: auto;
+  display: block;
+}
+
+#slidecontainer {
+  width: 70%;
+  margin: auto;
+  display: block;
+}
+
+#mysearch {
+  background-color: transparent;
+  border: none !important;
+  outline: none;
+  width: 60%;
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+}
+
+.algolia-places {
+  padding-top: 5px;
+}
+
+#target > .card {
+  cursor: pointer;
 }
 

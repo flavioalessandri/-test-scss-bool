@@ -110,11 +110,11 @@
                   <label class="col-md-4 col-form-label text-md-right" for="zipcode">ZipCode</label>
                   <input id="edit_zipcode" type="text" class=" col-md-6" name="lat"  autofocus  readonly />
 
-                  <label class="col-md-4 col-form-label text-md-right" for="lat">Lat - Invisibile</label>
-                  <input id="edit_lat" type="text" class=" col-md-6" value="{{$apart -> lat}}"  name="lat"  autofocus  readonly />
+                  <label class=" invisible col-md-4 col-form-label text-md-right" for="lat">Lat - Invisibile</label>
+                  <input id="edit_lat" type="text" class="invisible col-md-6" value="{{$apart -> lat}}"  name="lat"  autofocus  readonly />
 
-                  <label class="col-md-4 col-form-label text-md-right" for="lat">Long - Invisibile</label>
-                  <input id="edit_lng" type="text" class=" col-md-6" value="{{$apart -> lng}}"  name="lng"  autofocus  readonly />
+                  <label class=" invisible col-md-4 col-form-label text-md-right" for="lat">Long - Invisibile</label>
+                  <input id="edit_lng" type="text" class="invisible col-md-6" value="{{$apart -> lng}}"  name="lng"  autofocus  readonly />
                 </div>
 
               <div class="form-group">

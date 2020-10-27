@@ -17,8 +17,8 @@ $factory->define(Apartment::class, function (Faker $faker) {
       'address'                   => $faker -> streetAddress(),
       'city'                      => $faker -> city(),
       'state'                     => $faker -> state(),
-      'lat'                       => $faker -> latitude($min = -90, $max = 90),
-      'lng'                       => $faker -> longitude($min = -180, $max = 180),
+      'lat'                       => $faker -> latitude($min = 45, $max = 46),
+      'lng'                       => $faker -> longitude($min = 9, $max = 10),
 
       // 'date_of_creation'       =>'',
       'sponsorship'               => $faker -> boolean(),

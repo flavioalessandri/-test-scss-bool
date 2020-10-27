@@ -49723,7 +49723,9 @@ module.exports = function(module) {
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
-__webpack_require__(/*! ./bootstrap */ "./resources/js/bootstrap.js");
+__webpack_require__(/*! ./bootstrap */ "./resources/js/bootstrap.js"); // require('./js/app1');
+// require('./js/app2');
+
 
 window.Vue = __webpack_require__(/*! vue */ "./node_modules/vue/dist/vue.common.js");
 window.$ = __webpack_require__(/*! jquery */ "./node_modules/jquery/dist/jquery.js");
@@ -49780,7 +49782,7 @@ function init() {
   $("#mycreate").on('click', function () {
     $("#create_city").val("nuovo Valore");
   });
-  console.log("CIAO");
+  console.log("APP JS");
   $('.next').on('click', nextCarouselImg);
   $('.prev').on('click', prevCarouselImg);
   $('div.create > #img-inp').on('change', function () {
