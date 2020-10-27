@@ -109,12 +109,21 @@
               <div class="form-group">
                 <label class="col-md-4 col-form-label text-md-right" for="address">Indirizzo</label>
                 <input id="create_address" type="text" class=" col-md-6" name="address" value="{{ old('address') }}" required autocomplete="address" autofocus  />
+
                 <label class="col-md-4 col-form-label text-md-right" for="city">Citta</label>
                 <input id="create_city" type="text" class=" col-md-6" name="city" value="Readonly Citta" autofocus  readonly />
+
                 <label class="col-md-4 col-form-label text-md-right" for="state">Paese</label>
                 <input id="create_state" type="text" class=" col-md-6" name="state" value="Readonly State" autofocus  readonly />
+
                 <label class="col-md-4 col-form-label text-md-right" for="zipcode">ZipCode</label>
                 <input id="create_zipcode" type="text" class=" col-md-6" name="zipcode" value="Readonly ZipCode" autofocus  readonly />
+
+                <label class="col-md-4 col-form-label text-md-right" for="lat">Lat - Invisibile</label>
+                <input id="create_lat" type="text" class="col-md-6" value="Readonly ZipCode"  name="lat"  autofocus  readonly />
+
+                <label class="col-md-4 col-form-label text-md-right" for="lat">Long - Invisibile</label>
+                <input id="create_lng" type="text" class="col-md-6" value="Readonly ZipCode" name="lng"  autofocus  readonly />
               </div>
 
 

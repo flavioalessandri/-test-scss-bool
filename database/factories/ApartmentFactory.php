@@ -19,7 +19,7 @@ $factory->define(Apartment::class, function (Faker $faker) {
       'state'                     => $faker -> state(),
       'lat'                       => $faker -> latitude($min = -90, $max = 90),
       'lng'                       => $faker -> longitude($min = -180, $max = 180),
-      'image'                     => 'image1.png',
+
       // 'date_of_creation'       =>'',
       'sponsorship'               => $faker -> boolean(),
       'visibility'                => $faker -> boolean()

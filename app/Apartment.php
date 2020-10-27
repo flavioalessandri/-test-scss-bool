@@ -19,7 +19,6 @@ class Apartment extends Model
       'state',
       'lat',
       'lng',
-      'image',
       'sponsorship',
       'visibility'
 

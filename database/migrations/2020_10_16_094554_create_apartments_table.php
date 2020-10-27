@@ -25,9 +25,8 @@ class CreateApartmentsTable extends Migration
             $table->string('address',80);
             $table->string('city',60);
             $table->string('state',60);
-            $table->string('lat')->default('nfdaslkdjas');
-            $table->string('lng')->default('nfdaslkdjas');
-            $table->string('image',100)->default('nfdaslkdjas');
+            $table->string('lat')->default('12.1000');
+            $table->string('lng')->default('12.1000');
             $table->timestamp('date_of_creation');
             $table->boolean('sponsorship')->default(false);
             $table->boolean('visibility')->default(true);

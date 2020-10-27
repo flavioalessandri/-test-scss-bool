@@ -75,30 +75,46 @@
                   @enderror
                 {{-- </div>
                 <div class="form-group"> --}}
-                  <label class="col-md-4 col-form-label text-md-right" for="city">Città</label>
+                  {{-- <label class="col-md-4 col-form-label text-md-right" for="city">Città</label>
                   <input id="edit_city" type="text" class=" @error('city') is-invalid @enderror col-md-6" name="city" value="{{$apart -> city}}"  autocomplete="city" autofocus readonly>
                   @error('city')
                       <span class="invalid-feedback" role="alert">
                           <strong>{{ $message }}</strong>
                       </span>
-                  @enderror
+                  @enderror --}}
                 {{-- </div>
                 <div class="form-group"> --}}
-                  <label class="col-md-4 col-form-label text-md-right" for="state">Paese</label>
+                  {{-- <label class="col-md-4 col-form-label text-md-right" for="state">Paese</label>
                   <input id="edit_state" type="text" class=" @error('state') is-invalid @enderror col-md-6" name="state" value="{{$apart -> state}}" autocomplete="state" autofocus readonly>
                   @error('state')
                       <span class="invalid-feedback" role="alert">
                           <strong>{{ $message }}</strong>
                       </span>
-                  @enderror
-
+                  @enderror --}}
+{{--
                   <label class="col-md-4 col-form-label text-md-right" for="zipcode">ZipCode</label>
+
                   <input id="edit_zipcode" type="text" class=" @error('zipcode') is-invalid @enderror col-md-6" name="zipcode" autocomplete="state" autofocus readonly>
                   @error('zipcode')
                       <span class="invalid-feedback" role="alert">
                           <strong>{{ $message }}</strong>
                       </span>
-                  @enderror
+                  @enderror --}}
+
+                  <label class="col-md-4 col-form-label text-md-right"  for="city">Città</label>
+                    <input id="edit_city" type="text" class=" col-md-6" value="{{$apart -> city}}" name="city"  autofocus  readonly />
+
+                  <label class="col-md-4 col-form-label text-md-right"  for="state">Stato</label>
+                    <input id="edit_state" type="text" class=" col-md-6" value="{{$apart -> state}}" name="state"  autofocus  readonly />
+
+                  <label class="col-md-4 col-form-label text-md-right" for="zipcode">ZipCode</label>
+                  <input id="edit_zipcode" type="text" class=" col-md-6" name="lat"  autofocus  readonly />
+
+                  <label class="col-md-4 col-form-label text-md-right" for="lat">Lat - Invisibile</label>
+                  <input id="edit_lat" type="text" class=" col-md-6" value="{{$apart -> lat}}"  name="lat"  autofocus  readonly />
+
+                  <label class="col-md-4 col-form-label text-md-right" for="lat">Long - Invisibile</label>
+                  <input id="edit_lng" type="text" class=" col-md-6" value="{{$apart -> lng}}"  name="lng"  autofocus  readonly />
                 </div>
 
               <div class="form-group">
