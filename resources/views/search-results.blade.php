@@ -38,8 +38,28 @@
           <label for="sauna">Sauna</label>
           <input type="checkbox" name="sauna">
         </div>
-
-
+        <!-- selezione numero minimo camere e letti -->
+        <div class="searchOptions">
+          <label for="min-rooms">Numero minimo di stanze</label>
+            <select id="min-rooms" name="min-rooms">
+              <option selected value="1"></option>
+              <option value="2">2</option>
+              <option value="3">3</option>
+              <option value="4">4</option>
+              <option value="5">5</option>
+              <option value="6">Maggiore di 6</option>
+            </select>
+            
+            <label for="min-beds">Numero minimo di letti</label>
+              <select id="min-beds" name="min-beds">
+                <option selected value="1"></option>
+                <option value="2">2</option>
+                <option value="3">3</option>
+                <option value="4">4</option>
+                <option value="5">5</option>
+                <option value="6">Maggiore di 6</option>
+              </select>
+        </div>
 
 
 

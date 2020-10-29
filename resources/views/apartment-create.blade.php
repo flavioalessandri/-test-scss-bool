@@ -111,19 +111,19 @@
                 <input id="create_address" type="text" class=" col-md-6" name="address" value="{{ old('address') }}" required autocomplete="address" autofocus  />
 
                 <label class="col-md-4 col-form-label text-md-right" for="city">Citta</label>
-                <input id="create_city" type="text" class=" col-md-6" name="city" value="Readonly Citta" autofocus  readonly />
+                <input id="create_city" type="text" class=" col-md-6" name="city" value="" autofocus  readonly />
 
                 <label class="col-md-4 col-form-label text-md-right" for="state">Paese</label>
-                <input id="create_state" type="text" class=" col-md-6" name="state" value="Readonly Paese" autofocus  readonly />
+                <input id="create_state" type="text" class=" col-md-6" name="state" value="" autofocus  readonly />
 
                 <label class="col-md-4 col-form-label text-md-right" for="zipcode">ZipCode</label>
-                <input id="create_zipcode" type="text" class=" col-md-6" name="zipcode" value="Readonly ZipCode" autofocus  readonly />
+                <input id="create_zipcode" type="text" class=" col-md-6" name="zipcode" value="" autofocus  readonly />
 
                 <label class=" invisible col-md-4 col-form-label text-md-right" for="lat"> LAt </label>
-                <input id="create_lat" type="text" class=" invisible col-md-6" value="45.673554"  name="lat"  autofocus  readonly />
+                <input id="create_lat" type="text" class=" invisible col-md-6" value=""  name="lat"  autofocus  readonly />
 
                 <label class=" invisible col-md-4 col-form-label text-md-right" for="lng"> Long</label>
-                <input id="create_lng" type="text" class=" invisible col-md-6" value="9.065935" name="lng"  autofocus  readonly />
+                <input id="create_lng" type="text" class=" invisible col-md-6" value="" name="lng"  autofocus  readonly />
               </div>
 
 
@@ -195,6 +195,6 @@
       </div>
     </div>
   </div>
-
+<script type="text/javascript" src="js/app3.js"></script>
 </section>
 @endsection
