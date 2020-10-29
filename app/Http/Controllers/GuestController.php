@@ -65,7 +65,7 @@ class GuestController extends Controller
       $count=0;
       $aparts = Apartment::all();
 
-        return view('index2',compact('aparts','count'));
+        return view('welcome',compact('aparts','count'));
   }
 
    // inizio nuova funzione -------------------------------------------------------------------------
