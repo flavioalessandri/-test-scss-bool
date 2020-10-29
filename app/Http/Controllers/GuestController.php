@@ -43,29 +43,29 @@ class GuestController extends Controller
           // }
 
    // inizio nuova funzione -------------------------------------------------------------------------
-  public function index2(Request $request){
+  public function welcome(Request $request){
 
-    $now = Carbon::now()->addHours(1);
-    $expiredTime = $now->copy()->endOfDay();
-    $delta= $expiredTime-> diffInMinutes($now);
+      $now = Carbon::now()->addHours(1);
+      $expiredTime = $now->copy()->endOfDay();
+      $delta= $expiredTime-> diffInMinutes($now);
 
-    $user_ip = \Request::getClientIp();
+      $user_ip = \Request::getClientIp();
 
     // dd($user_ip);
 
-    if($request->hasCookie('thisUser') == false){
-      Cookie::queue(Cookie::make('thisUser', json_encode([$user_ip, "ClickCookie"]), $delta));
-    }
+      if($request->hasCookie('thisUser') == false){
+        Cookie::queue(Cookie::make('thisUser', json_encode([$user_ip, "ClickCookie"]), $delta));
+      }
     // $minutes= 3;
 
 
 
     // $val = json_decode($request->cookie('thisUser'),true);
 
-    $count=0;
-    $aparts = Apartment::all();
+      $count=0;
+      $aparts = Apartment::all();
 
-      return view('index2',compact('aparts','count'));
+        return view('index2',compact('aparts','count'));
   }
 
    // inizio nuova funzione -------------------------------------------------------------------------

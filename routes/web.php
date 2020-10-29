@@ -2,9 +2,12 @@
 
 use Illuminate\Support\Facades\Route;
 
-Route::get('/', function () {
-    return view('welcome');
-});
+// Route::get('/', function () {
+//     return view('welcome');
+// });
+
+Route::get('/', 'GuestController@welcome')->name('welcome');
+
 
 // Route::get('/getc','GuestController@getCookie');
 // Route::get('/setc','GuestController@setCookie');
@@ -25,7 +28,7 @@ Route::get('/apart/{id}', 'UserController@show')-> name('apart.show');
 Route::get('/apart/{id}', 'GuestController@show')-> name('apart.show');
 Route::post('/aparts','GuestController@latlng') -> name('aparts.search');
 
-Route::get('/index2','GuestController@index2') -> name('aparts.index');
+// Route::get('/index2','GuestController@index2') -> name('aparts.index');
 
 Route::get('/aparts', function () {
     return view('welcome');
