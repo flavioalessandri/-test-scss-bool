@@ -18,10 +18,10 @@ class CreateStatisticsTable extends Migration
 
             $table->unsignedBigInteger('apartment_id');
             $table->timestamp('current_date');
-            $table->bigInteger('number_of_click')->default(0);
+            $table->bigInteger('number_of_click')->default(1);
             // $table->bigInteger('number_of_messages')->default(0);
 
-            $table->timestamps();
+            // $table->timestamps();
         });
     }
 
