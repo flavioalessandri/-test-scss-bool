@@ -165,6 +165,7 @@ class GuestController extends Controller
     public function index() {
 
     $aparts = Apartment::all();
+    
     return response()->json($aparts);
   }
 

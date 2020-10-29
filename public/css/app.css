@@ -15980,3 +15980,7 @@ button.search {
   cursor: pointer;
 }
 
+span.algolia-places.prova {
+  display: inline !important;
+}
+

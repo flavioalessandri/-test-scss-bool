@@ -65,11 +65,11 @@ function prevCarouselImg() {
 function init(){
 
 
-  $("#mycreate").on('click', function() {
+  // $("#mycreate").on('click', function() {
+  //
+  //   $("#create_city").val("nuovo Valore");
 
-    $("#create_city").val("nuovo Valore");
-
-  });
+  // });
 
 
   console.log("APP JS");
@@ -93,8 +93,8 @@ $(document).ready(init);
 
 
 
-Vue.component('example-component', require('./components/ExampleComponent.vue').default);
-
-const app = new Vue({
-    el: '#app',
-});
+// Vue.component('example-component', require('./components/ExampleComponent.vue').default);
+//
+// const app = new Vue({
+//     el: '#app',
+// });

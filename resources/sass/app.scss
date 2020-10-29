@@ -253,3 +253,8 @@ button.search {
 #target > .card{
   cursor:pointer;
 }
+
+// create indirizzo autocomplete Algolia
+span.algolia-places.prova{
+  display: inline!important;
+}
