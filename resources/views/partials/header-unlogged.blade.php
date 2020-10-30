@@ -28,6 +28,9 @@
             <a id="regist-2"  href="{{route('apart.create')}}" >
                 <span class="text-white"><strong>Aggiungi un annuncio</strong></span>
             </a>
+            <a id="regist-2"  href="{{route('sponsor.choose')}}" >
+              <span>Sponsorizza il tuo appartamento</span>
+            </a>
             {{-- @endauth --}}
             <li id="my-profile" class="nav-item dropdown inline-block white-radius">
               <a id="navbarDropdown" class="nav-link dropdown-toggle" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre>
