@@ -2,6 +2,7 @@
 
 @section('content')
 
+<section id="sponsorship">
   <div class="container">
 
     <div class="row justify-content-center">
@@ -79,6 +80,8 @@
     </div>
 
   </div>
-  <script src="https://js.braintreegateway.com/web/dropin/1.25.0/js/dropin.min.js"></script>
-  <script src="{{ asset('js/sponsor.js') }}"></script>
+</section>
+
+<script src="https://js.braintreegateway.com/web/dropin/1.25.0/js/dropin.min.js"></script>
+<script src="{{ asset('js/sponsor.js') }}"></script>
 @endsection
