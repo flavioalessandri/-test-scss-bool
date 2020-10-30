@@ -35,3 +35,7 @@ Route::get('/aparts', function () {
 });
 
 Route::get('/api/aparts', 'GuestController@index') -> name('apart-api-index');
+
+// Braintree
+Route::get('/sponsorship', 'SponsorshipController@choose')-> name('sponsor.choose');
+Route::post('/checkout', 'SponsorshipController@checkout')-> name('sponsor.check');
