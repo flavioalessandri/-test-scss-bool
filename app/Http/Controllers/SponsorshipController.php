@@ -53,6 +53,7 @@ class SponsorshipController extends Controller
     $clientToken = $this -> gateway() -> clientToken() -> generate();
     return view('sponsorship', compact('sponsorships', 'apartments', 'clientToken'));
   }
+  
 
   public function checkout(Request $request) {
 
