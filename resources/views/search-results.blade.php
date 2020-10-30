@@ -40,7 +40,10 @@
         </div>
 
 
+        <div id="hand-target">
 
+
+        </div>
 
 
         <div class="card-body">

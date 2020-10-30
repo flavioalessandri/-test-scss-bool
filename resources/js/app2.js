@@ -3,7 +3,10 @@ window.$ = require('jquery');
 
 
 function printData(hits) {
+
+
 console.log('printData');
+
   var target = $('#target');
   target.text("");
     for (var i = 0; i < hits.length; i++) {
@@ -14,11 +17,7 @@ console.log('printData');
       var html = '<div class="card">' +
                     '<div class="card-body">'+
                       '<div class="d-flex flex-row flex-wrap">'+
-                        // '<div class="p-2">'+
-                        //   '<div class="image">' +
-                        //     '<img src="img/'+ hit['image'] + '"  alt="no-image-found">' +
-                        //   '</div>'+
-                        // '</div>' +
+
                         '<div class="  pl-3 col-12 col-md-6 p-2 d-flex flex-column ">' +
                             '<div class="border-bottom border-dark">'+
                               '<h5 class="">' + hit['description'] +
@@ -181,9 +180,9 @@ function init() {
   var lat = $('#mylatitude').text();
   var lng = $('#mylongitude').text();
   console.log(lat,lng);
-  search();
+  // search();
   getData(lat,lng);
-  sliderRadius(lat,lng);
+  // sliderRadius(lat,lng);
 }
 
 $(document).ready(init);

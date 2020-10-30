@@ -50065,12 +50065,7 @@ function printData(hits) {
     var hit = hits[i];
     var id = hit['id'];
     console.log(hit, id);
-    var html = '<div class="card">' + '<div class="card-body">' + '<div class="d-flex flex-row flex-wrap">' + // '<div class="p-2">'+
-    //   '<div class="image">' +
-    //     '<img src="img/'+ hit['image'] + '"  alt="no-image-found">' +
-    //   '</div>'+
-    // '</div>' +
-    '<div class="  pl-3 col-12 col-md-6 p-2 d-flex flex-column ">' + '<div class="border-bottom border-dark">' + '<h5 class="">' + hit['description'] + '<br>' + '<small class="text-muted">' + hit['address'] + '-' + hit['city'] + '- -' + hit['state'] + '</small>' + '</h5>' + '</div>' + '<div class="flex-grow-1 text-secondary">' + '<div class="pt-2">' + '<span>' + hit['square_meters'] + 'mq  </span>' + '</div>' + '<div class="">' + '<span class="pt-2"> Stanze:' + hit['number_of_rooms'] + '</span>' + '</div>' + '<div class="">' + '  <span class="pt-2"> Letti:' + hit['number_of_beds'] + '</span>';
+    var html = '<div class="card">' + '<div class="card-body">' + '<div class="d-flex flex-row flex-wrap">' + '<div class="  pl-3 col-12 col-md-6 p-2 d-flex flex-column ">' + '<div class="border-bottom border-dark">' + '<h5 class="">' + hit['description'] + '<br>' + '<small class="text-muted">' + hit['address'] + '-' + hit['city'] + '- -' + hit['state'] + '</small>' + '</h5>' + '</div>' + '<div class="flex-grow-1 text-secondary">' + '<div class="pt-2">' + '<span>' + hit['square_meters'] + 'mq  </span>' + '</div>' + '<div class="">' + '<span class="pt-2"> Stanze:' + hit['number_of_rooms'] + '</span>' + '</div>' + '<div class="">' + '  <span class="pt-2"> Letti:' + hit['number_of_beds'] + '</span>';
     '</div>' + '</div>' + '</div>' + '</div>' + '</div>';
     target.append(html);
   }
@@ -50197,10 +50192,9 @@ function init() {
   console.log(' START Js/app2');
   var lat = $('#mylatitude').text();
   var lng = $('#mylongitude').text();
-  console.log(lat, lng);
-  search();
-  getData(lat, lng);
-  sliderRadius(lat, lng);
+  console.log(lat, lng); // search();
+
+  getData(lat, lng); // sliderRadius(lat,lng);
 }
 
 $(document).ready(init);

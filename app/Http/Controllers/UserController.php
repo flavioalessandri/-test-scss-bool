@@ -232,9 +232,10 @@ class UserController extends Controller
 
       $apart = Apartment::findOrFail($id);
       $services = $apart->services()->get();
+      $stat = $apart->statistic()->get();
       $count=0;
 
-      return view('show-apartment', compact('apart','services','count'));
+      return view('show-apartment', compact('apart','services','count','stat'));
     }
 
     public function destroyImage($id) {

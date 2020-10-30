@@ -64,7 +64,8 @@
             </a>
           </div> --}}
 
-          <h2>Informazioni relative all'appartamento</h2>
+          <h2> SHOW-GUEST-APART Informazioni relative all'appartamento</h2>
+
           <ul>
               <li>Numero di letti: {{ $apart -> number_of_beds }}</li>
               <li>Numero di camere: {{ $apart -> number_of_rooms }}</li>

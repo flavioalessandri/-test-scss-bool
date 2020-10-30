@@ -34,8 +34,8 @@
 
                     <img src="{{asset($image->image_path)}}" alt="{{$image->image_path}}">
 
-                </div>
 
+                  </div>
               @endforeach
             </div>
 
@@ -68,8 +68,28 @@
             </a>
           </div> --}}
 
-          <h2>Informazioni relative all'appartamento</h2>
+          <h2>SHOW-APARTM Informazioni relative all'appartamento</h2>
+
+          {{-- <a href="{{route('myroute', $apart->id )}}">Vai a Statistic</a> --}}
+
+          <form class="form" action="{{route('myroute', $apart->id )}}" method="post">
+          @csrf
+          @method('POST')
+
+          <input type="text" name="id" value=" {{$apart->id}}">
+          <button type="submit" name="button">Vai a statistiche</button>
+          </form>
+
+
           <ul>
+            {{-- <li>asassddas</li> --}}
+            {{-- @foreach ($apart -> statistic as $statistic)
+              <input type="text" name="" value="">
+              <li>aaa:{{$statistic->number_of_click}}</li>
+
+            @endforeach --}}
+
+              {{-- <li> number_of_clickD {{ $apart -> statistic ->first()-> number_of_click }}</li> --}}
               <li>Numero di letti: {{ $apart -> number_of_beds }}</li>
               <li>Numero di camere: {{ $apart -> number_of_rooms }}</li>
               <li>Numero di bagni: {{ $apart -> number_of_bathrooms }}</li>
@@ -82,6 +102,7 @@
               <li>{{ $serv -> service }}</li>
             @endforeach
           </ul>
+
         </div>
       </div>
       {{-- <a href="#">Statistiche</a>

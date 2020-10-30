@@ -156,8 +156,12 @@ class GuestController extends Controller
    // inizio nuova funzione -------------------------------------------------------------------------
   public function latlng(Request $request) {
 
+
     $lat = $request['lat'];
     $lng = $request['lng'];
+
+
+
 
     return view('search-results', compact('lat','lng'));
   }
@@ -165,7 +169,14 @@ class GuestController extends Controller
     public function index() {
 
     $aparts = Apartment::all();
+
     return response()->json($aparts);
+  }
+
+  public function fintaIndex(){
+
+    $aparts = Apartment::all();
+    return view('fintaindex', compact("aparts"));
   }
 
 

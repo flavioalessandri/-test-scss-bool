@@ -23,15 +23,20 @@ Route::get('/home', 'HomeController@index')->name('home');
 Route::post('/store', 'UserController@store')-> name('apart.store');
 Route::get('/destroyImage/{id}','UserController@destroyImage') -> name('destroy');
 Route::get('/delete/{id}', 'UserController@delete')-> name('apart.delete');
-Route::get('/apart/{id}', 'UserController@show')-> name('apart.show');
+Route::get('/user/apart/{id}', 'UserController@show')-> name('apart.show');
 
-Route::get('/apart/{id}', 'GuestController@show')-> name('apart.show');
+Route::get('/guest/apart/{id}', 'GuestController@show')-> name('apart.guest.show');
 Route::post('/aparts','GuestController@latlng') -> name('aparts.search');
 
-// Route::get('/index2','GuestController@index2') -> name('aparts.index');
 
-Route::get('/aparts', function () {
-    return view('welcome');
-});
+// Route::get('/aparts', function () {
+//     return view('welcome');
+// });
 
 Route::get('/api/aparts', 'GuestController@index') -> name('apart-api-index');
+
+Route::get('/fintaindex', 'GuestController@fintaIndex')-> name('fintaindex');
+
+
+Route::post('/statistic/{id}', 'StatisticController@statistic')->name('myroute');
+Route::get('/api/statistic/{id}', 'StatisticController@statisticJson')->name('statisticJson');
