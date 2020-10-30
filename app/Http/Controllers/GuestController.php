@@ -165,9 +165,42 @@ class GuestController extends Controller
     public function index() {
 
     $aparts = Apartment::all();
-    
+      foreach ($aparts as $apart) {
+
+        $imgs = $apart -> images() -> get();
+          if ($imgs !== null ) {
+
+            $arrayImgs = [];
+            $i = 0;
+              foreach ($imgs as $img) {
+                $arrayImgs[$i] = $img['image_path'];
+                $i++;
+              }
+            $apart['imgs'] = $arrayImgs;
+          }
+          else {
+            // $apart['imgs'] = [1,2,3,4];
+          }
+        $servs = $apart -> services() -> get();
+        $arrayServ = [0];
+          if ($servs !== null ) {
+            // $arrayServ = [];
+            $j = 1;
+            foreach ($servs as $serv) {
+              $arrayServ[$j] = $serv['id'];
+              $j++;
+            }
+
+            $apart['services'] = $arrayServ;
+          }
+          else {
+            // $apart['imgs'] = [1,2,3,4];
+          }
+
+    }
     return response()->json($aparts);
   }
+
 
 
 

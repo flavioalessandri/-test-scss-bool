@@ -8,6 +8,7 @@
     <title>{{ config('app.name', 'Laravel') }}</title>
 
     <!-- Scripts -->
+      <script src="https://cdnjs.cloudflare.com/ajax/libs/handlebars.js/4.1.2/handlebars.min.js"></script>
     {{-- <script src="{{asset('js/app1.js')}}" defer></script>
     <script src="{{asset('js/app2.js')}}" defer></script> --}}
     <script src="{{asset('js/app.js')}}" defer></script>
