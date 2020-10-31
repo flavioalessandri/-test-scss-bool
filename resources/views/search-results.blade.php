@@ -29,7 +29,7 @@
           <h1 class="text-center">Risultati</h1>
         </div>
 
-        
+
 
         {{-- Hits and Map  --}}
         <section class="col-md-12 map_section">
@@ -44,6 +44,8 @@
 
         <div class="clear-both"></div>
       </section>
+
+
       {{-- /Hits and Map  --}}
 
 

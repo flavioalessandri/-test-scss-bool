@@ -11,7 +11,7 @@ console.log('printData');
     for (var i = 0; i < hits.length; i++) {
       var hit = hits[i];
       var id = hit['id'];
-      console.log(hit,id);
+      // console.log(hit,id);
 
       var html = '<div class="card">' +
                     '<div class="card-body">'+
@@ -48,43 +48,42 @@ console.log('printData');
 }
 
 function sliderRadius(lat,lng) {
-  console.log(lat,lng,'slider');
+  // console.log(lat,lng,'slider');
 
-      var slider = $("#mySliderRadius");
-    // console.log(slider.val());
-    // console.log('slider change',lat,lng);
-    var output = $("#sliderValue");
+  var slider = $("#mySliderRadius");
+  var output = $("#sliderValue");
+  output.append(slider.val()/1000);
+
+  slider.on('change', function() {
+    output.html('');
     output.append(slider.val()/1000);
 
-    slider.on('change', function() {
-      output.html('');
-      output.append(slider.val()/1000);
-
-      var mySliderValue = slider.val();
+    var mySliderValue = slider.val();
 
 
 
 
-      console.log('slider change',lat,lng);
-      const algoliasearch = require('algoliasearch');
+    // console.log('slider change',lat,lng);
+    const algoliasearch = require('algoliasearch');
 
-      const client = algoliasearch('C50JGFH5DN', '4301d4422ac7e4fff78b3a9db7965ffc');
-      const index = client.initIndex('apartments');
-      // if($('#address').val()){
-        index.search('', {
-          aroundLatLng: [parseFloat(lat) , parseFloat(lng)],
-          // aroundLatLng: [41.9 , 12.5 ],
-          aroundRadius: slider.val(),
-          hitsPerPage: 20
-        }).then(({ hits }) => {
-          printData(hits);
+    const client = algoliasearch('C50JGFH5DN', '4301d4422ac7e4fff78b3a9db7965ffc');
+    const index = client.initIndex('apartments');
+    // if($('#address').val()){
+      index.search('', {
+        aroundLatLng: [parseFloat(lat) , parseFloat(lng)],
+        // aroundLatLng: [41.9 , 12.5 ],
+        aroundRadius: slider.val(),
+        hitsPerPage: 20
+      }).then(({ hits }) => {
+        printData(hits);
 
-          searchOnMapSlider(lat, lng, mySliderValue);
+        searchOnMapSlider(lat, lng, mySliderValue);
 
-        });
+      });
       // }
 
     });
+
 }
 
 function getResults(objects,lat,lng) {
@@ -110,14 +109,14 @@ function getResults(objects,lat,lng) {
     aroundRadius: 20 * 1000
   })
   .then(({ hits }) => {
-    console.log('hits',hits);
+    // console.log('hits',hits);
     printData(hits);
   });
 
 }
 
 function getDataValue(aparts,lat,lng) {
-    console.log('prima di modifica:', aparts);
+    // console.log('prima di modifica:', aparts);
     for (var i = 0; i < aparts.length; i++) {
       var apart = aparts[i];
       var _geoloc = {
@@ -126,9 +125,9 @@ function getDataValue(aparts,lat,lng) {
       };
       apart._geoloc = _geoloc;
     }
-    console.log(_geoloc);
+    // console.log(_geoloc);
 
-    console.log('aparts:', aparts);
+    // console.log('aparts:', aparts);
 
       getResults(aparts,lat,lng);
   }
@@ -140,12 +139,12 @@ function getDataValue(aparts,lat,lng) {
      method:'GET',
      success: function(data,state){
 
-       console.log(data,state);
+       // console.log(data,state);
 
        getDataValue(data,lat,lng);
      },
      error: function(err) {
-       console.log('error', err);
+       // console.log('error', err);
      }
    });
  }
@@ -168,11 +167,10 @@ function search(){
         var latlng = e.suggestion.latlng;
         var lat = latlng.lat;
         var lng = latlng.lng;
-        console.log('1',latlng,lat,lng);
-
-
+        // console.log('1',latlng,lat,lng);
 
         searchOnMap(lat, lng);
+
         getData(lat,lng);
         sliderRadius(lat,lng);
       });
@@ -197,7 +195,7 @@ function selectMinRoomsBeds(lat,lng) {
       // filters: `number_of_beds >= `+ $('#min-beds').val(),
       hitsPerPage: 20
     }).then(({ hits }) => {
-      console.log(hits);
+      // console.log(hits);
       printData(hits);
 
     });

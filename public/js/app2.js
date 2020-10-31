@@ -50069,8 +50069,8 @@ function printData(hits) {
 
   for (var i = 0; i < hits.length; i++) {
     var hit = hits[i];
-    var id = hit['id'];
-    console.log(hit, id);
+    var id = hit['id']; // console.log(hit,id);
+
     var html = '<div class="card">' + '<div class="card-body">' + '<div class="d-flex flex-row flex-wrap">' + // '<div class="p-2">'+
     //   '<div class="image">' +
     //     '<img src="img/'+ hit['image'] + '"  alt="no-image-found">' +
@@ -50083,17 +50083,14 @@ function printData(hits) {
 }
 
 function sliderRadius(lat, lng) {
-  console.log(lat, lng, 'slider');
-  var slider = $("#mySliderRadius"); // console.log(slider.val());
-  // console.log('slider change',lat,lng);
-
+  // console.log(lat,lng,'slider');
+  var slider = $("#mySliderRadius");
   var output = $("#sliderValue");
   output.append(slider.val() / 1000);
   slider.on('change', function () {
     output.html('');
     output.append(slider.val() / 1000);
-    var mySliderValue = slider.val();
-    console.log('slider change', lat, lng);
+    var mySliderValue = slider.val(); // console.log('slider change',lat,lng);
 
     var algoliasearch = __webpack_require__(/*! algoliasearch */ "./node_modules/algoliasearch/src/browser/builds/algoliasearch.js");
 
@@ -50135,14 +50132,13 @@ function getResults(objects, lat, lng) {
     aroundRadius: 20 * 1000
   }).then(function (_ref3) {
     var hits = _ref3.hits;
-    console.log('hits', hits);
+    // console.log('hits',hits);
     printData(hits);
   });
 }
 
 function getDataValue(aparts, lat, lng) {
-  console.log('prima di modifica:', aparts);
-
+  // console.log('prima di modifica:', aparts);
   for (var i = 0; i < aparts.length; i++) {
     var apart = aparts[i];
     var _geoloc = {
@@ -50150,10 +50146,10 @@ function getDataValue(aparts, lat, lng) {
       'lng': parseFloat(apart.lng)
     };
     apart._geoloc = _geoloc;
-  }
+  } // console.log(_geoloc);
+  // console.log('aparts:', aparts);
 
-  console.log(_geoloc);
-  console.log('aparts:', aparts);
+
   getResults(aparts, lat, lng);
 }
 
@@ -50162,11 +50158,10 @@ function getData(lat, lng) {
     url: "/api/aparts",
     method: 'GET',
     success: function success(data, state) {
-      console.log(data, state);
+      // console.log(data,state);
       getDataValue(data, lat, lng);
     },
-    error: function error(err) {
-      console.log('error', err);
+    error: function error(err) {// console.log('error', err);
     }
   });
 }
@@ -50185,8 +50180,8 @@ function search() {
     $('#sliderValue').text('');
     var latlng = e.suggestion.latlng;
     var lat = latlng.lat;
-    var lng = latlng.lng;
-    console.log('1', latlng, lat, lng);
+    var lng = latlng.lng; // console.log('1',latlng,lat,lng);
+
     Object(_mapApi_js__WEBPACK_IMPORTED_MODULE_0__["searchOnMap"])(lat, lng);
     getData(lat, lng);
     sliderRadius(lat, lng);
@@ -50213,7 +50208,7 @@ function selectMinRoomsBeds(lat, lng) {
     hitsPerPage: 20
   }).then(function (_ref4) {
     var hits = _ref4.hits;
-    console.log(hits);
+    // console.log(hits);
     printData(hits);
   });
 }
@@ -50661,7 +50656,7 @@ function searchOnMapSlider(lat, lng, slider) {
   algoliaHelper.setQueryParameter('getRankingInfo', true); // DOM and Templates binding
 
   var $map = $('#mapApiGoogle');
-  var $hits = $('#hits');
+  var $hits = $('#target');
   var $searchInput = $('#search-input');
   var hitsTemplate = Hogan.compile($('#hits-template').text());
   var noResultsTemplate = Hogan.compile($('#no-results-template').text()); // Map initialization
@@ -50705,7 +50700,6 @@ function searchOnMapSlider(lat, lng, slider) {
 
   function beginPageState(state) {
     pageState = state;
-    console.log(parseFloat($('#latlatlat').val()), 'wqoihqoidqwoidhqwoidhqwdo');
 
     switch (state) {
       case PAGE_STATES.BOUNDING_BOX_RECTANGLE:
@@ -50728,8 +50722,43 @@ function searchOnMapSlider(lat, lng, slider) {
           // center: { lat: ltlgAR[0], lng: ltlgAR[1] },
           radius: parseFloat(slider) //20 km --> bisogna sostituire con valore default di slider
 
-        });
-        console.log(slider, 'apsdjapsodjaspdojaspdojaspdojaspodj');
+        }); // boundingBox.addListener('dragend', function(e){
+        //  console.log('circle drag listener');
+        // });
+        // google.maps.event.addListener(map, 'dragend', function() { alert('map dragged'); } );
+        // google.maps.event.addListener(marker, 'dragend', function() { alert('marker dragged'); } );
+
+        google.maps.event.addListener(boundingBox, 'radius_changed', function () {
+          console.log(boundingBox.getRadius(), 'my radius from google');
+          var getEditableRadius = boundingBox.getRadius(); // mi serve search di algolia -> funziona con import? da trovare la soluzione migliore
+
+          function setMySliderRadius() {
+            var sliderForApi = $("#mySliderRadius");
+            var outputForApi = $("#sliderValue");
+            outputForApi.html('');
+            var myKms = getEditableRadius / 1000;
+            outputForApi.append(myKms.toFixed(2));
+            sliderForApi.val(getEditableRadius); // var algolia = algoliasearch(APPLICATION_ID, SEARCH_ONLY_API_KEY);
+            // var algoliaHelper = algoliasearchHelper(algolia, INDEX_NAME, PARAMS);
+            // const algoliasearch = require('algoliasearch');
+            //
+            // const client = algoliasearch('C50JGFH5DN', '4301d4422ac7e4fff78b3a9db7965ffc');
+            // const index = client.initIndex('apartments');
+            // index.search('', {
+            //   aroundLatLng: [parseFloat(lat) , parseFloat(lng)],
+            //   // aroundLatLng: [41.9 , 12.5 ],
+            //   aroundRadius: getEditableRadius,
+            //   hitsPerPage: 20
+            // }).then(({ hits }) => {
+            //   printData(hits);
+            // });
+          }
+
+          setMySliderRadius();
+        }); // console.log(boundingBox.radius,'myradius');
+        //
+        // console.log(slider,'apsdjapsodjaspdojaspdojaspdojaspodj');
+
         algoliaHelper.setQueryParameter('insideBoundingBox', rectangleToAlgoliaParams(boundingBox));
         boundingBoxListeners.push(google.maps.event.addListener(boundingBox, 'bounds_changed', throttle(rectangleBoundsChanged, 150)));
         break;
@@ -50783,6 +50812,7 @@ function searchOnMapSlider(lat, lng, slider) {
     }
 
     content.hits = content.hits.slice(0, 20);
+    console.log(content.hits, 'content hits');
 
     for (var i = 0; i < content.hits.length; ++i) {
       var hit = content.hits[i];

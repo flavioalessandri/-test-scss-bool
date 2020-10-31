@@ -21,7 +21,7 @@ algoliaHelper.setQueryParameter('getRankingInfo', true);
 
 // DOM and Templates binding
 var $map = $('#mapApiGoogle');
-var $hits = $('#hits');
+var $hits = $('#target');
 var $searchInput = $('#search-input');
 var hitsTemplate = Hogan.compile($('#hits-template').text());
 var noResultsTemplate = Hogan.compile($('#no-results-template').text());
@@ -65,7 +65,6 @@ function setPageState(state) {
 function beginPageState(state) {
   pageState = state;
 
-  console.log(parseFloat($('#latlatlat').val()), 'wqoihqoidqwoidhqwoidhqwdo');
   switch (state) {
 
     case PAGE_STATES.BOUNDING_BOX_RECTANGLE:
@@ -86,7 +85,52 @@ function beginPageState(state) {
         radius:parseFloat(slider), //20 km --> bisogna sostituire con valore default di slider
       });
 
-      console.log(slider,'apsdjapsodjaspdojaspdojaspdojaspodj');
+      // boundingBox.addListener('dragend', function(e){
+      //  console.log('circle drag listener');
+      // });
+      // google.maps.event.addListener(map, 'dragend', function() { alert('map dragged'); } );
+      // google.maps.event.addListener(marker, 'dragend', function() { alert('marker dragged'); } );
+
+      google.maps.event.addListener(boundingBox, 'radius_changed', function () {
+        console.log(boundingBox.getRadius(),'my radius from google');
+        var getEditableRadius = boundingBox.getRadius();
+
+        // mi serve search di algolia -> funziona con import? da trovare la soluzione migliore
+        function setMySliderRadius() {
+          let sliderForApi = $("#mySliderRadius");
+          let outputForApi = $("#sliderValue");
+          outputForApi.html('');
+          let myKms = getEditableRadius/1000;
+          outputForApi.append(myKms.toFixed(2));
+          sliderForApi.val(getEditableRadius);
+
+
+          // var algolia = algoliasearch(APPLICATION_ID, SEARCH_ONLY_API_KEY);
+          // var algoliaHelper = algoliasearchHelper(algolia, INDEX_NAME, PARAMS);
+
+
+          // const algoliasearch = require('algoliasearch');
+          //
+          // const client = algoliasearch('C50JGFH5DN', '4301d4422ac7e4fff78b3a9db7965ffc');
+          // const index = client.initIndex('apartments');
+
+          // index.search('', {
+          //   aroundLatLng: [parseFloat(lat) , parseFloat(lng)],
+          //   // aroundLatLng: [41.9 , 12.5 ],
+          //   aroundRadius: getEditableRadius,
+          //   hitsPerPage: 20
+          // }).then(({ hits }) => {
+          //   printData(hits);
+          // });
+
+        }
+        setMySliderRadius();
+
+      });
+
+      // console.log(boundingBox.radius,'myradius');
+      //
+      // console.log(slider,'apsdjapsodjaspdojaspdojaspdojaspodj');
 
       algoliaHelper.setQueryParameter('insideBoundingBox', rectangleToAlgoliaParams(boundingBox));
       boundingBoxListeners.push(google.maps.event.addListener(
@@ -144,6 +188,12 @@ function renderHits(content) {
     return;
   }
   content.hits = content.hits.slice(0, 20);
+
+
+  console.log(content.hits,'content hits');
+
+
+
   for (var i = 0; i < content.hits.length; ++i) {
     var hit = content.hits[i];
     hit.displayCity = (hit.name === hit.city);
