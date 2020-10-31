@@ -44655,7 +44655,8 @@ function selectMinRoomsBeds(lat, lng, sauna, wifi, parking, vistaMare, pool, rec
     hitsPerPage: 20
   }).then(function (_ref) {
     var hits = _ref.hits;
-    console.log(hits); // printData(hits);
+    // console.log(hits);
+    printData(hits);
   });
 }
 
@@ -44827,14 +44828,19 @@ function getResults(objects, lat, lng) {
 
     var objectIDs = _ref3.objectIDs;
   });
+  index.search('', {}).then(function (_ref4) {// console.log('hits',hits);
+    // printData(hits);
+
+    var hits = _ref4.hits;
+  });
   var raggio = 20 * 1000;
   console.log(raggio);
   index.search('', {
     aroundLatLng: lat + ',' + lng,
     // aroundLatLng: '41.9, 12.5',
     aroundRadius: 20 * 1000
-  }).then(function (_ref4) {
-    var hits = _ref4.hits;
+  }).then(function (_ref5) {
+    var hits = _ref5.hits;
     console.log('hits', hits);
     printData(hits);
   });

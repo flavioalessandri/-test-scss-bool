@@ -33,8 +33,8 @@ window.$ = require('jquery');
         // filters: `number_of_beds >= `+ $('#min-beds').val(),
         hitsPerPage: 20
       }).then(({ hits }) => {
-        console.log(hits);
-        // printData(hits);
+        // console.log(hits);
+        printData(hits);
 
       });
 
@@ -233,6 +233,13 @@ function sliderRadius(lat,lng) {
   index.saveObjects(objects).then(({ objectIDs }) => {
   // console.log(objectIDs);
   });
+  index.search('',{
+  })
+  .then(({ hits }) => {
+    // console.log('hits',hits);
+    // printData(hits);
+  });
+
   var raggio = 20 * 1000;
   console.log(raggio);
   index.search('',{
