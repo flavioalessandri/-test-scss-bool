@@ -1,4 +1,3 @@
-require('./bootstrap');
 window.$ = require('jquery');
 
 function search(){
