@@ -15984,3 +15984,9 @@ span.algolia-places.prova {
   display: inline !important;
 }
 
+#mapApiGoogle {
+  width: 500px;
+  height: 500px;
+  margin: auto;
+}
+

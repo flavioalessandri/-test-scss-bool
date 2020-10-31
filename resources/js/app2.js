@@ -1,5 +1,7 @@
 require('./bootstrap');
 window.$ = require('jquery');
+import { searchOnMap } from './mapApi.js';
+import { searchOnMapSlider } from './mapApiSlider.js';
 
 
 function printData(hits) {
@@ -56,7 +58,13 @@ function sliderRadius(lat,lng) {
 
     slider.on('change', function() {
       output.html('');
-      output.append(slider.val()/1000)
+      output.append(slider.val()/1000);
+
+      var mySliderValue = slider.val();
+      // console.log(sliderRadius, 'sliderRadius');
+
+
+
       console.log('slider change',lat,lng);
       const algoliasearch = require('algoliasearch');
 
@@ -70,6 +78,8 @@ function sliderRadius(lat,lng) {
           hitsPerPage: 20
         }).then(({ hits }) => {
           printData(hits);
+
+          searchOnMapSlider(lat, lng, mySliderValue);
           // console.log('slider');
           // $('#myAlgoliaResults').html('');
           //
@@ -169,6 +179,9 @@ function search(){
         var lng = latlng.lng;
         console.log('1',latlng,lat,lng);
 
+
+
+        searchOnMap(lat, lng);
         getData(lat,lng);
         sliderRadius(lat,lng);
       });
@@ -210,8 +223,17 @@ function optionListener(lat,lng) {
 function init() {
   console.log(' START Js/app2');
 
+
+
+
   var lat = $('#mylatitude').text();
   var lng = $('#mylongitude').text();
+
+  // DEBUG:
+
+    // END DEBUG:
+  searchOnMap(lat, lng);
+
   console.log(lat,lng);
   search();
   getData(lat,lng);

@@ -50049,12 +50049,18 @@ module.exports = function(module) {
 /*!******************************!*\
   !*** ./resources/js/app2.js ***!
   \******************************/
-/*! no static exports found */
-/***/ (function(module, exports, __webpack_require__) {
+/*! no exports provided */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
 
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var _mapApi_js__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./mapApi.js */ "./resources/js/mapApi.js");
+/* harmony import */ var _mapApiSlider_js__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./mapApiSlider.js */ "./resources/js/mapApiSlider.js");
 __webpack_require__(/*! ./bootstrap */ "./resources/js/bootstrap.js");
 
 window.$ = __webpack_require__(/*! jquery */ "./node_modules/jquery/dist/jquery.js");
+
+
 
 function printData(hits) {
   console.log('printData');
@@ -50086,6 +50092,8 @@ function sliderRadius(lat, lng) {
   slider.on('change', function () {
     output.html('');
     output.append(slider.val() / 1000);
+    var mySliderValue = slider.val(); // console.log(sliderRadius, 'sliderRadius');
+
     console.log('slider change', lat, lng);
 
     var algoliasearch = __webpack_require__(/*! algoliasearch */ "./node_modules/algoliasearch/src/browser/builds/algoliasearch.js");
@@ -50100,7 +50108,8 @@ function sliderRadius(lat, lng) {
       hitsPerPage: 20
     }).then(function (_ref) {
       var hits = _ref.hits;
-      printData(hits); // console.log('slider');
+      printData(hits);
+      Object(_mapApiSlider_js__WEBPACK_IMPORTED_MODULE_1__["searchOnMapSlider"])(lat, lng, mySliderValue); // console.log('slider');
       // $('#myAlgoliaResults').html('');
       //
       // for (var i = 0; i < hits.length; i++) {
@@ -50188,6 +50197,7 @@ function search() {
     var lat = latlng.lat;
     var lng = latlng.lng;
     console.log('1', latlng, lat, lng);
+    Object(_mapApi_js__WEBPACK_IMPORTED_MODULE_0__["searchOnMap"])(lat, lng);
     getData(lat, lng);
     sliderRadius(lat, lng);
   });
@@ -50232,7 +50242,10 @@ function optionListener(lat, lng) {
 function init() {
   console.log(' START Js/app2');
   var lat = $('#mylatitude').text();
-  var lng = $('#mylongitude').text();
+  var lng = $('#mylongitude').text(); // DEBUG:
+  // END DEBUG:
+
+  Object(_mapApi_js__WEBPACK_IMPORTED_MODULE_0__["searchOnMap"])(lat, lng);
   console.log(lat, lng);
   search();
   getData(lat, lng);
@@ -50289,6 +50302,683 @@ window.axios.defaults.headers.common['X-Requested-With'] = 'XMLHttpRequest';
 
 /***/ }),
 
+/***/ "./resources/js/mapApi.js":
+/*!********************************!*\
+  !*** ./resources/js/mapApi.js ***!
+  \********************************/
+/*! exports provided: searchOnMap */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "searchOnMap", function() { return searchOnMap; });
+__webpack_require__(/*! ./bootstrap */ "./resources/js/bootstrap.js");
+
+window.$ = __webpack_require__(/*! jquery */ "./node_modules/jquery/dist/jquery.js"); // export function Course(ciao) {
+//   var id = '123';
+//   var name = 'davit';
+//   return id + name + 'ciao= ' + ciao;
+// };
+
+function searchOnMap(lat, lng) {
+  var APPLICATION_ID = 'LIKNMZQ86D';
+  var SEARCH_ONLY_API_KEY = '0cc1b52fd7eedcbbe8ac54b818b413fb';
+  var INDEX_NAME = 'myApartments';
+  var PARAMS = {
+    hitsPerPage: 60
+  }; // Client + Helper initialization
+
+  var algolia = algoliasearch(APPLICATION_ID, SEARCH_ONLY_API_KEY);
+  var algoliaHelper = algoliasearchHelper(algolia, INDEX_NAME, PARAMS);
+  algoliaHelper.setQueryParameter('getRankingInfo', true); // DOM and Templates binding
+
+  var $map = $('#mapApiGoogle');
+  var $hits = $('#hits');
+  var $searchInput = $('#search-input');
+  var hitsTemplate = Hogan.compile($('#hits-template').text());
+  var noResultsTemplate = Hogan.compile($('#no-results-template').text()); // Map initialization
+
+  var map = new google.maps.Map($map.get(0), {
+    streetViewControl: false,
+    mapTypeControl: false,
+    zoom: 4,
+    minZoom: 3,
+    maxZoom: 12,
+    // center: { lat: 43.6158, lng: 13.5189 },
+    // mapTypeId: "terrain",
+    styles: [{
+      stylers: [{
+        hue: '#3596D2'
+      }]
+    }]
+  });
+  var fitMapToMarkersAutomatically = true;
+  var markers = [];
+  var boundingBox;
+  var boundingBoxListeners = []; // Page states
+
+  var PAGE_STATES = {
+    LOAD: 0,
+    BOUNDING_BOX_RECTANGLE: 1,
+    BOUNDING_BOX_POLYGON: 2,
+    AROUND_IP: 4,
+    AROUND_NYC: 5,
+    AROUND_LONDON: 6,
+    AROUND_SYDNEY: 7
+  };
+  var pageState = PAGE_STATES.LOAD;
+  setPageState(PAGE_STATES.BOUNDING_BOX_RECTANGLE); // PAGE STATES
+  // ===========
+
+  function setPageState(state) {
+    resetPageState();
+    beginPageState(state);
+  }
+
+  function beginPageState(state) {
+    pageState = state;
+    console.log(parseFloat($('#latlatlat').val()), 'wqoihqoidqwoidhqwoidhqwdo');
+
+    switch (state) {
+      case PAGE_STATES.BOUNDING_BOX_RECTANGLE:
+        boundingBox = new google.maps.Circle({
+          // bounds: {north: 60, south: 40, east: 16, west: -4},
+          strokeColor: '#EF5362',
+          strokeOpacity: 0.8,
+          strokeWeight: 2,
+          fillColor: '#EF5362',
+          fillOpacity: 0.15,
+          draggable: true,
+          editable: true,
+          geodesic: true,
+          map: map,
+          // center: { lat: parseFloat($('#latlatlat').val()), lng: ltlg['lng'] }, // parseFloatit ighebs value-s
+          center: {
+            lat: parseFloat(lat),
+            lng: parseFloat(lng)
+          },
+          // center: { lat: ltlgAR[0], lng: ltlgAR[1] },
+          radius: 200000 //20 km --> bisogna sostituire con valore default di slider
+
+        });
+        algoliaHelper.setQueryParameter('insideBoundingBox', rectangleToAlgoliaParams(boundingBox));
+        boundingBoxListeners.push(google.maps.event.addListener(boundingBox, 'bounds_changed', throttle(rectangleBoundsChanged, 150)));
+        break;
+    }
+
+    fitMapToMarkersAutomatically = true;
+    algoliaHelper.search();
+  }
+
+  function resetPageState() {
+    if (boundingBox) boundingBox.setMap(null);
+
+    for (var i = 0; i < boundingBoxListeners.length; ++i) {
+      google.maps.event.removeListener(boundingBoxListeners[i]);
+    }
+
+    boundingBoxListeners = [];
+    $searchInput.val('');
+    algoliaHelper.setQuery('');
+    algoliaHelper.setQueryParameter('insideBoundingBox', undefined);
+    algoliaHelper.setQueryParameter('insidePolygon', undefined);
+    algoliaHelper.setQueryParameter('aroundLatLng', undefined);
+    algoliaHelper.setQueryParameter('aroundLatLngViaIP', undefined);
+  } // TEXTUAL SEARCH
+  // ===============
+
+
+  $searchInput.on('input propertychange', function (e) {
+    var query = e.currentTarget.value;
+
+    if (pageState === PAGE_STATES.BOUNDING_BOX_RECTANGLE || pageState === PAGE_STATES.BOUNDING_BOX_POLYGON) {
+      fitMapToMarkersAutomatically = false;
+    }
+
+    algoliaHelper.setQuery(query).search();
+  }); // DISPLAY RESULTS
+  // ===============
+
+  algoliaHelper.on('result', function (content) {
+    renderMap(content);
+    renderHits(content);
+  });
+  algoliaHelper.on('error', function (error) {
+    console.log(error);
+  });
+
+  function renderHits(content) {
+    if (content.hits.length === 0) {
+      $hits.html(noResultsTemplate.render());
+      return;
+    }
+
+    content.hits = content.hits.slice(0, 20);
+
+    for (var i = 0; i < content.hits.length; ++i) {
+      var hit = content.hits[i];
+      hit.displayCity = hit.name === hit.city;
+
+      if (hit._rankingInfo.matchedGeoLocation) {
+        hit.distance = parseInt(hit._rankingInfo.matchedGeoLocation.distance / 1000, 10) + ' km';
+      }
+    }
+
+    $hits.html(hitsTemplate.render(content));
+  }
+
+  function renderMap(content) {
+    removeMarkersFromMap();
+    markers = [];
+
+    for (var i = 0; i < content.hits.length; ++i) {
+      var hit = content.hits[i];
+      var marker = new google.maps.Marker({
+        position: {
+          lat: hit._geoloc.lat,
+          lng: hit._geoloc.lng
+        },
+        map: map,
+        airport_id: hit.objectID,
+        title: hit.name + ' - ' + hit.city + ' - ' + hit.country
+      });
+      markers.push(marker);
+      attachInfoWindow(marker, hit);
+    }
+
+    if (fitMapToMarkersAutomatically) fitMapToMarkers();
+  } // EVENTS BINDING
+  // ==============
+
+
+  $('.change_page_state').on('click', function (e) {
+    e.preventDefault();
+    updateMenu($(this).data('state'), $(this).data('mode'));
+
+    switch ($(this).data('state')) {
+      case 'rectangle':
+        setPageState(PAGE_STATES.BOUNDING_BOX_RECTANGLE);
+        break;
+
+      case 'polygon':
+        setPageState(PAGE_STATES.BOUNDING_BOX_POLYGON);
+        break;
+
+      case 'ip':
+        setPageState(PAGE_STATES.AROUND_IP);
+        break;
+
+      case 'nyc':
+        setPageState(PAGE_STATES.AROUND_NYC);
+        break;
+
+      case 'london':
+        setPageState(PAGE_STATES.AROUND_LONDON);
+        break;
+
+      case 'sydney':
+        setPageState(PAGE_STATES.AROUND_SYDNEY);
+        break;
+
+      default: // No op
+
+    }
+  }); // HELPER METHODS
+  // ==============
+
+  function updateMenu(stateClass, modeClass) {
+    $('.change_page_state').removeClass('active');
+    $('.change_page_state[data-state="' + stateClass + '"]').addClass('active');
+    $('.page_mode').removeClass('active');
+    $('.page_mode[data-mode="' + modeClass + '"]').addClass('active');
+  }
+
+  function fitMapToMarkers() {
+    var mapBounds = new google.maps.LatLngBounds();
+
+    for (var i = 0; i < markers.length; i++) {
+      mapBounds.extend(markers[i].getPosition());
+    }
+
+    map.fitBounds(mapBounds);
+  }
+
+  function removeMarkersFromMap() {
+    for (var i = 0; i < markers.length; i++) {
+      markers[i].setMap(null);
+    }
+  }
+
+  function rectangleBoundsChanged() {
+    fitMapToMarkersAutomatically = false;
+    algoliaHelper.setQueryParameter('insideBoundingBox', rectangleToAlgoliaParams(boundingBox)).search();
+  }
+
+  function polygonBoundsChanged() {
+    fitMapToMarkersAutomatically = false;
+    algoliaHelper.setQueryParameter('insidePolygon', polygonsToAlgoliaParams(boundingBox)).search();
+  }
+
+  function rectangleToAlgoliaParams(rectangle) {
+    var bounds = rectangle.getBounds();
+    var ne = bounds.getNorthEast();
+    var sw = bounds.getSouthWest();
+    return [ne.lat(), ne.lng(), sw.lat(), sw.lng()].join();
+  }
+
+  function polygonsToAlgoliaParams(polygons) {
+    var points = [];
+    polygons.getPaths().forEach(function (path) {
+      path.getArray().forEach(function (latLng) {
+        points.push(latLng.lat());
+        points.push(latLng.lng());
+      });
+    });
+    return points.join();
+  }
+
+  function attachInfoWindow(marker, hit) {
+    var message;
+
+    if (hit.name === hit.city) {
+      message = hit.name + ' - ' + hit.country;
+    } else {
+      message = hit.name + ' - ' + hit.city + ' - ' + hit.country;
+    }
+
+    var infowindow = new google.maps.InfoWindow({
+      content: message
+    });
+    marker.addListener('click', function () {
+      setTimeout(function () {
+        infowindow.close();
+      }, 3000);
+    });
+  }
+
+  function throttle(func, wait) {
+    var context;
+    var args;
+    var result;
+    var timeout = null;
+    var previous = 0;
+
+    function later() {
+      previous = Date.now();
+      timeout = null;
+      result = func.apply(context, args);
+      if (!timeout) context = args = null;
+    }
+
+    return function () {
+      var now = Date.now();
+      var remaining = wait - (now - previous);
+      context = this;
+      args = arguments;
+
+      if (remaining <= 0 || remaining > wait) {
+        if (timeout) {
+          clearTimeout(timeout);
+          timeout = null;
+        }
+
+        previous = now;
+        result = func.apply(context, args);
+
+        if (!timeout) {
+          context = args = null;
+        }
+      } else if (!timeout) {
+        timeout = setTimeout(later, remaining);
+      }
+
+      return result;
+    };
+  } // });
+
+}
+
+/***/ }),
+
+/***/ "./resources/js/mapApiSlider.js":
+/*!**************************************!*\
+  !*** ./resources/js/mapApiSlider.js ***!
+  \**************************************/
+/*! exports provided: searchOnMapSlider */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "searchOnMapSlider", function() { return searchOnMapSlider; });
+__webpack_require__(/*! ./bootstrap */ "./resources/js/bootstrap.js");
+
+window.$ = __webpack_require__(/*! jquery */ "./node_modules/jquery/dist/jquery.js"); // export function Course(ciao) {
+//   var id = '123';
+//   var name = 'davit';
+//   return id + name + 'ciao= ' + ciao;
+// };
+
+function searchOnMapSlider(lat, lng, slider) {
+  var APPLICATION_ID = 'LIKNMZQ86D';
+  var SEARCH_ONLY_API_KEY = '0cc1b52fd7eedcbbe8ac54b818b413fb';
+  var INDEX_NAME = 'myApartments';
+  var PARAMS = {
+    hitsPerPage: 60
+  }; // Client + Helper initialization
+
+  var algolia = algoliasearch(APPLICATION_ID, SEARCH_ONLY_API_KEY);
+  var algoliaHelper = algoliasearchHelper(algolia, INDEX_NAME, PARAMS);
+  algoliaHelper.setQueryParameter('getRankingInfo', true); // DOM and Templates binding
+
+  var $map = $('#mapApiGoogle');
+  var $hits = $('#hits');
+  var $searchInput = $('#search-input');
+  var hitsTemplate = Hogan.compile($('#hits-template').text());
+  var noResultsTemplate = Hogan.compile($('#no-results-template').text()); // Map initialization
+
+  var map = new google.maps.Map($map.get(0), {
+    streetViewControl: false,
+    mapTypeControl: false,
+    zoom: 4,
+    minZoom: 3,
+    maxZoom: 12,
+    // center: { lat: 43.6158, lng: 13.5189 },
+    // mapTypeId: "terrain",
+    styles: [{
+      stylers: [{
+        hue: '#3596D2'
+      }]
+    }]
+  });
+  var fitMapToMarkersAutomatically = true;
+  var markers = [];
+  var boundingBox;
+  var boundingBoxListeners = []; // Page states
+
+  var PAGE_STATES = {
+    LOAD: 0,
+    BOUNDING_BOX_RECTANGLE: 1,
+    BOUNDING_BOX_POLYGON: 2,
+    AROUND_IP: 4,
+    AROUND_NYC: 5,
+    AROUND_LONDON: 6,
+    AROUND_SYDNEY: 7
+  };
+  var pageState = PAGE_STATES.LOAD;
+  setPageState(PAGE_STATES.BOUNDING_BOX_RECTANGLE); // PAGE STATES
+  // ===========
+
+  function setPageState(state) {
+    resetPageState();
+    beginPageState(state);
+  }
+
+  function beginPageState(state) {
+    pageState = state;
+    console.log(parseFloat($('#latlatlat').val()), 'wqoihqoidqwoidhqwoidhqwdo');
+
+    switch (state) {
+      case PAGE_STATES.BOUNDING_BOX_RECTANGLE:
+        boundingBox = new google.maps.Circle({
+          // bounds: {north: 60, south: 40, east: 16, west: -4},
+          strokeColor: '#EF5362',
+          strokeOpacity: 0.8,
+          strokeWeight: 2,
+          fillColor: '#EF5362',
+          fillOpacity: 0.15,
+          draggable: true,
+          editable: true,
+          geodesic: true,
+          map: map,
+          // center: { lat: parseFloat($('#latlatlat').val()), lng: ltlg['lng'] }, // parseFloatit ighebs value-s
+          center: {
+            lat: parseFloat(lat),
+            lng: parseFloat(lng)
+          },
+          // center: { lat: ltlgAR[0], lng: ltlgAR[1] },
+          radius: parseFloat(slider) //20 km --> bisogna sostituire con valore default di slider
+
+        });
+        console.log(slider, 'apsdjapsodjaspdojaspdojaspdojaspodj');
+        algoliaHelper.setQueryParameter('insideBoundingBox', rectangleToAlgoliaParams(boundingBox));
+        boundingBoxListeners.push(google.maps.event.addListener(boundingBox, 'bounds_changed', throttle(rectangleBoundsChanged, 150)));
+        break;
+    }
+
+    fitMapToMarkersAutomatically = true;
+    algoliaHelper.search();
+  }
+
+  function resetPageState() {
+    if (boundingBox) boundingBox.setMap(null);
+
+    for (var i = 0; i < boundingBoxListeners.length; ++i) {
+      google.maps.event.removeListener(boundingBoxListeners[i]);
+    }
+
+    boundingBoxListeners = [];
+    $searchInput.val('');
+    algoliaHelper.setQuery('');
+    algoliaHelper.setQueryParameter('insideBoundingBox', undefined);
+    algoliaHelper.setQueryParameter('insidePolygon', undefined);
+    algoliaHelper.setQueryParameter('aroundLatLng', undefined);
+    algoliaHelper.setQueryParameter('aroundLatLngViaIP', undefined);
+  } // TEXTUAL SEARCH
+  // ===============
+
+
+  $searchInput.on('input propertychange', function (e) {
+    var query = e.currentTarget.value;
+
+    if (pageState === PAGE_STATES.BOUNDING_BOX_RECTANGLE || pageState === PAGE_STATES.BOUNDING_BOX_POLYGON) {
+      fitMapToMarkersAutomatically = false;
+    }
+
+    algoliaHelper.setQuery(query).search();
+  }); // DISPLAY RESULTS
+  // ===============
+
+  algoliaHelper.on('result', function (content) {
+    renderMap(content);
+    renderHits(content);
+  });
+  algoliaHelper.on('error', function (error) {
+    console.log(error);
+  });
+
+  function renderHits(content) {
+    if (content.hits.length === 0) {
+      $hits.html(noResultsTemplate.render());
+      return;
+    }
+
+    content.hits = content.hits.slice(0, 20);
+
+    for (var i = 0; i < content.hits.length; ++i) {
+      var hit = content.hits[i];
+      hit.displayCity = hit.name === hit.city;
+
+      if (hit._rankingInfo.matchedGeoLocation) {
+        hit.distance = parseInt(hit._rankingInfo.matchedGeoLocation.distance / 1000, 10) + ' km';
+      }
+    }
+
+    $hits.html(hitsTemplate.render(content));
+  }
+
+  function renderMap(content) {
+    removeMarkersFromMap();
+    markers = [];
+
+    for (var i = 0; i < content.hits.length; ++i) {
+      var hit = content.hits[i];
+      var marker = new google.maps.Marker({
+        position: {
+          lat: hit._geoloc.lat,
+          lng: hit._geoloc.lng
+        },
+        map: map,
+        airport_id: hit.objectID,
+        title: hit.name + ' - ' + hit.city + ' - ' + hit.country
+      });
+      markers.push(marker);
+      attachInfoWindow(marker, hit);
+    }
+
+    if (fitMapToMarkersAutomatically) fitMapToMarkers();
+  } // EVENTS BINDING
+  // ==============
+
+
+  $('.change_page_state').on('click', function (e) {
+    e.preventDefault();
+    updateMenu($(this).data('state'), $(this).data('mode'));
+
+    switch ($(this).data('state')) {
+      case 'rectangle':
+        setPageState(PAGE_STATES.BOUNDING_BOX_RECTANGLE);
+        break;
+
+      case 'polygon':
+        setPageState(PAGE_STATES.BOUNDING_BOX_POLYGON);
+        break;
+
+      case 'ip':
+        setPageState(PAGE_STATES.AROUND_IP);
+        break;
+
+      case 'nyc':
+        setPageState(PAGE_STATES.AROUND_NYC);
+        break;
+
+      case 'london':
+        setPageState(PAGE_STATES.AROUND_LONDON);
+        break;
+
+      case 'sydney':
+        setPageState(PAGE_STATES.AROUND_SYDNEY);
+        break;
+
+      default: // No op
+
+    }
+  }); // HELPER METHODS
+  // ==============
+
+  function updateMenu(stateClass, modeClass) {
+    $('.change_page_state').removeClass('active');
+    $('.change_page_state[data-state="' + stateClass + '"]').addClass('active');
+    $('.page_mode').removeClass('active');
+    $('.page_mode[data-mode="' + modeClass + '"]').addClass('active');
+  }
+
+  function fitMapToMarkers() {
+    var mapBounds = new google.maps.LatLngBounds();
+
+    for (var i = 0; i < markers.length; i++) {
+      mapBounds.extend(markers[i].getPosition());
+    }
+
+    map.fitBounds(mapBounds);
+  }
+
+  function removeMarkersFromMap() {
+    for (var i = 0; i < markers.length; i++) {
+      markers[i].setMap(null);
+    }
+  }
+
+  function rectangleBoundsChanged() {
+    fitMapToMarkersAutomatically = false;
+    algoliaHelper.setQueryParameter('insideBoundingBox', rectangleToAlgoliaParams(boundingBox)).search();
+  }
+
+  function polygonBoundsChanged() {
+    fitMapToMarkersAutomatically = false;
+    algoliaHelper.setQueryParameter('insidePolygon', polygonsToAlgoliaParams(boundingBox)).search();
+  }
+
+  function rectangleToAlgoliaParams(rectangle) {
+    var bounds = rectangle.getBounds();
+    var ne = bounds.getNorthEast();
+    var sw = bounds.getSouthWest();
+    return [ne.lat(), ne.lng(), sw.lat(), sw.lng()].join();
+  }
+
+  function polygonsToAlgoliaParams(polygons) {
+    var points = [];
+    polygons.getPaths().forEach(function (path) {
+      path.getArray().forEach(function (latLng) {
+        points.push(latLng.lat());
+        points.push(latLng.lng());
+      });
+    });
+    return points.join();
+  }
+
+  function attachInfoWindow(marker, hit) {
+    var message;
+
+    if (hit.name === hit.city) {
+      message = hit.name + ' - ' + hit.country;
+    } else {
+      message = hit.name + ' - ' + hit.city + ' - ' + hit.country;
+    }
+
+    var infowindow = new google.maps.InfoWindow({
+      content: message
+    });
+    marker.addListener('click', function () {
+      setTimeout(function () {
+        infowindow.close();
+      }, 3000);
+    });
+  }
+
+  function throttle(func, wait) {
+    var context;
+    var args;
+    var result;
+    var timeout = null;
+    var previous = 0;
+
+    function later() {
+      previous = Date.now();
+      timeout = null;
+      result = func.apply(context, args);
+      if (!timeout) context = args = null;
+    }
+
+    return function () {
+      var now = Date.now();
+      var remaining = wait - (now - previous);
+      context = this;
+      args = arguments;
+
+      if (remaining <= 0 || remaining > wait) {
+        if (timeout) {
+          clearTimeout(timeout);
+          timeout = null;
+        }
+
+        previous = now;
+        result = func.apply(context, args);
+
+        if (!timeout) {
+          context = args = null;
+        }
+      } else if (!timeout) {
+        timeout = setTimeout(later, remaining);
+      }
+
+      return result;
+    };
+  } // });
+
+}
+
+/***/ }),
+
 /***/ 2:
 /*!****************************!*\
   !*** ./nextTick (ignored) ***!
@@ -50307,7 +50997,7 @@ window.axios.defaults.headers.common['X-Requested-With'] = 'XMLHttpRequest';
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
-module.exports = __webpack_require__(/*! /home/caterina/boolean-project/-test-scss-bool/resources/js/app2.js */"./resources/js/app2.js");
+module.exports = __webpack_require__(/*! /Users/giulia/Desktop/valet/code/-test-scss-bool/resources/js/app2.js */"./resources/js/app2.js");
 
 
 /***/ })
