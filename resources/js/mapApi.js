@@ -9,9 +9,9 @@ window.$ = require('jquery');
 export function searchOnMap(lat, lng){
 
 
-var APPLICATION_ID = 'LIKNMZQ86D';
-var SEARCH_ONLY_API_KEY = '0cc1b52fd7eedcbbe8ac54b818b413fb';
-var INDEX_NAME = 'myApartments';
+var APPLICATION_ID = 'C50JGFH5DN';
+var SEARCH_ONLY_API_KEY = '4301d4422ac7e4fff78b3a9db7965ffc';
+var INDEX_NAME = 'apartments';
 var PARAMS = {hitsPerPage: 60};
 
 // Client + Helper initialization
@@ -83,7 +83,7 @@ function beginPageState(state) {
         // center: { lat: parseFloat($('#latlatlat').val()), lng: ltlg['lng'] }, // parseFloatit ighebs value-s
         center: { lat: parseFloat(lat), lng: parseFloat(lng) },
         // center: { lat: ltlgAR[0], lng: ltlgAR[1] },
-        radius: 200000, //20 km --> bisogna sostituire con valore default di slider
+        radius: 20000, //20 km --> bisogna sostituire con valore default di slider
       });
 
       algoliaHelper.setQueryParameter('insideBoundingBox', rectangleToAlgoliaParams(boundingBox));

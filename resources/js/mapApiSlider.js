@@ -9,9 +9,9 @@ window.$ = require('jquery');
 export function searchOnMapSlider(lat, lng, slider){
 
 
-var APPLICATION_ID = 'LIKNMZQ86D';
-var SEARCH_ONLY_API_KEY = '0cc1b52fd7eedcbbe8ac54b818b413fb';
-var INDEX_NAME = 'myApartments';
+var APPLICATION_ID = 'C50JGFH5DN';
+var SEARCH_ONLY_API_KEY = '4301d4422ac7e4fff78b3a9db7965ffc';
+var INDEX_NAME = 'apartments';
 var PARAMS = {hitsPerPage: 60};
 
 // Client + Helper initialization

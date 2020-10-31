@@ -50092,8 +50092,7 @@ function sliderRadius(lat, lng) {
   slider.on('change', function () {
     output.html('');
     output.append(slider.val() / 1000);
-    var mySliderValue = slider.val(); // console.log(sliderRadius, 'sliderRadius');
-
+    var mySliderValue = slider.val();
     console.log('slider change', lat, lng);
 
     var algoliasearch = __webpack_require__(/*! algoliasearch */ "./node_modules/algoliasearch/src/browser/builds/algoliasearch.js");
@@ -50109,17 +50108,7 @@ function sliderRadius(lat, lng) {
     }).then(function (_ref) {
       var hits = _ref.hits;
       printData(hits);
-      Object(_mapApiSlider_js__WEBPACK_IMPORTED_MODULE_1__["searchOnMapSlider"])(lat, lng, mySliderValue); // console.log('slider');
-      // $('#myAlgoliaResults').html('');
-      //
-      // for (var i = 0; i < hits.length; i++) {
-      //   $('#myAlgoliaResults').append(
-      //     '<li>'
-      //     + hits[i]['city']
-      //     + '</li>'
-      //   );
-      // }
-      // console.log(hits);
+      Object(_mapApiSlider_js__WEBPACK_IMPORTED_MODULE_1__["searchOnMapSlider"])(lat, lng, mySliderValue);
     }); // }
   });
 }
@@ -50157,12 +50146,13 @@ function getDataValue(aparts, lat, lng) {
   for (var i = 0; i < aparts.length; i++) {
     var apart = aparts[i];
     var _geoloc = {
-      'lat': apart.lat,
-      'lng': apart.lng
+      'lat': parseFloat(apart.lat),
+      'lng': parseFloat(apart.lng)
     };
     apart._geoloc = _geoloc;
   }
 
+  console.log(_geoloc);
   console.log('aparts:', aparts);
   getResults(aparts, lat, lng);
 }
@@ -50321,9 +50311,9 @@ window.$ = __webpack_require__(/*! jquery */ "./node_modules/jquery/dist/jquery.
 // };
 
 function searchOnMap(lat, lng) {
-  var APPLICATION_ID = 'LIKNMZQ86D';
-  var SEARCH_ONLY_API_KEY = '0cc1b52fd7eedcbbe8ac54b818b413fb';
-  var INDEX_NAME = 'myApartments';
+  var APPLICATION_ID = 'C50JGFH5DN';
+  var SEARCH_ONLY_API_KEY = '4301d4422ac7e4fff78b3a9db7965ffc';
+  var INDEX_NAME = 'apartments';
   var PARAMS = {
     hitsPerPage: 60
   }; // Client + Helper initialization
@@ -50398,7 +50388,7 @@ function searchOnMap(lat, lng) {
             lng: parseFloat(lng)
           },
           // center: { lat: ltlgAR[0], lng: ltlgAR[1] },
-          radius: 200000 //20 km --> bisogna sostituire con valore default di slider
+          radius: 20000 //20 km --> bisogna sostituire con valore default di slider
 
         });
         algoliaHelper.setQueryParameter('insideBoundingBox', rectangleToAlgoliaParams(boundingBox));
@@ -50659,9 +50649,9 @@ window.$ = __webpack_require__(/*! jquery */ "./node_modules/jquery/dist/jquery.
 // };
 
 function searchOnMapSlider(lat, lng, slider) {
-  var APPLICATION_ID = 'LIKNMZQ86D';
-  var SEARCH_ONLY_API_KEY = '0cc1b52fd7eedcbbe8ac54b818b413fb';
-  var INDEX_NAME = 'myApartments';
+  var APPLICATION_ID = 'C50JGFH5DN';
+  var SEARCH_ONLY_API_KEY = '4301d4422ac7e4fff78b3a9db7965ffc';
+  var INDEX_NAME = 'apartments';
   var PARAMS = {
     hitsPerPage: 60
   }; // Client + Helper initialization

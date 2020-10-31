@@ -61,7 +61,7 @@ function sliderRadius(lat,lng) {
       output.append(slider.val()/1000);
 
       var mySliderValue = slider.val();
-      // console.log(sliderRadius, 'sliderRadius');
+
 
 
 
@@ -80,17 +80,7 @@ function sliderRadius(lat,lng) {
           printData(hits);
 
           searchOnMapSlider(lat, lng, mySliderValue);
-          // console.log('slider');
-          // $('#myAlgoliaResults').html('');
-          //
-          // for (var i = 0; i < hits.length; i++) {
-          //   $('#myAlgoliaResults').append(
-          //     '<li>'
-          //     + hits[i]['city']
-          //     + '</li>'
-          //   );
-          // }
-          // console.log(hits);
+
         });
       // }
 
@@ -131,11 +121,12 @@ function getDataValue(aparts,lat,lng) {
     for (var i = 0; i < aparts.length; i++) {
       var apart = aparts[i];
       var _geoloc = {
-        'lat': apart.lat,
-        'lng': apart.lng
+        'lat': parseFloat(apart.lat),
+        'lng': parseFloat(apart.lng)
       };
       apart._geoloc = _geoloc;
     }
+    console.log(_geoloc);
 
     console.log('aparts:', aparts);
 

@@ -29,12 +29,7 @@
           <h1 class="text-center">Risultati</h1>
         </div>
 
-        <div id="slidecontainer">
-          <p>Scegli il raggio in km:</p>
-          <input id="mySliderRadius" type="range" min="1" max="1000000" value="20000">
-
-          <p>km: <span id="sliderValue"></span></p>
-        </div>
+        
 
         {{-- Hits and Map  --}}
         <section class="col-md-12 map_section">
@@ -50,6 +45,17 @@
         <div class="clear-both"></div>
       </section>
       {{-- /Hits and Map  --}}
+
+
+
+
+        <div id="slidecontainer">
+          <p>Scegli il raggio in km:</p>
+          <input id="mySliderRadius" type="range" min="1" max="1000000" value="20000">
+
+          <p>km: <span id="sliderValue"></span></p>
+        </div>
+
 
 
 

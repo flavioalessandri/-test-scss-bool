@@ -15957,7 +15957,7 @@ button.search {
 }
 
 #slidecontainer {
-  width: 70%;
+  width: 90%;
   margin: auto;
   display: block;
 }
@@ -15985,8 +15985,9 @@ span.algolia-places.prova {
 }
 
 #mapApiGoogle {
-  width: 500px;
+  width: 90%;
   height: 500px;
   margin: auto;
+  margin-top: 30px;
 }
 
