@@ -27,7 +27,7 @@ window.$ = require('jquery');
 
   }
 // selezioni aggiuntive
-  function selectMinRoomsBeds(lat,lng,sauna,wifi,parking,vistaMare,pool,reception) {
+  function selectMinRoomsBeds(lat,lng) {
     var me = $(this);
     // console.log(me);
     // console.log(sauna);
@@ -52,7 +52,7 @@ window.$ = require('jquery');
         aroundLatLng: [parseFloat(lat) , parseFloat(lng)],
         // aroundLatLng: [41.9 , 12.5 ],
         aroundRadius: $("#mySliderRadius").val(),
-        filters:'services:'+ sauna + ' AND services: ' + wifi + ' AND services: ' + parking + ' AND services: ' + vistaMare + ' AND services: ' + pool + ' AND services: ' + reception +
+        filters:'services:'+ $('#saunaCheck').val() + ' AND services: ' + $('#wifiCheck').val() + ' AND services: ' + $('#parkingCheck').val() + ' AND services: ' + $('#seaCheck').val() + ' AND services: ' + $('#poolCheck').val() + ' AND services: ' + $('#receptionCheck').val() +
                 ' AND number_of_rooms >= ' + $('#min-rooms').val() + ' AND ' +`number_of_beds >= `+ $('#min-beds').val(),
         // filters: `number_of_beds >= `+ $('#min-beds').val(),
         hitsPerPage: 20
@@ -82,16 +82,17 @@ window.$ = require('jquery');
       var isChecked = me.is(':checked');
       // console.log('first',sauna);
       if (isChecked) {
+        $('#saunaCheck').val(3);
         sauna = 3;
-        console.log('si',sauna);
+        console.log('si',$('#saunaCheck').val());
         // selectSauna(lat,lng);
       }
       else {
-        sauna = 0;
-        console.log('no',sauna);
+          $('#saunaCheck').val(0);
+        console.log('no',$('#saunaCheck').val());
         // selectMinRoomsBeds(lat,lng);
       }
-      selectMinRoomsBeds(lat,lng,sauna,wifi,parking,vistaMare,pool,reception);
+      selectMinRoomsBeds(lat,lng);
     });
 
     wifiTarget.change(function() {
@@ -100,15 +101,17 @@ window.$ = require('jquery');
       // console.log('first',sauna);
       if (isChecked) {
         wifi = 1;
-        console.log('si',wifi);
+        $('#wifiCheck').val(1);
+        console.log('si',$('#wifiCheck').val());
         // selectSauna(lat,lng);
       }
       else {
+        $('#wifiCheck').val(0);
         wifi = 0;
-        console.log('no',wifi);
+        console.log('no',$('#wifiCheck').val());
         // selectMinRoomsBeds(lat,lng);
       }
-      selectMinRoomsBeds(lat,lng,sauna,wifi,parking,vistaMare,pool,reception);
+      selectMinRoomsBeds(lat,lng);
     });
 
     parkingTarget.change(function() {
@@ -116,16 +119,16 @@ window.$ = require('jquery');
       var isChecked = me.is(':checked');
       // console.log('first',sauna);
       if (isChecked) {
-        parking = 2;
-        console.log('si',parking);
+        $('#parkingCheck').val(2);
+        console.log('si',$('#parkingCheck').val());
         // selectSauna(lat,lng);
       }
       else {
-        parking = 0;
-        console.log('no',parking);
+        $('#parkingCheck').val(0);
+        console.log('no',$('#parkingCheck').val());
         // selectMinRoomsBeds(lat,lng);
       }
-      selectMinRoomsBeds(lat,lng,sauna,wifi,parking,vistaMare,pool,reception);
+      selectMinRoomsBeds(lat,lng);
     });
 
     seaTarget.change(function() {
@@ -133,16 +136,16 @@ window.$ = require('jquery');
       var isChecked = me.is(':checked');
       // console.log('first',sauna);
       if (isChecked) {
-        vistaMare = 4;
-        console.log('si',vistaMare);
+        $('#seaCheck').val(4);
+        console.log('si',$('#seaCheck').val());
         // selectSauna(lat,lng);
       }
       else {
-        vistaMare = 0;
-        console.log('no',vistaMare);
+        $('#seaCheck').val(0);
+        console.log('no',$('#seaCheck').val());
         // selectMinRoomsBeds(lat,lng);
       }
-      selectMinRoomsBeds(lat,lng,sauna,wifi,parking,vistaMare,pool,reception);
+      selectMinRoomsBeds(lat,lng);
     });
 
     poolTarget.change(function() {
@@ -150,16 +153,16 @@ window.$ = require('jquery');
       var isChecked = me.is(':checked');
       // console.log('first',sauna);
       if (isChecked) {
-        pool = 5;
-        console.log('si',pool);
+        $('#poolCheck').val(5);
+        console.log('si',$('#poolCheck').val());
         // selectSauna(lat,lng);
       }
       else {
-        pool = 0;
-        console.log('no',pool);
+        $('#poolCheck').val(0);
+        console.log('no',$('#poolCheck').val());
         // selectMinRoomsBeds(lat,lng);
       }
-      selectMinRoomsBeds(lat,lng,sauna,wifi,parking,vistaMare,pool,reception);
+      selectMinRoomsBeds(lat,lng);
     });
 
     receptionTarget.change(function() {
@@ -167,23 +170,24 @@ window.$ = require('jquery');
       var isChecked = me.is(':checked');
       // console.log('first',sauna);
       if (isChecked) {
-        reception = 6;
-        console.log('si',reception);
+        $('#receptionCheck').val(6);
+        console.log('si',$('#receptionCheck').val());
         // selectSauna(lat,lng);
       }
       else {
-        reception = 0;
-        console.log('no',reception);
+        $('#receptionCheck').val(0);
+        console.log('no',$('#receptionCheck').val());
         // selectMinRoomsBeds(lat,lng);
       }
-      selectMinRoomsBeds(lat,lng,sauna,wifi,parking,vistaMare,pool,reception);
+      selectMinRoomsBeds(lat,lng);
     });
-
+    // sliderRadius(lat,lng,sauna,wifi,parking,vistaMare,pool,reception);
   }
 
 // slider
 function sliderRadius(lat,lng,sauna,wifi,parking,vistaMare,pool,reception) {
   console.log(lat,lng,'slider');
+  // console.log('options',sauna,wifi,parking,vistaMare,pool,reception);
 
       var slider = $("#mySliderRadius");
     // console.log(slider.val());
@@ -194,7 +198,8 @@ function sliderRadius(lat,lng,sauna,wifi,parking,vistaMare,pool,reception) {
     slider.on('change', function() {
       output.html('');
       output.append(slider.val()/1000);
-
+      // optionListener(lat,lng,sauna,wifi,parking,vistaMare,pool,reception);
+      console.log('options',sauna,wifi,parking,vistaMare,pool,reception);
       console.log('slider change',lat,lng,slider.val());
       const algoliasearch = require('algoliasearch');
 
@@ -212,8 +217,8 @@ function sliderRadius(lat,lng,sauna,wifi,parking,vistaMare,pool,reception) {
         index.search('', {
           aroundLatLng: [parseFloat(lat) , parseFloat(lng)],
           // aroundLatLng: [41.9 , 12.5 ],
-          // filters:'services:'+ sauna + ' AND services: ' + wifi + ' AND services: ' + parking + ' AND services: ' + vistaMare + ' AND services: ' + pool + ' AND services: ' + reception +
-          //         ' AND number_of_rooms >= ' + $('#min-rooms').val() + ' AND ' +`number_of_beds >= `+ $('#min-beds').val(),
+          filters:'services:'+ $('#saunaCheck').val() + ' AND services: ' + $('#wifiCheck').val() + ' AND services: ' + $('#parkingCheck').val() + ' AND services: ' + $('#seaCheck').val() + ' AND services: ' + $('#poolCheck').val() + ' AND services: ' + $('#receptionCheck').val() +
+                  ' AND number_of_rooms >= ' + $('#min-rooms').val() + ' AND ' +`number_of_beds >= `+ $('#min-beds').val(),
           aroundRadius: slider.val(),
           hitsPerPage: 20
         }).then(({ hits }) => {
@@ -325,20 +330,28 @@ function sliderRadius(lat,lng,sauna,wifi,parking,vistaMare,pool,reception) {
 
 function init() {
   console.log(' START Js/app2');
-  var wifi = 0;
-  var parking = 0;
-  var sauna = 0;
+  // var wifi = 0;
+  // var parking = 0;
+  // var sauna = 0;
   var vistaMare = 0;
   var pool = 0;
   var reception = 0;
+  $('#wifiCheck').val(0);
+  $('#saunaCheck').val(0);
+  $('#parkingCheck').val(0);
+  $('#seaCheck').val(0);
+  $('#poolCheck').val(0);
+  $('#receptionCheck').val(0);
 
   var lat = $('#mylatitude').text();
   var lng = $('#mylongitude').text();
   getData(lat,lng);
   console.log(lat,lng);
   search();
+  // sliderRadius(lat,lng,sauna,wifi,parking,vistaMare,pool,reception);
+  // optionListener(lat,lng,sauna,wifi,parking,vistaMare,pool,reception);
   sliderRadius(lat,lng);
-  optionListener(lat,lng,sauna,wifi,parking,vistaMare,pool,reception);
+  optionListener(lat,lng);
 }
 
 $(document).ready(init);
