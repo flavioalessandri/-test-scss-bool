@@ -65,11 +65,11 @@ function prevCarouselImg() {
 function init(){
 
 
-  $("#mycreate").on('click', function() {
+  // $("#mycreate").on('click', function() {
+  //
+  //   $("#create_city").val("nuovo Valore");
 
-    $("#create_city").val("nuovo Valore");
-
-  });
+  // });
 
 
   console.log("APP JS");

@@ -49587,9 +49587,10 @@ function prevCarouselImg() {
 }
 
 function init() {
-  $("#mycreate").on('click', function () {
-    $("#create_city").val("nuovo Valore");
-  });
+  // $("#mycreate").on('click', function() {
+  //
+  //   $("#create_city").val("nuovo Valore");
+  // });
   console.log("APP JS");
   $('.next').on('click', nextCarouselImg);
   $('.prev').on('click', prevCarouselImg);

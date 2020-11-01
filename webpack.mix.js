@@ -15,6 +15,8 @@ mix
     .js('resources/js/app.js', 'public/js')
     .js('resources/js/app1.js', 'public/js')
     .js('resources/js/app2.js', 'public/js')
+    .js('resources/js/app3.js', 'public/js')
+    .js('resources/js/app4.js', 'public/js')
     .js('resources/js/mychart.js', 'public/js')
 
     .sass('resources/sass/app.scss', 'public/css')

@@ -244,6 +244,7 @@
     </div>
   </div>
 </div>
-
+<script type="text/javascript" src="../js/app4.js"></script>
+<!-- <script type="text/javascript" src="js/app4.js"></script> -->
 </section>
 @endsection

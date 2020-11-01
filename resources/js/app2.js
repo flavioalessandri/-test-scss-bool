@@ -1,4 +1,3 @@
-require('./bootstrap');
 window.$ = require('jquery');
 
 
@@ -59,7 +58,7 @@ function sliderRadius(lat,lng) {
       console.log('slider change',lat,lng);
       const algoliasearch = require('algoliasearch');
 
-      const client = algoliasearch('S8BNJ70XAW', '5aebc8b11d46b93513ec53a38a3c23e1');
+      const client = algoliasearch('C50JGFH5DN', '4301d4422ac7e4fff78b3a9db7965ffc');
       const index = client.initIndex('apartments');
       // if($('#address').val()){
         index.search('', {
@@ -91,7 +90,7 @@ function getResults(objects,lat,lng) {
 
   const algoliasearch = require('algoliasearch');
 
-  const client = algoliasearch('S8BNJ70XAW', '5aebc8b11d46b93513ec53a38a3c23e1');
+  const client = algoliasearch('C50JGFH5DN', '4301d4422ac7e4fff78b3a9db7965ffc');
   const index = client.initIndex('apartments');
 
   for (var i = 0; i < objects.length; i++) {
@@ -173,6 +172,38 @@ function search(){
       });
 
 }
+function selectMinRoomsBeds(lat,lng) {
+  var me = $(this);
+  // console.log(me);
+  var isSelected = me.is('selected');
+  console.log(lat,lng);
+
+  const algoliasearch = require('algoliasearch');
+
+  const client = algoliasearch('C50JGFH5DN', '4301d4422ac7e4fff78b3a9db7965ffc');
+  const index = client.initIndex('apartments');
+  // if($('#address').val()){
+    index.search('', {
+      aroundLatLng: [parseFloat(lat) , parseFloat(lng)],
+      // aroundLatLng: [41.9 , 12.5 ],
+      aroundRadius: $("#mySliderRadius").val(),
+      filters: `number_of_rooms >= `+ $('#min-rooms').val() + ' AND ' +`number_of_beds >= `+ $('#min-beds').val(),
+      // filters: `number_of_beds >= `+ $('#min-beds').val(),
+      hitsPerPage: 20
+    }).then(({ hits }) => {
+      console.log(hits);
+      printData(hits);
+
+    });
+
+}
+
+function optionListener(lat,lng) {
+  var targetRoom = $('#min-rooms');
+  var targetBed = $('#min-beds');
+  targetRoom.change(function(){selectMinRoomsBeds(lat,lng);});
+  targetBed.change(function(){selectMinRoomsBeds(lat,lng);});
+}
 
 function init() {
   console.log(' START Js/app2');
@@ -182,7 +213,8 @@ function init() {
   console.log(lat,lng);
   // search();
   getData(lat,lng);
-  // sliderRadius(lat,lng);
+  sliderRadius(lat,lng);
+  optionListener(lat,lng);
 }
 
 $(document).ready(init);

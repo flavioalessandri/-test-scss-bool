@@ -15684,6 +15684,12 @@ section#section_user_apartment_list {
   background-repeat-y: repeat;
 }
 
+section#sponsorship {
+  background-position: 0 0;
+  padding-top: 80px;
+  width: 100vw;
+}
+
 .mycarousel {
   position: relative;
   width: 100%;
@@ -15978,5 +15984,9 @@ button.search {
 
 #target > .card {
   cursor: pointer;
+}
+
+span.algolia-places.prova {
+  display: inline !important;
 }
 

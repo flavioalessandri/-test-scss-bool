@@ -10,10 +10,10 @@ function getChart(datas, arrayNumberOfCLick, arrayCurrentDatas){
   var myChart = new Chart(ctx, {
       type: 'bar',
       data: {
-          labels: [arrayCurrentDatas,2,3],
+          labels: arrayCurrentDatas,
           datasets: [{
               label: 'Numero di Click',
-              data: [arrayNumberOfCLick,4,5],
+              data: arrayNumberOfCLick,
               backgroundColor: [
                   'rgba(255, 99, 132, 0.2)',
                   'rgba(54, 162, 235, 0.2)',
@@ -59,7 +59,12 @@ function getData(id){
       console.log("DATA", data);
 
       var arrayNumOfClick = [];
-      var arrayCurrentDatas = [];
+
+      for (var i = 0; i < 4; i++) {
+        var re= Math.floor(Math.random() * (7 - 1)) + 1;
+        arrayNumOfClick.push(re);
+      }
+      var arrayCurrentDatas = ['2020-10-27','2020-10-28','2020-10-29'];
 
       for (let key in data) {
         arrayNumOfClick.push(data[key]['number_of_click']);

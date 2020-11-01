@@ -8,6 +8,12 @@
 
     @foreach ($aparts as $apart)
       <div class="card">
+
+        @for ($i=0; $i < count($apart->images); $i++)
+         count {{count($apart->images)}}
+
+        @endfor
+
         <h2>{{$apart->id}}</h2>
         <h4>{{$apart->city}}</h4>
         <h5>{{$apart->address}}</h5>

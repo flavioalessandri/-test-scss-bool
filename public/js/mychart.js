@@ -81,7 +81,7 @@
 /******/
 /******/
 /******/ 	// Load entry module and return exports
-/******/ 	return __webpack_require__(__webpack_require__.s = 4);
+/******/ 	return __webpack_require__(__webpack_require__.s = 6);
 /******/ })
 /************************************************************************/
 /******/ ({
@@ -58898,10 +58898,10 @@ function getChart(datas, arrayNumberOfCLick, arrayCurrentDatas) {
   var myChart = new Chart(ctx, {
     type: 'bar',
     data: {
-      labels: [arrayCurrentDatas, 2, 3],
+      labels: arrayCurrentDatas,
       datasets: [{
         label: 'Numero di Click',
-        data: [arrayNumberOfCLick, 4, 5],
+        data: arrayNumberOfCLick,
         backgroundColor: ['rgba(255, 99, 132, 0.2)', 'rgba(54, 162, 235, 0.2)', 'rgba(255, 206, 86, 0.2)', 'rgba(75, 192, 192, 0.2)', 'rgba(153, 102, 255, 0.2)', 'rgba(255, 159, 64, 0.2)'],
         borderColor: ['rgba(255, 99, 132, 1)', 'rgba(54, 162, 235, 1)', 'rgba(255, 206, 86, 1)', 'rgba(75, 192, 192, 1)', 'rgba(153, 102, 255, 1)', 'rgba(255, 159, 64, 1)'],
         borderWidth: 1
@@ -58928,7 +58928,13 @@ function getData(id) {
       var datas = data[0];
       console.log("DATA", data);
       var arrayNumOfClick = [];
-      var arrayCurrentDatas = [];
+
+      for (var i = 0; i < 4; i++) {
+        var re = Math.floor(Math.random() * (7 - 1)) + 1;
+        arrayNumOfClick.push(re);
+      }
+
+      var arrayCurrentDatas = ['2020-10-27', '2020-10-28', '2020-10-29'];
 
       for (var key in data) {
         arrayNumOfClick.push(data[key]['number_of_click']);
@@ -58962,7 +58968,7 @@ $(document).ready(init);
 
 /***/ }),
 
-/***/ 4:
+/***/ 6:
 /*!***************************************!*\
   !*** multi ./resources/js/mychart.js ***!
   \***************************************/

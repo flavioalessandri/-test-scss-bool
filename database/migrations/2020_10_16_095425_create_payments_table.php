@@ -15,15 +15,15 @@ class CreatePaymentsTable extends Migration
     {
         Schema::create('payments', function (Blueprint $table) {
             $table->id();
-            
+
             $table->unsignedBigInteger('apartment_id');
             $table->unsignedBigInteger('sponsorship_id');
-            $table->string('ref_payment');
+            $table->string('ref_payment')->nullable();
             $table->date('start_of_sponsorship');
-            $table->timestamp('date_of_payment');
+            $table->timestamp('date_of_payment')->nullable();
             $table->string('no_of_card',16)->nullable();
             $table->integer('cvc')->nullable();
-            $table->date('deadline')->nullable();
+            $table->date('deadline');
 
             $table->timestamps();
         });

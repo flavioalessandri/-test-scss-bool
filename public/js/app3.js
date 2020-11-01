@@ -81,7 +81,7 @@
 /******/
 /******/
 /******/ 	// Load entry module and return exports
-/******/ 	return __webpack_require__(__webpack_require__.s = 1);
+/******/ 	return __webpack_require__(__webpack_require__.s = 4);
 /******/ })
 /************************************************************************/
 /******/ ({
@@ -21688,52 +21688,53 @@ module.exports = g;
 
 /***/ }),
 
-/***/ "./resources/js/app1.js":
+/***/ "./resources/js/app3.js":
 /*!******************************!*\
-  !*** ./resources/js/app1.js ***!
+  !*** ./resources/js/app3.js ***!
   \******************************/
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
 window.$ = __webpack_require__(/*! jquery */ "./node_modules/jquery/dist/jquery.js");
 
-function search() {
-  var places = __webpack_require__(/*! places.js */ "./node_modules/places.js/index.js");
+function autocomplete() {
+  (function () {
+    var places = __webpack_require__(/*! places.js */ "./node_modules/places.js/index.js");
 
-  var placesAutocomplete = places({
-    appId: 'pl3L0GWSSXDR',
-    apiKey: '2e3513be338d19d42a81830c543b4aa8',
-    container: document.querySelector('#mysearch')
-  });
-  placesAutocomplete.on('change', function select(e) {
-    var latlng = e.suggestion.latlng;
-    var lat = latlng.lat;
-    var lng = latlng.lng; // console.log('1',latlng,lat,lng);
+    var placesAutocomplete = places({
+      appId: 'pl3L0GWSSXDR',
+      apiKey: '2e3513be338d19d42a81830c543b4aa8',
+      container: document.querySelector('#create_address'),
+      templates: {
+        value: function value(suggestion) {
+          return suggestion.name;
+        }
+      }
+    }).configure({
+      type: 'address'
+    });
+    placesAutocomplete.on('change', function resultSelected(e) {
+      console.log(e);
+      document.querySelector('#create_state').value = e.suggestion.country || '';
+      document.querySelector('#create_city').value = e.suggestion.city || '';
+      document.querySelector('#create_zipcode').value = e.suggestion.postcode || ''; // document.querySelector('#create_zipcode').value = e.suggestion.postcode || '';
 
-    $('#lat-form').val(lat);
-    $('#lng-form').val(lng);
-    console.log(lat, lng);
-  });
+      document.querySelector('#create_lat').value = e.suggestion.latlng.lat || '';
+      document.querySelector('#create_lng').value = e.suggestion.latlng.lng || '';
+      document.querySelector('#create_address').value = e.suggestion.name || '';
+    });
+  })();
+
+  var target = $('span.algolia-places');
+  target.addClass('prova');
 }
 
 function init() {
-  console.log('START js/app1');
-  search();
+  console.log('init');
+  autocomplete();
 }
 
 $(document).ready(init);
-
-/***/ }),
-
-/***/ 1:
-/*!************************************!*\
-  !*** multi ./resources/js/app1.js ***!
-  \************************************/
-/*! no static exports found */
-/***/ (function(module, exports, __webpack_require__) {
-
-module.exports = __webpack_require__(/*! C:\Users\flavi\Desktop\image-27-multiple-images\resources\js\app1.js */"./resources/js/app1.js");
-
 
 /***/ }),
 
@@ -21745,6 +21746,18 @@ module.exports = __webpack_require__(/*! C:\Users\flavi\Desktop\image-27-multipl
 /***/ (function(module, exports) {
 
 /* (ignored) */
+
+/***/ }),
+
+/***/ 4:
+/*!************************************!*\
+  !*** multi ./resources/js/app3.js ***!
+  \************************************/
+/*! no static exports found */
+/***/ (function(module, exports, __webpack_require__) {
+
+module.exports = __webpack_require__(/*! C:\Users\flavi\Desktop\image-27-multiple-images\resources\js\app3.js */"./resources/js/app3.js");
+
 
 /***/ })
 
