@@ -24191,7 +24191,7 @@ $(document).ready(init);
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
-module.exports = __webpack_require__(/*! C:\Users\andrea\Desktop\developer\Boolean\Progetto finale\-test-scss-bool\resources\js\app2.js */"./resources/js/app2.js");
+module.exports = __webpack_require__(/*! /home/caterina/boolean-project/-test-scss-bool/resources/js/app2.js */"./resources/js/app2.js");
 
 
 /***/ })

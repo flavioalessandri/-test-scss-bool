@@ -23,9 +23,9 @@ Route::get('/home', 'HomeController@index')->name('home');
 Route::post('/store', 'UserController@store')-> name('apart.store');
 Route::get('/destroyImage/{id}','UserController@destroyImage') -> name('destroy');
 Route::get('/delete/{id}', 'UserController@delete')-> name('apart.delete');
-Route::get('/apart/{id}', 'UserController@show')-> name('apart.show');
+Route::get('list/apart/{id}', 'UserController@show')-> name('apart.show');
 
-Route::get('/apart/{id}', 'GuestController@show')-> name('apart.show');
+Route::get('/apart/{id}', 'GuestController@show')-> name('search.apart.show');
 Route::post('/aparts','GuestController@latlng') -> name('aparts.search');
 
 // Route::get('/index2','GuestController@index2') -> name('aparts.index');
@@ -39,3 +39,8 @@ Route::get('/api/aparts', 'GuestController@index') -> name('apart-api-index');
 // Braintree
 Route::get('/sponsorship', 'SponsorshipController@choose')-> name('sponsor.choose');
 Route::post('/checkout', 'SponsorshipController@checkout')-> name('sponsor.check');
+
+
+// messages
+Route::post('/apart/message', 'MessageController@create') -> name('message.create');
+Route::get('list/apart/{id}/msg', 'UserController@messageList') -> name('msgs.list');

@@ -82,6 +82,8 @@
               <li>{{ $serv -> service }}</li>
             @endforeach
           </ul>
+
+            <a class="btn btn-light" href="{{route('msgs.list', $apart -> id )}}">Messaggi</a>
         </div>
       </div>
       {{-- <a href="#">Statistiche</a>
