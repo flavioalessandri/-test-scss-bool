@@ -24203,30 +24203,15 @@ function getResults(objects, lat, lng) {
 
   var client = algoliasearch('C50JGFH5DN', '4301d4422ac7e4fff78b3a9db7965ffc');
   var index = client.initIndex('apartments');
-
-  for (var i = 0; i < objects.length; i++) {
-    var object = objects[i];
-    object.objectID = 'App\Apartment::' + (i + 1);
-  } // console.log(objects);
-
-
-  index.saveObjects(objects).then(function (_ref3) {// console.log(objectIDs);
-
-    var objectIDs = _ref3.objectIDs;
-  });
-  index.search('', {}).then(function (_ref4) {// console.log('hits',hits);
-    // printData(hits);
-
-    var hits = _ref4.hits;
-  });
+  console.log('ricerca', objects);
   var raggio = 20 * 1000;
   console.log(raggio);
   index.search('', {
     aroundLatLng: lat + ',' + lng,
     // aroundLatLng: '41.9, 12.5',
     aroundRadius: 20 * 1000
-  }).then(function (_ref5) {
-    var hits = _ref5.hits;
+  }).then(function (_ref3) {
+    var hits = _ref3.hits;
     console.log('hits', hits);
     printData(hits);
   });
@@ -24245,7 +24230,23 @@ function getDataValue(aparts, lat, lng) {
   }
 
   console.log('aparts:', aparts);
-  getResults(aparts, lat, lng);
+
+  var algoliasearch = __webpack_require__(/*! algoliasearch */ "./node_modules/algoliasearch/src/browser/builds/algoliasearch.js");
+
+  var client = algoliasearch('C50JGFH5DN', '4301d4422ac7e4fff78b3a9db7965ffc');
+  var index = client.initIndex('apartments');
+
+  for (var i = 0; i < aparts.length; i++) {
+    var apart = aparts[i];
+    apart.objectID = 'App\Apartment::' + (i + 1);
+  } // console.log(objects);
+
+
+  index.saveObjects(aparts).then(function (_ref4) {
+    var objectIDs = _ref4.objectIDs;
+    console.log(aparts);
+    getResults(aparts, lat, lng);
+  });
 }
 
 function getData(lat, lng) {

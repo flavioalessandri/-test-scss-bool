@@ -166,21 +166,23 @@ class GuestController extends Controller
 
     $aparts = Apartment::all();
       foreach ($aparts as $apart) {
-
+        $arrayImgs = [];
         $imgs = $apart -> images() -> get();
           if ($imgs !== null ) {
 
-            $arrayImgs = [];
+            // $arrayImgs = [];
             $i = 0;
               foreach ($imgs as $img) {
                 $arrayImgs[$i] = $img['image_path'];
                 $i++;
               }
-            $apart['imgs'] = $arrayImgs;
+            // $apart['imgs'] = $arrayImgs;
           }
           else {
-            // $apart['imgs'] = [1,2,3,4];
+            $arrayImgs[0] = [''];
           }
+          $apart['imgs'] = $arrayImgs;
+
         $servs = $apart -> services() -> get();
         $arrayServ = [0];
           if ($servs !== null ) {

@@ -259,22 +259,8 @@ function sliderRadius(lat,lng,sauna,wifi,parking,vistaMare,pool,reception) {
   const client = algoliasearch('C50JGFH5DN', '4301d4422ac7e4fff78b3a9db7965ffc');
   const index = client.initIndex('apartments');
 
-  for (var i = 0; i < objects.length; i++) {
-    var object = objects[i];
-    object.objectID = 'App\Apartment::' + (i+1);
-  }
-  // console.log(objects);
 
-  index.saveObjects(objects).then(({ objectIDs }) => {
-  // console.log(objectIDs);
-  });
-  index.search('',{
-  })
-  .then(({ hits }) => {
-    // console.log('hits',hits);
-    // printData(hits);
-  });
-
+  console.log('ricerca',objects);
   var raggio = 20 * 1000;
   console.log(raggio);
   index.search('',{
@@ -298,11 +284,26 @@ function sliderRadius(lat,lng,sauna,wifi,parking,vistaMare,pool,reception) {
         'lng': apart.lng
       };
       apart._geoloc = _geoloc;
+
     }
 
     console.log('aparts:', aparts);
+    const algoliasearch = require('algoliasearch');
 
-      getResults(aparts,lat,lng);
+    const client = algoliasearch('C50JGFH5DN', '4301d4422ac7e4fff78b3a9db7965ffc');
+    const index = client.initIndex('apartments');
+
+    for (var i = 0; i < aparts.length; i++) {
+      var apart = aparts[i];
+      apart.objectID = 'App\Apartment::' + (i+1);
+    }
+    // console.log(objects);
+
+    index.saveObjects(aparts).then(({ objectIDs }) => {
+    console.log(aparts);
+    getResults(aparts,lat,lng);
+    });
+
   }
 
   function getData(lat,lng) {
