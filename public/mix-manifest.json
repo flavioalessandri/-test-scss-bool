@@ -4,5 +4,6 @@
     "/js/app1.js": "/js/app1.js",
     "/js/app2.js": "/js/app2.js",
     "/js/app3.js": "/js/app3.js",
-    "/js/app4.js": "/js/app4.js"
+    "/js/app4.js": "/js/app4.js",
+    "/js/mychart.js": "/js/mychart.js"
 }

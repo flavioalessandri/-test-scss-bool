@@ -10,7 +10,7 @@ use App\Apartment;
 $factory->define(Statistic::class, function (Faker $faker) {
     return [
       'apartment_id'      => Apartment::inRandomOrder()->first(),
-      'current_date'      => $faker -> dateTimeInInterval($startDate = '-5 days', $interval = '+5 days', $timezone = null),
+      'current_date'      => Carbon::now()->subDays(rand(2,20))->format('Y-m-d H:i:s'),
       'number_of_click'   => $faker -> numberBetween($min=0, $max=10)
     ];
 });

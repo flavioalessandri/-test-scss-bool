@@ -73,7 +73,7 @@
                           {{-- <a class="btn btn-light" href="#">Dettagli</a>
                           <a class="btn btn-light" href="{{route('apart.edit',$apart -> id)}}">Modifica</a> --}}
 
-                          <a class="btn btn-light" href="{{route('apart.show',$apart -> id)}}">Show</a>
+                          <a class="btn btn-light" href="{{route('apart.user.show',$apart -> id)}}">Show</a>
                           <a class="btn btn-light" href="{{route('apart.edit',$apart -> id)}}">Edit</a>
                           <a class="btn btn-light" href="{{route('apart.delete', $apart -> id)}}">Delete</a>
                         </div>

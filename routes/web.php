@@ -23,7 +23,7 @@ Route::get('/home', 'HomeController@index')->name('home');
 Route::post('/store', 'UserController@store')-> name('apart.store');
 Route::get('/destroyImage/{id}','UserController@destroyImage') -> name('destroy');
 Route::get('/delete/{id}', 'UserController@delete')-> name('apart.delete');
-Route::get('/apart/{id}', 'UserController@show')-> name('apart.show');
+Route::get('/user/apart/{id}', 'UserController@show')-> name('apart.user.show');
 
 Route::get('/apart/{id}', 'GuestController@show')-> name('apart.show');
 Route::post('/aparts','GuestController@latlng') -> name('aparts.search');
@@ -39,3 +39,10 @@ Route::get('/api/aparts', 'GuestController@index') -> name('apart-api-index');
 // Braintree
 Route::get('/sponsorship', 'SponsorshipController@choose')-> name('sponsor.choose');
 Route::post('/checkout', 'SponsorshipController@checkout')-> name('sponsor.check');
+
+
+
+
+//Chart
+Route::post('/statistic/{id}', 'ChartClickController@statistic')->name('myroute');
+Route::get('/api/statistic/{id}', 'ChartClickController@statisticJson')->name('statisticJson');
