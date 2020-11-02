@@ -10979,14 +10979,54 @@ return jQuery;
 
 // require('./bootstrap');
 // window.moment = require('moment');
-window.$ = __webpack_require__(/*! jquery */ "./node_modules/jquery/dist/jquery.js");
+window.$ = __webpack_require__(/*! jquery */ "./node_modules/jquery/dist/jquery.js"); // -----------------------------------------------------------------------------------------
 
-function getChart(arrayNewClick, week) {
-  // $('#myChart').remove();
-  //
-  // $('#views-chart').prepend(`<canvas id="myChart></canvas>`);
+function removeOldChart() {
+  $('#myChart').remove();
+  $('#views-chart').append('<canvas id="myChart"><canvas>');
+  $('#myMsgChart').remove();
+  $('#message-chart').append('<canvas id="mymessageChart"><canvas>');
+} // ----------------------------------------------------------------------------------------
+
+
+function getMsgChart(msgToMatch, week) {
+  var ctx = document.getElementById('mymessageChart').getContext('2d');
+  var myMsgChart = new Chart(ctx, {
+    type: 'line',
+    data: {
+      labels: week,
+      datasets: [{
+        label: 'Numero di Messaggi',
+        data: msgToMatch,
+        backgroundColor: ['rgba(30, 150, 235, 0.2)', 'rgba(200, 80, 132, 0.2)', 'rgba(255, 206, 86, 0.2)', 'rgba(135, 90, 255, 0.2)', 'rgba(60, 80, 130, 0.2)', 'rgba(75, 192, 192, 0.2)', 'rgba(220, 159, 64, 0.2)'],
+        borderColor: ['rgba(30, 150, 235, 1)', 'rgba(200, 80, 132, 1)', 'rgba(255, 206, 86, 1)', 'rgba(135, 90, 255, 1)', 'rgba(60, 80, 130, 1)', 'rgba(75, 192, 192, 1)', 'rgba(220, 159, 64, 1)'],
+        borderWidth: 1
+      }]
+    },
+    options: {
+      responsive: true,
+      maintainAspectRatio: false,
+      title: {
+        display: true,
+        text: ["Messaggi ricevuti: ", week[0] + " / " + week[6]],
+        fontSize: "14"
+      },
+      scales: {
+        yAxes: [{
+          ticks: {
+            stepSize: 1,
+            beginAtZero: true
+          }
+        }]
+      }
+    }
+  });
+} // ----------------------------------------------------------------------------------------
+
+
+function getClickChart(arrayNewClick, week) {
   var ctx = document.getElementById('myChart').getContext('2d');
-  var myChart = new Chart(ctx, {
+  var myClickChart = new Chart(ctx, {
     type: 'bar',
     data: {
       labels: week,
@@ -11000,64 +11040,66 @@ function getChart(arrayNewClick, week) {
     },
     options: {
       responsive: true,
-      maintainAspectRatio: true,
+      maintainAspectRatio: false,
       title: {
         display: true,
-        text: "Visualizzazioni dell'Appartamento: Settimana del " + week[0],
+        text: ["Numero di Visualizzazioni: ", week[0] + " / " + week[6]],
         fontSize: "14"
       },
       scales: {
         yAxes: [{
           ticks: {
-            stepSize: 1,
+            stepSize: 4,
             beginAtZero: true
           }
         }]
       }
     }
   });
-}
+  myClickChart.update();
+} // ----------------------------------------------------------------------------------------
 
-function chartExample() {
-  var ctx = document.getElementById('mymessageChart').getContext('2d');
-  var myChart = new Chart(ctx, {
-    type: 'bar',
-    data: {
-      labels: [1, 2, 3, 4, 5],
-      datasets: [{
-        label: 'Numero di Click',
-        data: [1, 2, 3, 4, 5],
-        backgroundColor: ['rgba(255, 99, 132, 0.2)', 'rgba(54, 162, 235, 0.2)', 'rgba(255, 206, 86, 0.2)', 'rgba(75, 192, 192, 0.2)', 'rgba(153, 102, 255, 0.2)', 'rgba(255, 159, 64, 0.2)'],
-        borderColor: ['rgba(255, 99, 132, 1)', 'rgba(54, 162, 235, 1)', 'rgba(255, 206, 86, 1)', 'rgba(75, 192, 192, 1)', 'rgba(153, 102, 255, 1)', 'rgba(255, 159, 64, 1)'],
-        borderWidth: 1
-      }]
+
+function getMessageData(id, week) {
+  //console.log('ENTER MESSAGE DATA');
+  var msgToMatch = [0, 0, 0, 0, 0, 0, 0];
+  $.ajax({
+    url: "/api/statistic/message/" + id,
+    method: 'GET',
+    success: function success(data, state) {
+      var objectLength = Object.keys(data).length;
+      var daysMsg = [];
+      var totMsg = [];
+
+      for (var i = 0; i < objectLength; i++) {
+        var values = Object.values(data)[i].length;
+        totMsg.push(values);
+        var keys = Object.keys(data)[i];
+        daysMsg.push(keys);
+      } //console.log("GIORNI",daysMsg);
+      //console.log("QUANTITA MESSAGGI",totMsg);
+
+
+      for (var i = 0; i < daysMsg.length; i++) {
+        if (week.includes(daysMsg[i])) {
+          var key = week.indexOf(daysMsg[i]);
+          msgToMatch[key] = totMsg[i];
+        }
+      } //console.log("GIORNI SETTIMANA",week);
+      //console.log("MESSAGGI INTERCETTATI",msgToMatch);
+
+
+      getMsgChart(msgToMatch, week);
     },
-    options: {
-      responsive: true,
-      title: {
-        display: true,
-        text: 'Vision Logged Hours'
-      },
-      scales: {
-        xAxes: [{
-          ticks: {
-            display: true
-          }
-        }],
-        yAxes: [{
-          ticks: {
-            display: false,
-            drawBorder: false,
-            beginAtZero: true
-          }
-        }]
-      }
+    error: function error(err) {//console.log('error', err);
     }
   });
-}
+} // -----------------------------------------------------------------------------------------
 
-function getData(id, week, clickToMatch) {
-  console.log('ENTER');
+
+function getClickData(id, week) {
+  //console.log('ENTER');
+  var clickToMatch = [0, 0, 0, 0, 0, 0, 0];
   $.ajax({
     url: "/api/statistic/" + id,
     method: 'GET',
@@ -11080,21 +11122,21 @@ function getData(id, week, clickToMatch) {
       }
 
       var arrayNewClick = clickToMatch;
-      getChart(arrayNewClick, week);
+      getClickChart(arrayNewClick, week);
     },
-    error: function error(err) {
-      console.log('error', err);
+    error: function error(err) {//console.log('error', err);
     }
   });
-}
+} // -----------------------------------------------------------------------------------------
+
 
 function nextWeek(id) {
+  removeOldChart();
   var mybutton = $('#chart-next').attr('click');
   var newstartdate = moment(mybutton).add(1, 'week');
   $('#chart-prev').attr('click', newstartdate.format("YYYY-MM-DD"));
   $('#chart-next').attr('click', newstartdate.format("YYYY-MM-DD"));
   var nxtweek = [];
-  var clickToMatch = [0, 0, 0, 0, 0, 0, 0];
 
   for (var i = 0; i < 7; i++) {
     var day = newstartdate.add(1, "days").format("YYYY-MM-DD");
@@ -11102,16 +11144,18 @@ function nextWeek(id) {
   }
 
   ;
-  getData(id, nxtweek, clickToMatch);
-}
+  getClickData(id, nxtweek);
+  getMessageData(id, nxtweek);
+} // -----------------------------------------------------------------------------------------
+
 
 function prevWeek(id) {
+  removeOldChart();
   var mybutton = $('#chart-prev').attr('click');
   var newstartdate = moment(mybutton).subtract(1, 'week');
   $('#chart-prev').attr('click', newstartdate.format("YYYY-MM-DD"));
   $('#chart-next').attr('click', newstartdate.format("YYYY-MM-DD"));
   var prvweek = [];
-  var clickToMatch = [0, 0, 0, 0, 0, 0, 0];
 
   for (var i = 0; i < 7; i++) {
     var day = newstartdate.add(1, "days").format("YYYY-MM-DD");
@@ -11119,15 +11163,16 @@ function prevWeek(id) {
   }
 
   ;
-  getData(id, prvweek, clickToMatch);
-}
+  getClickData(id, prvweek);
+  getMessageData(id, prvweek);
+} // -----------------------------------------------------------------------------------------
+
 
 function init() {
   var href = document.URL.split('/');
   var id = href.pop() || href.pop();
   var startdate = moment().add(1, 'days');
   var week = [];
-  var clickToMatch = [0, 0, 0, 0, 0, 0, 0];
 
   for (var i = 0; i < 7; i++) {
     var day = startdate.subtract(1, "days").format("YYYY-MM-DD");
@@ -11135,7 +11180,9 @@ function init() {
   }
 
   ;
-  getData(id, week, clickToMatch);
+  week.reverse();
+  getMessageData(id, week);
+  getClickData(id, week);
   var prevbuttonAttr = $('#chart-prev').attr('click', startdate.format("YYYY-MM-DD"));
   var nextbuttonAttr = $('#chart-next').attr('click', startdate.format("YYYY-MM-DD"));
   $('#chart-prev').on('click', function () {
@@ -11143,10 +11190,60 @@ function init() {
   });
   $('#chart-next').on('click', function () {
     nextWeek(id);
-  }); // chartExample();
+  });
 }
 
-$(document).ready(init);
+$(document).ready(init); // ----------------------------------------------------------------------------------------
+
+function getFakeData(id, week, msgToMatch) {
+  var data = {
+    "2020-10-29": [{
+      "apartment_id": 101,
+      "created_at": "2020-10-29T12:52:12.000000Z"
+    }],
+    "2020-11-02": [{
+      "apartment_id": 101,
+      "created_at": "2020-11-02T12:50:13.000000Z"
+    }, {
+      "apartment_id": 101,
+      "created_at": "2020-11-02T12:52:12.000000Z"
+    }, {
+      "apartment_id": 101,
+      "created_at": "2020-11-02T12:52:12.000000Z"
+    }, {
+      "apartment_id": 101,
+      "created_at": "2020-11-02T12:52:12.000000Z"
+    }],
+    "2020-11-03": [{
+      "apartment_id": 102,
+      "created_at": "2020-11-03T12:50:13.000000Z"
+    }, {
+      "apartment_id": 101,
+      "created_at": "2020-11-03T12:52:12.000000Z"
+    }]
+  };
+  var objectLength = Object.keys(data).length;
+  var daysMsg = [];
+  var totMsg = [];
+
+  for (var i = 0; i < objectLength; i++) {
+    var values = Object.values(data)[i].length;
+    totMsg.push(values);
+    var keys = Object.keys(data)[i];
+    daysMsg.push(keys);
+  } //console.log("GIORNI",daysMsg);
+  //console.log("QUANTITA MESSAGGI",totMsg);
+
+
+  for (var i = 0; i < daysMsg.length; i++) {
+    if (week.includes(daysMsg[i])) {
+      var key = week.indexOf(daysMsg[i]);
+      msgToMatch[key] = totMsg[i];
+    }
+  } //console.log("GIORNI SETTIMANA",week);
+  //console.log("MESSAGGI INTERCETTATI",msgToMatch);
+
+} // -----------------------------------------------------------------------------------------
 
 /***/ }),
 
@@ -11157,7 +11254,7 @@ $(document).ready(init);
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
-module.exports = __webpack_require__(/*! /Users/giulia/Desktop/valet/code/-test-scss-bool/resources/js/mychart.js */"./resources/js/mychart.js");
+module.exports = __webpack_require__(/*! C:\Users\flavi\Desktop\image-27-multiple-images\resources\js\mychart.js */"./resources/js/mychart.js");
 
 
 /***/ })
