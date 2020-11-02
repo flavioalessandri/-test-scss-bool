@@ -1,4 +1,4 @@
-require('./bootstrap');
+// require('./bootstrap');
 
 window.moment = require('moment');
 
@@ -6,9 +6,9 @@ window.$ = require('jquery');
 
 function getChart(arrayNewClick, week){
 
-  $('#myChart').remove();
-
-  $('#views-chart').prepend(`<canvas id="myChart></canvas>`);
+  // $('#myChart').remove();
+  //
+  // $('#views-chart').prepend(`<canvas id="myChart></canvas>`);
 
 
   var ctx = document.getElementById('myChart').getContext('2d');
@@ -233,7 +233,7 @@ function init(){
   $('#chart-prev').on('click', function() {prevWeek(id)});
   $('#chart-next').on('click', function() {nextWeek(id)});
 
-  chartExample();
+  // chartExample();
 
 }
 
