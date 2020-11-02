@@ -78,6 +78,39 @@
               <li>{{ $serv -> service }}</li>
             @endforeach
           </ul>
+
+          <!-- messaggi form -->
+
+          <div class="form-messaggio">
+
+            <div class="row">
+              <div class="col-lg-12">
+                  <form action="{{route('message.create')}}" method="POST" enctype="multipart/form-data" id="form_id">
+                    @csrf
+                    @method('POST')
+
+                    <input class='invisible' type="text" name="apartment_id" value="{{ $apart -> id }}">
+                      <div class="form-group">
+                           <h5><label for="email">Email</label></h5>
+
+                          <input
+                          @auth
+                          value='{{$apart -> user -> email }}'
+                          @endauth
+                            type="email" name="email" class="form-control" tabindex="2" placeholder="Email address" required>
+                      </div>
+                      <div class="form-group">
+                           <h5><label for="message">Message</label></h5>
+
+                           <textarea name="message" class="form-control" tabindex="4" placeholder="Write your details" required></textarea>
+                      </div>
+                      <button type="submit" name="submit" class="btn btn-primary btn-block" tabindex="5">Submit</button>
+                  </form>
+              </div>
+          </div>
+
+        </div>
+
         </div>
       </div>
       {{-- <a href="#">Statistiche</a>

@@ -83,6 +83,7 @@
             @endforeach
           </ul>
 
+<<<<<<< HEAD
           <form class="form" action="{{route('myroute', $apart->id )}}" method="post">
                     @csrf
                     @method('POST')
@@ -92,6 +93,9 @@
         </form>
 
 
+=======
+            <a class="btn btn-light" href="{{route('msgs.list', $apart -> id )}}">Messaggi</a>
+>>>>>>> 9591971e01d7dc8ebd00d35694ee9e703fd20028
         </div>
       </div>
       {{-- <a href="#">Statistiche</a>
