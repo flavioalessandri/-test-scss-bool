@@ -5,7 +5,7 @@
 @section('content')
 <div class="container">
   <div id="div-search" class="flex mb-4 mt-0">
-    <div class="white-radius-center">
+    <div class="white-radius-center r2">
       <input type="search" value="" name="places" id="mysearch" placeholder="Cerca appartamento">
       {{-- <div class="search"> --}}
         <!-- <a href="#"><i class="fas fa-search"></i></a> -->
@@ -20,7 +20,7 @@
 
     <div class="col-md-8">
 
-      <div class="card">
+      <div class="card mrg-t100">
 
         <div class="card-header">
 
@@ -49,7 +49,7 @@
               <option value="5">5</option>
               <option value="6">Maggiore di 6</option>
             </select>
-            
+
             <label for="min-beds">Numero minimo di letti</label>
               <select id="min-beds" name="min-beds">
                 <option selected value="1"></option>

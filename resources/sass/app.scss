@@ -9,6 +9,41 @@
 
 @import '~@fortawesome/fontawesome-free/css/all.css';
 
+// Small devices--------------------------------------
+@media all and (max-width: 767px) {
+  .r{
+    transform: translate(0%, +50%);
+  }
+  .r2{
+    transform: translate(0%, +150%);
+  }
+  .test{background-color: red;}
+  .w100{
+    width: 80%;
+  }
+  .flex-column{}
+  .mb-4{}
+  .d-flex{}
+  .justify-content-center{}
+  .d-block{}
+  .flex-column{}
+  .mt-5{}
+  .mx-auto{}
+  .mrg-r20{margin-right: 20%;}
+  .mrg-t100{margin-top: 100px;}
+  // .mrg-t300{margin-top: 300px;}
+  .pad-t100{padding-top: 100px;}
+  .h{
+    flex-direction: column;
+    justify-content: center;
+  }
+ }
+ // Medium devices-------------------------------------------
+@media all and (min-width: 768px) and (max-width: 992px) {
+
+  }
+
+////////////////////////
 *{
   margin: 0;
   padding: 0;
@@ -176,12 +211,12 @@ a{
 }
 
 .white-radius-center{
-  margin-top:80px;
+  margin-top:120px;
   display: flex;
   flex-direction: row;
   justify-content: space-between;
   text-align: center!important;
-  width: 40%;
+  // width: 40%;
   height: 60px;
   background-color: white;
   border-radius: 30px;

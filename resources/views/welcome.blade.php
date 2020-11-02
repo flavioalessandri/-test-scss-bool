@@ -9,7 +9,7 @@
 
 
   <div id="div-search" class="flex" >
-    <div class="white-radius-center">
+    <div class="white-radius-center w100">
 
       <form class="flex formSearch" action="{{route('aparts.search')}}" method="post">
           @csrf
