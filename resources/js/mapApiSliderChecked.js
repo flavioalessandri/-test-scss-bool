@@ -6,7 +6,8 @@ window.$ = require('jquery');
 //   return id + name + 'ciao= ' + ciao;
 // };
 
-export function searchOnMapSlider(lat, lng, slider){
+export function searchOnMapSliderChecked(lat, lng, slider, hits){
+  // console.log(hits,'these are my hits');
 
 
 
@@ -211,20 +212,25 @@ function renderMap(content) {
 
   for (var i = 0; i < content.hits.length; ++i) {
     var hit = content.hits[i];
-    var marker = new google.maps.Marker({
-      position: {lat: hit._geoloc.lat, lng: hit._geoloc.lng},
-      map: map,
-      airport_id: hit.objectID,
-      title: hit.name + ' - ' + hit.city + ' - ' + hit.country
-    });
 
-    // QUI DEVO FILTRARE I MARKER RISPETTO AI FILTRI
+    for (var j = 0; j < hits.length; j++) {
+      var myHit = hits[j];
+
+      if(myHit.objectID == hit.objectID){
 
 
-    markers.push(marker);
-
-    attachInfoWindow(marker, hit);
+      var marker = new google.maps.Marker({
+        position: {lat: hit._geoloc.lat, lng: hit._geoloc.lng},
+        map: map,
+        airport_id: hit.objectID,
+        title: hit.name + ' - ' + hit.city + ' - ' + hit.country
+      });
+      markers.push(marker);
+    }
   }
+    // attachInfoWindow(marker, hit);
+  }
+
   // console.log(markers,'markersmymy');
 
   if (fitMapToMarkersAutomatically) fitMapToMarkers();
@@ -270,6 +276,7 @@ function updateMenu(stateClass, modeClass) {
 
 function fitMapToMarkers() {
   var mapBounds = new google.maps.LatLngBounds();
+  console.log(markers,'my markersss');
   for (var i = 0; i < markers.length; i++) {
     mapBounds.extend(markers[i].getPosition());
   }

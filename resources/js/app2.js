@@ -242,6 +242,7 @@ window.$ = require('jquery');
 
 import { searchOnMap } from './mapApi.js';
 import { searchOnMapSlider } from './mapApiSlider.js';
+import { searchOnMapSliderChecked } from './mapApiSliderChecked.js';
 
 // <<<<<<< HEAD
   function search(){
@@ -305,6 +306,11 @@ import { searchOnMapSlider } from './mapApiSlider.js';
       }).then(({ hits }) => {
         // console.log(hits);
         printData(hits);
+        console.log(hits, 'my hits 999');
+
+
+        var slider = $("#mySliderRadius").val()
+        searchOnMapSliderChecked(lat, lng, slider, hits);
 
       });
 
@@ -329,7 +335,6 @@ import { searchOnMapSlider } from './mapApiSlider.js';
       // console.log('first',sauna);
       if (isChecked) {
         $('#saunaCheck').val(3);
-        var sauna = 3;
         console.log('si',$('#saunaCheck').val());
         // selectSauna(lat,lng);
       }
@@ -348,14 +353,12 @@ import { searchOnMapSlider } from './mapApiSlider.js';
       var isChecked = me.is(':checked');
       // console.log('first',sauna);
       if (isChecked) {
-        var wifi = 1;
         $('#wifiCheck').val(1);
         console.log('si',$('#wifiCheck').val());
         // selectSauna(lat,lng);
       }
       else {
         $('#wifiCheck').val(0);
-        var wifi = 0;
         console.log('no',$('#wifiCheck').val());
         // selectMinRoomsBeds(lat,lng);
       }
