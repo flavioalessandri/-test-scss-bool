@@ -23,9 +23,9 @@ Route::get('/home', 'HomeController@index')->name('home');
 Route::post('/store', 'UserController@store')-> name('apart.store');
 Route::get('/destroyImage/{id}','UserController@destroyImage') -> name('destroy');
 Route::get('/delete/{id}', 'UserController@delete')-> name('apart.delete');
-Route::get('/user/apart/{id}', 'UserController@show')-> name('apart.user.show');
+Route::get('list/apart/{id}', 'UserController@show')-> name('apart.show');
 
-Route::get('/apart/{id}', 'GuestController@show')-> name('apart.show');
+Route::get('/apart/{id}', 'GuestController@show')-> name('search.apart.show');
 Route::post('/aparts','GuestController@latlng') -> name('aparts.search');
 
 // Route::get('/index2','GuestController@index2') -> name('aparts.index');
