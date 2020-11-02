@@ -34,9 +34,24 @@
           <p>km: <span id="sliderValue"></span></p>
         </div>
 
-        <div id="search-sauna" class=" pl-5 col-12">
+        <div class=" pl-5 col-12">
+          <label for="wifi">Wifi</label>
+          <input id='wifiCheck' type="checkbox" name="wifi">
+
+          <label for="parking">Parcheggio</label>
+          <input id='parkingCheck' type="checkbox" name="parking">
+
           <label for="sauna">Sauna</label>
-          <input type="checkbox" name="sauna">
+          <input id='saunaCheck' type="checkbox" name="sauna">
+
+          <label for="sea_view">Vista Mare</label>
+          <input id='seaCheck' type="checkbox" name="sea_view">
+
+          <label for="pool">Piscina</label>
+          <input id='poolCheck' type="checkbox" name="pool">
+
+          <label for="reception">Reception</label>
+          <input id='receptionCheck' type="checkbox" name="reception">
         </div>
         <!-- selezione numero minimo camere e letti -->
         <div class="searchOptions">
@@ -49,7 +64,7 @@
               <option value="5">5</option>
               <option value="6">Maggiore di 6</option>
             </select>
-            
+
             <label for="min-beds">Numero minimo di letti</label>
               <select id="min-beds" name="min-beds">
                 <option selected value="1"></option>
@@ -63,11 +78,7 @@
 
 
 
-        <div class="card-body">
-
-          <ul id="target">
-
-            {{-- coontenitore per le card che verranno visualizzate !! --}}
+        <ul id="hand-target">
 
           </ul>
 
@@ -76,6 +87,42 @@
     </div>
   </div>
 </div>
+<script id="handlebar-template" type="text/x-handlebars-template">
+  <div class="card" data-card="{{$count=0}}">
+    <div class="card-body">
+      <div class="d-flex flex-row flex-wrap">
+
+        <img class="handelbar-img" src="@{{{ img }}}" alt="nophoto">
+
+          <div class="  pl-3 col-12 col-md-6 p-2 d-flex flex-column ">
+
+              <div class="border-bottom border-dark">
+                <h5 class=""> <a href="apart/@{{ id }}">@{{{ description }}} </a>
+                  <br>
+                  <small class="text-muted"> @{{{ address }}} - @{{{ city }}} - @{{{ state }}}  </small>
+                </h5>
+              </div>
+
+              <div class="flex-grow-1 text-secondary">
+                <div class="pt-2">
+                  <span> @{{{ square_meters }}} mq  </span>
+              </div>
+                <div class="">
+                  <span class="pt-2"> Stanze: @{{{ number_of_rooms }}} </span>
+                </div>
+                <div class="">
+                  <span class="pt-2"> Letti: @{{{ number_of_beds }}}  </span>
+                </div>
+              </div>
+
+
+          </div>
+
+      </div>
+    </div>
+  </div>
+</script>
+
 <script src="{{ asset('js/app2.js') }}" defer></script>
 
 @endsection

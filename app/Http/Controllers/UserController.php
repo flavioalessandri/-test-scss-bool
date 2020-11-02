@@ -247,4 +247,12 @@ class UserController extends Controller
 
         return redirect()-> back();
     }
+
+    public function messageList($id) {
+
+      $apart = Apartment::findOrFail($id);
+      $messages = $apart -> messages() -> get();
+
+      return view('apart-messages',compact('messages'));
+    }
 }
