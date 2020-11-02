@@ -1,9 +1,9 @@
+
+{{-- *************************** --}}
 @extends('layouts.main-layout')
 {{-- @section('header')
   @include('partials.header1')
 @endsection --}}
-
-
 @section('content')
 <div class="container">
   <div id="div-search" class="flex mb-4 mt-0">
@@ -30,7 +30,6 @@
         </div>
 
 
-
         {{-- Hits and Map  --}}
         <section class="col-md-12 map_section">
           {{-- <div class="left-column">
@@ -48,18 +47,12 @@
 
       {{-- /Hits and Map  --}}
 
-
-
-
         <div id="slidecontainer">
           <p>Scegli il raggio in km:</p>
           <input id="mySliderRadius" type="range" min="1" max="100000" value="20000">
 
           <p>km: <span id="sliderValue"></span></p>
         </div>
-
-
-
 
         {{-- MAP TEMPLATE --}}
         <script type="text/template" id="hits-template">
@@ -73,7 +66,6 @@
         </script>
         {{-- END MAP TEMPLATE --}}
 
-
         {{-- No-Results template --}}
       <script type="text/template" id="no-results-template">
         <div id="no-results-message">
@@ -85,10 +77,24 @@
 
 
 
+        <div class=" pl-5 col-12">
+          <label for="wifi">Wifi</label>
+          <input id='wifiCheck' type="checkbox" name="wifi">
 
-        <div id="search-sauna" class=" pl-5 col-12">
+          <label for="parking">Parcheggio</label>
+          <input id='parkingCheck' type="checkbox" name="parking">
+
           <label for="sauna">Sauna</label>
-          <input type="checkbox" name="sauna">
+          <input id='saunaCheck' type="checkbox" name="sauna">
+
+          <label for="sea_view">Vista Mare</label>
+          <input id='seaCheck' type="checkbox" name="sea_view">
+
+          <label for="pool">Piscina</label>
+          <input id='poolCheck' type="checkbox" name="pool">
+
+          <label for="reception">Reception</label>
+          <input id='receptionCheck' type="checkbox" name="reception">
         </div>
         <!-- selezione numero minimo camere e letti -->
         <div class="searchOptions">
@@ -115,11 +121,7 @@
 
 
 
-        <div class="card-body">
-
-          <ul id="target">
-
-            {{-- coontenitore per le card che verranno visualizzate !! --}}
+        <ul id="hand-target">
 
           </ul>
 
@@ -128,6 +130,42 @@
     </div>
   </div>
 </div>
+<script id="handlebar-template" type="text/x-handlebars-template">
+  <div class="card" data-card="{{$count=0}}">
+    <div class="card-body">
+      <div class="d-flex flex-row flex-wrap">
+
+        <img class="handelbar-img" src="@{{{ img }}}" alt="nophoto">
+
+          <div class="  pl-3 col-12 col-md-6 p-2 d-flex flex-column ">
+
+              <div class="border-bottom border-dark">
+                <h5 class=""> <a href="apart/@{{ id }}">@{{{ description }}} </a>
+                  <br>
+                  <small class="text-muted"> @{{{ address }}} - @{{{ city }}} - @{{{ state }}}  </small>
+                </h5>
+              </div>
+
+              <div class="flex-grow-1 text-secondary">
+                <div class="pt-2">
+                  <span> @{{{ square_meters }}} mq  </span>
+              </div>
+                <div class="">
+                  <span class="pt-2"> Stanze: @{{{ number_of_rooms }}} </span>
+                </div>
+                <div class="">
+                  <span class="pt-2"> Letti: @{{{ number_of_beds }}}  </span>
+                </div>
+              </div>
+
+
+          </div>
+
+      </div>
+    </div>
+  </div>
+</script>
+
 {{-- <script src="//cdn.jsdelivr.net/jquery/2.1.4/jquery.min.js"></script> --}}
 <script src="//cdn.jsdelivr.net/algoliasearch/3/algoliasearch.min.js"></script>
 <script src="//cdn.jsdelivr.net/algoliasearch.helper/2/algoliasearch.helper.min.js"></script>
