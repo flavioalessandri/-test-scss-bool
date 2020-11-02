@@ -158,6 +158,7 @@ class GuestController extends Controller
 
     $lat = $request['lat'];
     $lng = $request['lng'];
+    // dd($lat, $lng);
 
     return view('search-results', compact('lat','lng'));
   }
@@ -165,10 +166,12 @@ class GuestController extends Controller
     public function index() {
 
     $aparts = Apartment::all();
+
     foreach ($aparts as $apart) {
 
       $arrayImgs = [];
         $imgs = $apart -> images() -> get();
+        // dd($imgs);
           if ($imgs !== null ) {
 
             // $arrayImgs = [];
@@ -179,6 +182,7 @@ class GuestController extends Controller
               }
             // $apart['imgs'] = $arrayImgs;
           }
+
           else {
             $arrayImgs[0] = ['no'];
           }
