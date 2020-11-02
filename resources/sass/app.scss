@@ -230,7 +230,7 @@ button.search {
 }
 
 #slidecontainer {
-  width: 70%;
+  width: 90%;
   margin: auto;
   display: block;
 }
@@ -258,6 +258,7 @@ button.search {
 span.algolia-places.prova{
   display: inline!important;
 }
+// <<<<<<< HEAD
 
 // handelbar handlebar-template
 img.handelbar-img {
@@ -279,4 +280,12 @@ img.handelbar-img {
     border-bottom-right-radius: 8px ;
     border-bottom-left-radius: 8px ;
     padding: 24px ;
+  }  
+// =======
+#mapApiGoogle{
+  width:90%;
+  height:500px;
+  margin:auto;
+  margin-top: 30px;
+// >>>>>>> bool-search-map
 }
