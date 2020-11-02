@@ -4,28 +4,11 @@ window.moment = require('moment');
 
 window.$ = require('jquery');
 
-
-
 function getChart(arrayNewClick, week){
 
-//   var newDateArray = [];
-//
-//
-//
-// // iterate over the dates list from above
-// for(let i = 0; i <= week.length; i++) {
-//     // pass the date at index i into moment
-//     let date = moment(week[i]).format('YYYY-MMMM-dd');
-//     console.log("date", date);
-//     // add this new date to the newDateArray
-//     newDateArray.push(date);
-//     console.log("newDateArray", this.newDateArray);
-// }
+  $('#myChart').remove();
 
-
-
-
-
+  $('#views-chart').prepend(`<canvas id="myChart></canvas>`);
 
 
   var ctx = document.getElementById('myChart').getContext('2d');
@@ -36,6 +19,58 @@ function getChart(arrayNewClick, week){
           datasets: [{
               label: 'Numero di Click',
               data: arrayNewClick,
+              backgroundColor: [
+                  'rgba(255, 99, 132, 0.2)',
+                  'rgba(54, 162, 235, 0.2)',
+                  'rgba(255, 206, 86, 0.2)',
+                  'rgba(75, 192, 192, 0.2)',
+                  'rgba(153, 102, 255, 0.2)',
+                  'rgba(60, 80, 130, 0.2)',
+                  'rgba(255, 159, 64, 0.2)'
+              ],
+              borderColor: [
+                  'rgba(255, 99, 132, 1)',
+                  'rgba(54, 162, 235, 1)',
+                  'rgba(255, 206, 86, 1)',
+                  'rgba(75, 192, 192, 1)',
+                  'rgba(153, 102, 255, 1)',
+                  'rgba(60, 80, 130, 1)',
+                  'rgba(255, 159, 64, 1)'
+              ],
+              borderWidth: 1
+          }]
+      },
+      options: {
+                  responsive: true,
+                  maintainAspectRatio:true,
+                  title: {
+                      display: true,
+                      text: "Visualizzazioni dell'Appartamento: Settimana del " + week[0],
+                      fontSize: "14"
+                  },
+          scales: {
+              yAxes: [{
+                  ticks: {
+                      stepSize: 1,
+                      beginAtZero: true
+                  }
+              }]
+          }
+      }
+  });
+}
+
+
+function chartExample(){
+
+  var ctx = document.getElementById('mymessageChart').getContext('2d');
+  var myChart = new Chart(ctx, {
+      type: 'bar',
+      data: {
+          labels: [1,2,3,4,5],
+          datasets: [{
+              label: 'Numero di Click',
+              data: [1,2,3,4,5],
               backgroundColor: [
                   'rgba(255, 99, 132, 0.2)',
                   'rgba(54, 162, 235, 0.2)',
@@ -56,16 +91,42 @@ function getChart(arrayNewClick, week){
           }]
       },
       options: {
+                    responsive: true,
+                    title: {
+                        display: true,
+                        text: 'Vision Logged Hours'
+                    },
+
+
           scales: {
+
+            xAxes:[{
+
+                    ticks: {
+                        display: true
+                    }
+
+            }],
+
+
+
               yAxes: [{
                   ticks: {
+                    display: false,
+                    drawBorder: false,
                       beginAtZero: true
                   }
               }]
           }
+
       }
   });
 }
+
+
+
+
+
 
 
 function getData( id, week, clickToMatch ){
@@ -171,6 +232,8 @@ function init(){
 
   $('#chart-prev').on('click', function() {prevWeek(id)});
   $('#chart-next').on('click', function() {nextWeek(id)});
+
+  chartExample();
 
 }
 

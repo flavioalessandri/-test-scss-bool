@@ -3,19 +3,24 @@
 
 
 
-  <section id="section" style="background-color:white;">
-    {{-- <div id = "mychartId" > {{$data}} </div> --}}
+  <section id="section">
+
     <div class="container">
       <div class="col-6 mb-5">
 
+    <div id="views-chart" class="chart" style="background-color: white;position: relative; height:auto; width:80vw">
 
+                <canvas id="myChart" > </canvas>
 
+        <div id="chart-prev" style="position: absolute; top:50%;left:0; z-index:3;"><i class="fas fa-chevron-circle-left"></i> </div>
+        <div id="chart-next" style="position: absolute; top:50%; right:0;z-index:3;"><i class="fas fa-chevron-circle-right"></i> </div>
 
+    </div>
 
-    <canvas id="myChart" width="200" height="200" style="margin-top:200px; margin-left:auto; margin-right:auto"></canvas>
+    <div id="message-chart" class="chart" style="background-color: white;position: relative; height:auto; width:80vw">
+      <canvas id="mymessageChart" ></canvas>
 
-    <div id="chart-prev" ><i class="fas fa-chevron-circle-left"></i> </div>
-    <div id="chart-next" ><i class="fas fa-chevron-circle-right"></i> </div>
+    </div>
 
 
   </div>
