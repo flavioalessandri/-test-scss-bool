@@ -58895,7 +58895,7 @@ window.$ = __webpack_require__(/*! jquery */ "./node_modules/jquery/dist/jquery.
 
 function getChart(arrayNewClick, week) {
   $('#myChart').remove();
-  $('#views-chart').prepend("<canvas id=\"myChart\" style=\"width:500px; height:500px; margin-top:200px; margin-left:auto; margin-right:auto\">");
+  $('#views-chart').prepend("<canvas id=\"myChart></canvas>");
   var ctx = document.getElementById('myChart').getContext('2d');
   var myChart = new Chart(ctx, {
     type: 'bar',
@@ -58949,26 +58949,10 @@ function chartExample() {
         display: true,
         text: 'Vision Logged Hours'
       },
-      animation: {
-        duration: 1,
-        onComplete: function onComplete() {
-          var controller = this.chart.controller;
-          var chart = controller.chart;
-          var xAxis = controller.scales['x-axis-0'];
-          var numTicks = xAxis.ticks.length;
-          var xOffsetStart = xAxis.width / numTicks;
-          var halfBarWidth = xAxis.width / (numTicks * 2);
-          xAxis.ticks.forEach(function (value, index) {
-            var xOffset = xOffsetStart * index + halfBarWidth;
-            var yOffset = chart.height - 20;
-            ctx.fillText(value, xOffset, yOffset);
-          });
-        }
-      },
       scales: {
         xAxes: [{
           ticks: {
-            display: false
+            display: true
           }
         }],
         yAxes: [{
@@ -59070,7 +59054,8 @@ function init() {
   });
   $('#chart-next').on('click', function () {
     nextWeek(id);
-  }); // chartExample();
+  });
+  chartExample();
 }
 
 $(document).ready(init);

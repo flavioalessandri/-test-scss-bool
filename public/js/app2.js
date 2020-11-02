@@ -23985,122 +23985,6 @@ module.exports = g;
 
 window.$ = __webpack_require__(/*! jquery */ "./node_modules/jquery/dist/jquery.js");
 
-function printData(hits) {
-  console.log('printData');
-  var target = $('#target');
-  target.text("");
-
-  for (var i = 0; i < hits.length; i++) {
-    var hit = hits[i];
-    var id = hit['id'];
-    console.log(hit, id);
-    var html = '<div class="card">' + '<div class="card-body">' + '<div class="d-flex flex-row flex-wrap">' + // '<div class="p-2">'+
-    //   '<div class="image">' +
-    //     '<img src="img/'+ hit['image'] + '"  alt="no-image-found">' +
-    //   '</div>'+
-    // '</div>' +
-    '<div class="  pl-3 col-12 col-md-6 p-2 d-flex flex-column ">' + '<div class="border-bottom border-dark">' + '<h5 class="">' + hit['description'] + '<br>' + '<small class="text-muted">' + hit['address'] + '-' + hit['city'] + '- -' + hit['state'] + '</small>' + '</h5>' + '</div>' + '<div class="flex-grow-1 text-secondary">' + '<div class="pt-2">' + '<span>' + hit['square_meters'] + 'mq  </span>' + '</div>' + '<div class="">' + '<span class="pt-2"> Stanze:' + hit['number_of_rooms'] + '</span>' + '</div>' + '<div class="">' + '  <span class="pt-2"> Letti:' + hit['number_of_beds'] + '</span>';
-    '</div>' + '</div>' + '</div>' + '</div>' + '</div>';
-    target.append(html);
-  }
-}
-
-function sliderRadius(lat, lng) {
-  console.log(lat, lng, 'slider');
-  var slider = $("#mySliderRadius"); // console.log(slider.val());
-  // console.log('slider change',lat,lng);
-
-  var output = $("#sliderValue");
-  output.append(slider.val() / 1000);
-  slider.on('change', function () {
-    output.html('');
-    output.append(slider.val() / 1000);
-    console.log('slider change', lat, lng);
-
-    var algoliasearch = __webpack_require__(/*! algoliasearch */ "./node_modules/algoliasearch/src/browser/builds/algoliasearch.js");
-
-    var client = algoliasearch('C50JGFH5DN', '4301d4422ac7e4fff78b3a9db7965ffc');
-    var index = client.initIndex('apartments'); // if($('#address').val()){
-
-    index.search('', {
-      aroundLatLng: [parseFloat(lat), parseFloat(lng)],
-      // aroundLatLng: [41.9 , 12.5 ],
-      aroundRadius: slider.val(),
-      hitsPerPage: 20
-    }).then(function (_ref) {
-      var hits = _ref.hits;
-      printData(hits); // console.log('slider');
-      // $('#myAlgoliaResults').html('');
-      //
-      // for (var i = 0; i < hits.length; i++) {
-      //   $('#myAlgoliaResults').append(
-      //     '<li>'
-      //     + hits[i]['city']
-      //     + '</li>'
-      //   );
-      // }
-      // console.log(hits);
-    }); // }
-  });
-}
-
-function getResults(objects, lat, lng) {
-  var algoliasearch = __webpack_require__(/*! algoliasearch */ "./node_modules/algoliasearch/src/browser/builds/algoliasearch.js");
-
-  var client = algoliasearch('C50JGFH5DN', '4301d4422ac7e4fff78b3a9db7965ffc');
-  var index = client.initIndex('apartments');
-
-  for (var i = 0; i < objects.length; i++) {
-    var object = objects[i];
-    object.objectID = 'App\Apartment::' + (i + 1);
-  } // console.log(objects);
-
-
-  index.saveObjects(objects).then(function (_ref2) {// console.log(objectIDs);
-
-    var objectIDs = _ref2.objectIDs;
-  });
-  index.search('', {
-    aroundLatLng: lat + ',' + lng,
-    // aroundLatLng: '41.9, 12.5',
-    aroundRadius: 20 * 1000
-  }).then(function (_ref3) {
-    var hits = _ref3.hits;
-    console.log('hits', hits);
-    printData(hits);
-  });
-}
-
-function getDataValue(aparts, lat, lng) {
-  console.log('prima di modifica:', aparts);
-
-  for (var i = 0; i < aparts.length; i++) {
-    var apart = aparts[i];
-    var _geoloc = {
-      'lat': apart.lat,
-      'lng': apart.lng
-    };
-    apart._geoloc = _geoloc;
-  }
-
-  console.log('aparts:', aparts);
-  getResults(aparts, lat, lng);
-}
-
-function getData(lat, lng) {
-  $.ajax({
-    url: "/api/aparts",
-    method: 'GET',
-    success: function success(data, state) {
-      console.log(data, state);
-      getDataValue(data, lat, lng);
-    },
-    error: function error(err) {
-      console.log('error', err);
-    }
-  });
-}
-
 function search() {
   var places = __webpack_require__(/*! places.js */ "./node_modules/places.js/index.js");
 
@@ -24117,13 +24001,16 @@ function search() {
     var lat = latlng.lat;
     var lng = latlng.lng;
     console.log('1', latlng, lat, lng);
-    getData(lat, lng);
+    getData(lat, lng); // getData(lat,lng);
+
     sliderRadius(lat, lng);
   });
-}
+} // selezioni aggiuntive
+
 
 function selectMinRoomsBeds(lat, lng) {
   var me = $(this); // console.log(me);
+  // console.log(sauna);
 
   var isSelected = me.is('selected');
   console.log(lat, lng);
@@ -24133,16 +24020,21 @@ function selectMinRoomsBeds(lat, lng) {
   var client = algoliasearch('C50JGFH5DN', '4301d4422ac7e4fff78b3a9db7965ffc');
   var index = client.initIndex('apartments'); // if($('#address').val()){
 
+  index.setSettings({
+    attributesForFaceting: ['services' // or 'filterOnly(categories)' for filtering purposes only
+    ]
+  }).then(function () {// done
+  });
   index.search('', {
     aroundLatLng: [parseFloat(lat), parseFloat(lng)],
     // aroundLatLng: [41.9 , 12.5 ],
     aroundRadius: $("#mySliderRadius").val(),
-    filters: "number_of_rooms >= " + $('#min-rooms').val() + ' AND ' + "number_of_beds >= " + $('#min-beds').val(),
+    filters: 'services:' + $('#saunaCheck').val() + ' AND services: ' + $('#wifiCheck').val() + ' AND services: ' + $('#parkingCheck').val() + ' AND services: ' + $('#seaCheck').val() + ' AND services: ' + $('#poolCheck').val() + ' AND services: ' + $('#receptionCheck').val() + ' AND number_of_rooms >= ' + $('#min-rooms').val() + ' AND ' + "number_of_beds >= " + $('#min-beds').val(),
     // filters: `number_of_beds >= `+ $('#min-beds').val(),
     hitsPerPage: 20
-  }).then(function (_ref4) {
-    var hits = _ref4.hits;
-    console.log(hits);
+  }).then(function (_ref) {
+    var hits = _ref.hits;
+    // console.log(hits);
     printData(hits);
   });
 }
@@ -24150,21 +24042,256 @@ function selectMinRoomsBeds(lat, lng) {
 function optionListener(lat, lng) {
   var targetRoom = $('#min-rooms');
   var targetBed = $('#min-beds');
+  var saunaTarget = $('#saunaCheck');
+  var wifiTarget = $('#wifiCheck');
+  var parkingTarget = $('#parkingCheck');
+  var seaTarget = $('#seaCheck');
+  var poolTarget = $('#poolCheck');
+  var receptionTarget = $('#receptionCheck');
   targetRoom.change(function () {
     selectMinRoomsBeds(lat, lng);
   });
   targetBed.change(function () {
     selectMinRoomsBeds(lat, lng);
+  }); // saunaTarget.change(saunaToggle);
+
+  saunaTarget.change(function () {
+    var me = $(this);
+    var isChecked = me.is(':checked'); // console.log('first',sauna);
+
+    if (isChecked) {
+      $('#saunaCheck').val(3);
+      sauna = 3;
+      console.log('si', $('#saunaCheck').val()); // selectSauna(lat,lng);
+    } else {
+      $('#saunaCheck').val(0);
+      console.log('no', $('#saunaCheck').val()); // selectMinRoomsBeds(lat,lng);
+    }
+
+    selectMinRoomsBeds(lat, lng);
+  });
+  wifiTarget.change(function () {
+    var me = $(this);
+    var isChecked = me.is(':checked'); // console.log('first',sauna);
+
+    if (isChecked) {
+      wifi = 1;
+      $('#wifiCheck').val(1);
+      console.log('si', $('#wifiCheck').val()); // selectSauna(lat,lng);
+    } else {
+      $('#wifiCheck').val(0);
+      wifi = 0;
+      console.log('no', $('#wifiCheck').val()); // selectMinRoomsBeds(lat,lng);
+    }
+
+    selectMinRoomsBeds(lat, lng);
+  });
+  parkingTarget.change(function () {
+    var me = $(this);
+    var isChecked = me.is(':checked'); // console.log('first',sauna);
+
+    if (isChecked) {
+      $('#parkingCheck').val(2);
+      console.log('si', $('#parkingCheck').val()); // selectSauna(lat,lng);
+    } else {
+      $('#parkingCheck').val(0);
+      console.log('no', $('#parkingCheck').val()); // selectMinRoomsBeds(lat,lng);
+    }
+
+    selectMinRoomsBeds(lat, lng);
+  });
+  seaTarget.change(function () {
+    var me = $(this);
+    var isChecked = me.is(':checked'); // console.log('first',sauna);
+
+    if (isChecked) {
+      $('#seaCheck').val(4);
+      console.log('si', $('#seaCheck').val()); // selectSauna(lat,lng);
+    } else {
+      $('#seaCheck').val(0);
+      console.log('no', $('#seaCheck').val()); // selectMinRoomsBeds(lat,lng);
+    }
+
+    selectMinRoomsBeds(lat, lng);
+  });
+  poolTarget.change(function () {
+    var me = $(this);
+    var isChecked = me.is(':checked'); // console.log('first',sauna);
+
+    if (isChecked) {
+      $('#poolCheck').val(5);
+      console.log('si', $('#poolCheck').val()); // selectSauna(lat,lng);
+    } else {
+      $('#poolCheck').val(0);
+      console.log('no', $('#poolCheck').val()); // selectMinRoomsBeds(lat,lng);
+    }
+
+    selectMinRoomsBeds(lat, lng);
+  });
+  receptionTarget.change(function () {
+    var me = $(this);
+    var isChecked = me.is(':checked'); // console.log('first',sauna);
+
+    if (isChecked) {
+      $('#receptionCheck').val(6);
+      console.log('si', $('#receptionCheck').val()); // selectSauna(lat,lng);
+    } else {
+      $('#receptionCheck').val(0);
+      console.log('no', $('#receptionCheck').val()); // selectMinRoomsBeds(lat,lng);
+    }
+
+    selectMinRoomsBeds(lat, lng);
+  }); // sliderRadius(lat,lng,sauna,wifi,parking,vistaMare,pool,reception);
+} // slider
+
+
+function sliderRadius(lat, lng) {
+  console.log(lat, lng, 'slider'); // console.log('options',sauna,wifi,parking,vistaMare,pool,reception);
+
+  var slider = $("#mySliderRadius"); // console.log(slider.val());
+  // console.log('slider change',lat,lng);
+
+  var output = $("#sliderValue");
+  output.append(slider.val() / 1000);
+  slider.on('change', function () {
+    output.html('');
+    output.append(slider.val() / 1000); // optionListener(lat,lng,sauna,wifi,parking,vistaMare,pool,reception);
+
+    console.log('slider change', lat, lng, slider.val());
+
+    var algoliasearch = __webpack_require__(/*! algoliasearch */ "./node_modules/algoliasearch/src/browser/builds/algoliasearch.js");
+
+    var client = algoliasearch('C50JGFH5DN', '4301d4422ac7e4fff78b3a9db7965ffc');
+    var index = client.initIndex('apartments'); // if($('#address').val()){
+
+    index.setSettings({
+      attributesForFaceting: ['services' // or 'filterOnly(categories)' for filtering purposes only
+      ]
+    }).then(function () {// done
+    });
+    index.search('', {
+      aroundLatLng: [parseFloat(lat), parseFloat(lng)],
+      // aroundLatLng: [41.9 , 12.5 ],
+      filters: 'services:' + $('#saunaCheck').val() + ' AND services: ' + $('#wifiCheck').val() + ' AND services: ' + $('#parkingCheck').val() + ' AND services: ' + $('#seaCheck').val() + ' AND services: ' + $('#poolCheck').val() + ' AND services: ' + $('#receptionCheck').val() + ' AND number_of_rooms >= ' + $('#min-rooms').val() + ' AND ' + "number_of_beds >= " + $('#min-beds').val(),
+      aroundRadius: slider.val(),
+      hitsPerPage: 20
+    }).then(function (_ref2) {
+      var hits = _ref2.hits;
+      printData(hits);
+    });
+  });
+} // richiamo i dati e faccio semplice selezione con lat e lng
+
+
+function printData(hits) {
+  console.log('printData');
+  var handtemplate = $('#handlebar-template').html();
+  var compiled = Handlebars.compile(handtemplate); // var handtargetSpons = $('#hand-target-spons');
+
+  var handtarget = $('#hand-target');
+  handtarget.text('');
+
+  for (var i = 0; i < hits.length; i++) {
+    var hit = hits[i];
+    var imgs = hit['imgs'];
+    var img = imgs[0];
+    hit['img'] = img;
+    console.log(i, hit);
+    var resultHtml = compiled(hit);
+    handtarget.append(resultHtml);
+  }
+} // function getResults(objects,lat,lng) {
+//   // console.log(objects);
+// const algoliasearch = require('algoliasearch');
+//
+// const client = algoliasearch('C50JGFH5DN', '4301d4422ac7e4fff78b3a9db7965ffc');
+// const index = client.initIndex('apartments');
+//
+//
+// // console.log('ricerca',objects);
+// var raggio = 20 * 1000;
+// console.log(raggio);
+//
+// index.search('',{
+//   aroundLatLng: lat + ',' + lng,
+//   // aroundLatLng: '41.9, 12.5',
+//   aroundRadius: 20 * 1000
+// })
+// .then(({ hits }) => {
+//   console.log('hits',hits);
+//   printData(hits);
+// });
+//
+// }
+
+
+function getDataValue(aparts, lat, lng) {
+  console.log('prima di modifica:', aparts);
+
+  for (var i = 0; i < aparts.length; i++) {
+    var apart = aparts[i];
+    var _geoloc = {
+      'lat': apart.lat,
+      'lng': apart.lng
+    };
+    apart._geoloc = _geoloc;
+  }
+
+  console.log('aparts:', aparts);
+
+  var algoliasearch = __webpack_require__(/*! algoliasearch */ "./node_modules/algoliasearch/src/browser/builds/algoliasearch.js");
+
+  var client = algoliasearch('C50JGFH5DN', '4301d4422ac7e4fff78b3a9db7965ffc');
+  var index = client.initIndex('apartments');
+
+  for (var i = 0; i < aparts.length; i++) {
+    var apart = aparts[i];
+    apart.objectID = 'App\Apartment::' + (i + 1);
+  } // console.log(objects);
+
+
+  index.saveObjects(aparts).then(function (_ref3) {
+    var objectIDs = _ref3.objectIDs;
+    console.log(aparts);
+    index.search('', {
+      aroundLatLng: lat + ',' + lng,
+      // aroundLatLng: '41.9, 12.5',
+      aroundRadius: 20 * 1000
+    }).then(function (_ref4) {
+      var hits = _ref4.hits;
+      console.log('hits', hits);
+      printData(hits);
+    }); // getResults(aparts,lat,lng);
+  });
+}
+
+function getData(lat, lng) {
+  $.ajax({
+    url: "/api/aparts",
+    method: 'GET',
+    success: function success(data, state) {
+      console.log(data, state);
+      getDataValue(data, lat, lng);
+    },
+    error: function error(err) {
+      console.log('error', err);
+    }
   });
 }
 
 function init() {
   console.log(' START Js/app2');
+  $('#wifiCheck').val(0);
+  $('#saunaCheck').val(0);
+  $('#parkingCheck').val(0);
+  $('#seaCheck').val(0);
+  $('#poolCheck').val(0);
+  $('#receptionCheck').val(0);
   var lat = $('#mylatitude').text();
   var lng = $('#mylongitude').text();
+  getData(lat, lng);
   console.log(lat, lng);
   search();
-  getData(lat, lng);
   sliderRadius(lat, lng);
   optionListener(lat, lng);
 }
