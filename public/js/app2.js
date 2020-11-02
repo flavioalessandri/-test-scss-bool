@@ -50292,9 +50292,10 @@ __webpack_require__.r(__webpack_exports__);
 //
 // $(document).ready(init);
 // ***********************************
+// >>>>>>> bool-search-map
 window.$ = __webpack_require__(/*! jquery */ "./node_modules/jquery/dist/jquery.js");
 
-
+ // <<<<<<< HEAD
 
 function search() {
   var places = __webpack_require__(/*! places.js */ "./node_modules/places.js/index.js");
@@ -50315,7 +50316,7 @@ function search() {
     getData(lat, lng); // getData(lat,lng);
 
     sliderRadius(lat, lng);
-    Object(_mapApi_js__WEBPACK_IMPORTED_MODULE_0__["searchOnMap"])(lat, lng);
+    Object(_mapApi_js__WEBPACK_IMPORTED_MODULE_0__["searchOnMap"])(lat, lng); // mySliderValue(lat, lng);
   });
 } // selezioni aggiuntive
 
@@ -50373,7 +50374,7 @@ function optionListener(lat, lng) {
 
     if (isChecked) {
       $('#saunaCheck').val(3);
-      sauna = 3;
+      var sauna = 3;
       console.log('si', $('#saunaCheck').val()); // selectSauna(lat,lng);
     } else {
       $('#saunaCheck').val(0);
@@ -50387,12 +50388,12 @@ function optionListener(lat, lng) {
     var isChecked = me.is(':checked'); // console.log('first',sauna);
 
     if (isChecked) {
-      wifi = 1;
+      var wifi = 1;
       $('#wifiCheck').val(1);
       console.log('si', $('#wifiCheck').val()); // selectSauna(lat,lng);
     } else {
       $('#wifiCheck').val(0);
-      wifi = 0;
+      var wifi = 0;
       console.log('no', $('#wifiCheck').val()); // selectMinRoomsBeds(lat,lng);
     }
 
@@ -50454,7 +50455,8 @@ function optionListener(lat, lng) {
 
     selectMinRoomsBeds(lat, lng);
   }); // sliderRadius(lat,lng,sauna,wifi,parking,vistaMare,pool,reception);
-} // slider
+} // >>>>>>> bool-search-map
+// slider
 
 
 function sliderRadius(lat, lng) {
@@ -50469,6 +50471,7 @@ function sliderRadius(lat, lng) {
     output.html('');
     output.append(slider.val() / 1000); // optionListener(lat,lng,sauna,wifi,parking,vistaMare,pool,reception);
 
+    var mySliderValue = slider.val();
     console.log('slider change', lat, lng, slider.val());
 
     var algoliasearch = __webpack_require__(/*! algoliasearch */ "./node_modules/algoliasearch/src/browser/builds/algoliasearch.js");
@@ -50602,7 +50605,8 @@ function init() {
   $('#receptionCheck').val(0);
   var lat = parseFloat($('#mylatitude').text());
   var lng = parseFloat($('#mylongitude').text());
-  console.log(lat, lng, 'oiasjdoisdoiasdoih');
+  console.log(lat, lng, 'oiasjdoisdoiasdoih'); // mySliderValue(lat, lng);
+
   Object(_mapApi_js__WEBPACK_IMPORTED_MODULE_0__["searchOnMap"])(lat, lng);
   getData(lat, lng);
   search();

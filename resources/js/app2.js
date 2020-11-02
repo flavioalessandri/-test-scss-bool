@@ -237,12 +237,13 @@
 
 
 // ***********************************
+// >>>>>>> bool-search-map
 window.$ = require('jquery');
 
 import { searchOnMap } from './mapApi.js';
 import { searchOnMapSlider } from './mapApiSlider.js';
 
-
+// <<<<<<< HEAD
   function search(){
 
 
@@ -254,10 +255,6 @@ import { searchOnMapSlider } from './mapApiSlider.js';
    });
 
         placesAutocomplete.on('change', function select(e) {
-
-
-
-
           // var = $("#mySliderRadius").val();
           $("#mySliderRadius").val(20000);
           $('#sliderValue').text('');
@@ -268,8 +265,10 @@ import { searchOnMapSlider } from './mapApiSlider.js';
         getData(lat,lng);
         // getData(lat,lng);
         sliderRadius(lat,lng);
-
         searchOnMap(lat, lng);
+
+        // mySliderValue(lat, lng);
+
       });
 
   }
@@ -330,7 +329,7 @@ import { searchOnMapSlider } from './mapApiSlider.js';
       // console.log('first',sauna);
       if (isChecked) {
         $('#saunaCheck').val(3);
-        sauna = 3;
+        var sauna = 3;
         console.log('si',$('#saunaCheck').val());
         // selectSauna(lat,lng);
       }
@@ -342,19 +341,21 @@ import { searchOnMapSlider } from './mapApiSlider.js';
       selectMinRoomsBeds(lat,lng);
     });
 
+
+
     wifiTarget.change(function() {
       var me = $(this);
       var isChecked = me.is(':checked');
       // console.log('first',sauna);
       if (isChecked) {
-        wifi = 1;
+        var wifi = 1;
         $('#wifiCheck').val(1);
         console.log('si',$('#wifiCheck').val());
         // selectSauna(lat,lng);
       }
       else {
         $('#wifiCheck').val(0);
-        wifi = 0;
+        var wifi = 0;
         console.log('no',$('#wifiCheck').val());
         // selectMinRoomsBeds(lat,lng);
       }
@@ -431,6 +432,7 @@ import { searchOnMapSlider } from './mapApiSlider.js';
     // sliderRadius(lat,lng,sauna,wifi,parking,vistaMare,pool,reception);
   }
 
+// >>>>>>> bool-search-map
 // slider
 function sliderRadius(lat,lng) {
   console.log(lat,lng,'slider');
@@ -446,6 +448,8 @@ function sliderRadius(lat,lng) {
       output.html('');
       output.append(slider.val()/1000);
       // optionListener(lat,lng,sauna,wifi,parking,vistaMare,pool,reception);
+
+      var mySliderValue = slider.val()
 
       console.log('slider change',lat,lng,slider.val());
       const algoliasearch = require('algoliasearch');
@@ -591,6 +595,7 @@ function sliderRadius(lat,lng) {
 function init() {
   console.log(' START Js/app2');
 
+
   $('#wifiCheck').val(0);
   $('#saunaCheck').val(0);
   $('#parkingCheck').val(0);
@@ -598,12 +603,15 @@ function init() {
   $('#poolCheck').val(0);
   $('#receptionCheck').val(0);
 
+
   var lat = parseFloat($('#mylatitude').text());
   var lng = parseFloat($('#mylongitude').text());
   console.log(lat,lng,'oiasjdoisdoiasdoih');
 
+  // mySliderValue(lat, lng);
   searchOnMap(lat, lng);
   getData(lat,lng);
+
   search();
   sliderRadius(lat,lng);
   optionListener(lat,lng);
