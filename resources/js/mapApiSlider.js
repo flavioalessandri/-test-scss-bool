@@ -21,7 +21,7 @@ algoliaHelper.setQueryParameter('getRankingInfo', true);
 
 // DOM and Templates binding
 var $map = $('#mapApiGoogle');
-var $hits = $('#target');
+var $hits = $('#hits');
 var $searchInput = $('#search-input');
 var hitsTemplate = Hogan.compile($('#hits-template').text());
 var noResultsTemplate = Hogan.compile($('#no-results-template').text());
@@ -75,8 +75,8 @@ function beginPageState(state) {
         strokeWeight: 2,
         fillColor: '#EF5362',
         fillOpacity: 0.15,
-        draggable: true,
-        editable: true,
+        // draggable: true,
+        // editable: true,
         geodesic: true,
         map: map,
         // center: { lat: parseFloat($('#latlatlat').val()), lng: ltlg['lng'] }, // parseFloatit ighebs value-s
@@ -291,16 +291,16 @@ function rectangleToAlgoliaParams(rectangle) {
   return [ne.lat(), ne.lng(), sw.lat(), sw.lng()].join();
 }
 
-function polygonsToAlgoliaParams(polygons) {
-  var points = [];
-  polygons.getPaths().forEach(function (path) {
-    path.getArray().forEach(function (latLng) {
-      points.push(latLng.lat());
-      points.push(latLng.lng());
-    });
-  });
-  return points.join();
-}
+// function polygonsToAlgoliaParams(polygons) {
+//   var points = [];
+//   polygons.getPaths().forEach(function (path) {
+//     path.getArray().forEach(function (latLng) {
+//       points.push(latLng.lat());
+//       points.push(latLng.lng());
+//     });
+//   });
+//   return points.join();
+// }
 
 function attachInfoWindow(marker, hit) {
   var message;

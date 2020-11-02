@@ -50373,8 +50373,8 @@ function searchOnMap(lat, lng) {
           strokeWeight: 2,
           fillColor: '#EF5362',
           fillOpacity: 0.15,
-          draggable: true,
-          editable: true,
+          // draggable: true,
+          // editable: true,
           geodesic: true,
           map: map,
           // center: { lat: parseFloat($('#latlatlat').val()), lng: ltlg['lng'] }, // parseFloatit ighebs value-s
@@ -50459,6 +50459,7 @@ function searchOnMap(lat, lng) {
     for (var i = 0; i < content.hits.length; ++i) {
       var hit = content.hits[i];
       var marker = new google.maps.Marker({
+        // IF ELSE PER FILTRARE I MARKER
         position: {
           lat: hit._geoloc.lat,
           lng: hit._geoloc.lng
@@ -50656,7 +50657,7 @@ function searchOnMapSlider(lat, lng, slider) {
   algoliaHelper.setQueryParameter('getRankingInfo', true); // DOM and Templates binding
 
   var $map = $('#mapApiGoogle');
-  var $hits = $('#target');
+  var $hits = $('#hits');
   var $searchInput = $('#search-input');
   var hitsTemplate = Hogan.compile($('#hits-template').text());
   var noResultsTemplate = Hogan.compile($('#no-results-template').text()); // Map initialization
@@ -50710,8 +50711,8 @@ function searchOnMapSlider(lat, lng, slider) {
           strokeWeight: 2,
           fillColor: '#EF5362',
           fillOpacity: 0.15,
-          draggable: true,
-          editable: true,
+          // draggable: true,
+          // editable: true,
           geodesic: true,
           map: map,
           // center: { lat: parseFloat($('#latlatlat').val()), lng: ltlg['lng'] }, // parseFloatit ighebs value-s
@@ -50923,18 +50924,17 @@ function searchOnMapSlider(lat, lng, slider) {
     var ne = bounds.getNorthEast();
     var sw = bounds.getSouthWest();
     return [ne.lat(), ne.lng(), sw.lat(), sw.lng()].join();
-  }
+  } // function polygonsToAlgoliaParams(polygons) {
+  //   var points = [];
+  //   polygons.getPaths().forEach(function (path) {
+  //     path.getArray().forEach(function (latLng) {
+  //       points.push(latLng.lat());
+  //       points.push(latLng.lng());
+  //     });
+  //   });
+  //   return points.join();
+  // }
 
-  function polygonsToAlgoliaParams(polygons) {
-    var points = [];
-    polygons.getPaths().forEach(function (path) {
-      path.getArray().forEach(function (latLng) {
-        points.push(latLng.lat());
-        points.push(latLng.lng());
-      });
-    });
-    return points.join();
-  }
 
   function attachInfoWindow(marker, hit) {
     var message;

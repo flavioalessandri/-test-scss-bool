@@ -49751,8 +49751,8 @@ function searchOnMap(lat, lng) {
           strokeWeight: 2,
           fillColor: '#EF5362',
           fillOpacity: 0.15,
-          draggable: true,
-          editable: true,
+          // draggable: true,
+          // editable: true,
           geodesic: true,
           map: map,
           // center: { lat: parseFloat($('#latlatlat').val()), lng: ltlg['lng'] }, // parseFloatit ighebs value-s
@@ -49837,6 +49837,7 @@ function searchOnMap(lat, lng) {
     for (var i = 0; i < content.hits.length; ++i) {
       var hit = content.hits[i];
       var marker = new google.maps.Marker({
+        // IF ELSE PER FILTRARE I MARKER
         position: {
           lat: hit._geoloc.lat,
           lng: hit._geoloc.lng
