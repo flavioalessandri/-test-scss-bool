@@ -15990,6 +15990,10 @@ span.algolia-places.prova {
   display: inline !important;
 }
 
+img.handelbar-img {
+  width: 45%;
+}
+
 .form-messaggio {
   margin-top: 24px;
   width: 65%;
