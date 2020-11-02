@@ -15,7 +15,7 @@
           @csrf
           @method('POST')
 
-            <input id="mysearch" type="search" name="places"  placeholder="Cerca appartamento">
+            <input id="mysearch" type="search" name="places"  placeholder="Cerca">
             <div class="search">
               <button class='search' type="submit" name="button"><i class="fas fa-search"></i></button>
             </div>

@@ -1,12 +1,13 @@
-<header id="bg-transparent" class="position-fixed">
+<header id="bg-white" class="position-fixed">
       <!-- inizio primo blocco -->
       <div id="mynavbar" class=" first-block flex h">
         <!-- airbnblogo -->
-        <div id="div-logo" class="mx-auto mrg-t100">
+        <div id="div-logo" class="mrg-t50">
           <a id="a-logo" href="{{ url('/')}}">
-            <img id="logo" src="/img/mylogo.png" alt="">
-            <span id="text-logo">boolbnb</span>
+            <img id="logo" src="/img/pinklogo.png" alt="">
+            <span id="text-pinklogo">boolbnb</span>
           </a>
+
         </div>
 
         <ul id="log-reg" class="navbar-nav ml-auto">
@@ -24,14 +25,14 @@
           @else
             {{-- @auth --}}
 
-              <a id="regist-1"  href="{{route('apart.create')}}" >
-                <span class="text-white"><strong>Aggiungi un annuncio</strong></span>
+              <a id="regist-1"   href="{{route('apart.create')}}" >
+                <span class="text-white inv"><strong>Aggiungi un annuncio</strong></span>
               </a>
-              <a id="regist-1"  href="{{route('sponsor.choose')}}" >
-                <span>Sponsorizza il tuo appartamento</span>
+              <a id="regist-1"   href="{{route('sponsor.choose')}}" >
+                <span class="inv">Sponsorizza il tuo appartamento</span>
               </a>
               {{-- @endauth --}}
-              <li id="my-profile" class="mrg-r20 nav-item dropdown inline-block white-radius">
+              <li id="my-profile" class=" r3 mrg-r20 nav-item dropdown inline-block white-radius">
                 <a id="navbarDropdown" class=" nav-link dropdown-toggle" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre>
                   {{-- {{ Auth::user()-> firstname }} --}}
                   <i class="fas fa-bars"></i>
@@ -47,6 +48,8 @@
                 {{ __('Logout') }}
               </a>
               <a class="dropdown-item" href="{{ route('user.index') }}">Lista</a>
+              <a id="regist-1"  class="dropdown-item"  href="{{route('apart.create')}}" >Aggiungi un annuncio</a>
+              <a id="regist-1" class="dropdown-item"  href="{{route('sponsor.choose')}}" >Sponsorizza il tuo appartamento</a>
 
               <form id="logout-form" action="{{ route('logout') }}" method="POST" class="d-none">
                 @csrf
