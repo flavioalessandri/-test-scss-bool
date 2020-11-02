@@ -17,6 +17,7 @@ mix
     .js('resources/js/app2.js', 'public/js')
     .js('resources/js/app3.js', 'public/js')
     .js('resources/js/app4.js', 'public/js')
+    .js('resources/js/mychart.js', 'public/js')
 
     .sass('resources/sass/app.scss', 'public/css')
     .copyDirectory('resources/img', 'public/img')

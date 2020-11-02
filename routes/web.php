@@ -41,6 +41,13 @@ Route::get('/sponsorship', 'SponsorshipController@choose')-> name('sponsor.choos
 Route::post('/checkout', 'SponsorshipController@checkout')-> name('sponsor.check');
 
 
+
+
+
+//Chart
+Route::post('/statistic/{id}', 'ChartClickController@statistic')->name('myroute');
+Route::get('/api/statistic/{id}', 'ChartClickController@statisticJson')->name('statisticJson');
+
 // messages
 Route::post('/apart/message', 'MessageController@create') -> name('message.create');
 Route::get('list/apart/{id}/msg', 'UserController@messageList') -> name('msgs.list');
