@@ -21732,7 +21732,11 @@ $(document).ready(init);
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
+<<<<<<< HEAD
+module.exports = __webpack_require__(/*! C:\Users\alfof\OneDrive\Desktop\-test-scss-bool\resources\js\app1.js */"./resources/js/app1.js");
+=======
 module.exports = __webpack_require__(/*! C:\Users\flavi\Desktop\image-27-multiple-images\resources\js\app1.js */"./resources/js/app1.js");
+>>>>>>> 7523c4fd8a970df5ea6c9a82d11fabde8138f2cf
 
 
 /***/ }),

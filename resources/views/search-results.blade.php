@@ -7,7 +7,7 @@
 @section('content')
 <div class="container">
   <div id="div-search" class="flex mb-4 mt-0">
-    <div class="white-radius-center">
+    <div class="white-radius-center r2">
       <input type="search" value="" name="places" id="mysearch" placeholder="Cerca appartamento">
       {{-- <div class="search"> --}}
         <!-- <a href="#"><i class="fas fa-search"></i></a> -->
@@ -22,7 +22,7 @@
 
     <div class="col-md-8">
 
-      <div class="card">
+      <div class="card mrg-t100">
 
         <div class="card-header">
 

@@ -51780,7 +51780,7 @@ function searchOnMapSliderChecked(lat, lng, slider, hits) {
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
-module.exports = __webpack_require__(/*! C:\Users\flavi\Desktop\image-27-multiple-images\resources\js\app2.js */"./resources/js/app2.js");
+module.exports = __webpack_require__(/*! C:\Users\alfof\OneDrive\Desktop\-test-scss-bool\resources\js\app2.js */"./resources/js/app2.js");
 
 
 /***/ })

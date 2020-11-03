@@ -9,13 +9,13 @@
 
 
   <div id="div-search" class="flex" >
-    <div class="white-radius-center">
+    <div class="white-radius-center w100">
 
       <form class="flex formSearch" action="{{route('aparts.search')}}" method="post">
           @csrf
           @method('POST')
 
-            <input id="mysearch" type="search" name="places"  placeholder="Cerca appartamento">
+            <input id="mysearch" type="search" name="places"  placeholder="Cerca">
             <div class="search">
               <button class='search' type="submit" name="button"><i class="fas fa-search"></i></button>
             </div>
