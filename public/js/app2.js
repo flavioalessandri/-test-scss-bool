@@ -24239,7 +24239,19 @@ function search() {
     container: document.querySelector('#mysearch')
   });
   placesAutocomplete.on('change', function select(e) {
-    // var = $("#mySliderRadius").val();
+    $('#wifiCheck').val(0);
+    $('#saunaCheck').val(0);
+    $('#parkingCheck').val(0);
+    $('#seaCheck').val(0);
+    $('#poolCheck').val(0);
+    $('#receptionCheck').val(0);
+    $('#wifiCheck').prop('checked', false);
+    $('#saunaCheck').prop('checked', false);
+    $('#parkingCheck').prop('checked', false);
+    $('#seaCheck').prop('checked', false);
+    $('#poolCheck').prop('checked', false);
+    $('#receptionCheck').prop('checked', false); // var = $("#mySliderRadius").val();
+
     $("#mySliderRadius").val(20000);
     $('#sliderValue').text('');
     var latlng = e.suggestion.latlng;
@@ -24248,8 +24260,9 @@ function search() {
     console.log('1', latlng, lat, lng);
     getData(lat, lng); // getData(lat,lng);
 
-    sliderRadius(lat, lng);
-    Object(_mapApi_js__WEBPACK_IMPORTED_MODULE_0__["searchOnMap"])(lat, lng); // mySliderValue(lat, lng);
+    sliderRadius(lat, lng); // searchOnMap(lat, lng);
+
+    optionListener(lat, lng); // mySliderValue(lat, lng);
   });
 } // selezioni aggiuntive
 
@@ -24263,7 +24276,7 @@ function selectMinRoomsBeds(lat, lng) {
 
   var algoliasearch = __webpack_require__(/*! algoliasearch */ "./node_modules/algoliasearch/src/browser/builds/algoliasearch.js");
 
-  var client = algoliasearch('C50JGFH5DN', '4301d4422ac7e4fff78b3a9db7965ffc');
+  var client = algoliasearch('Y49WMBJIFT', '63b572a22a729de27551ac2f07780053');
   var index = client.initIndex('apartments'); // if($('#address').val()){
 
   index.setSettings({
@@ -24275,7 +24288,7 @@ function selectMinRoomsBeds(lat, lng) {
     aroundLatLng: [parseFloat(lat), parseFloat(lng)],
     // aroundLatLng: [41.9 , 12.5 ],
     aroundRadius: $("#mySliderRadius").val(),
-    filters: 'services:' + $('#saunaCheck').val() + ' AND services: ' + $('#wifiCheck').val() + ' AND services: ' + $('#parkingCheck').val() + ' AND services: ' + $('#seaCheck').val() + ' AND services: ' + $('#poolCheck').val() + ' AND services: ' + $('#receptionCheck').val() + ' AND number_of_rooms >= ' + $('#min-rooms').val() + ' AND ' + "number_of_beds >= " + $('#min-beds').val(),
+    filters: 'services:' + $('#saunaCheck').val() + ' AND services: ' + $('#wifiCheck').val() + ' AND services: ' + $('#parkingCheck').val() + ' AND services: ' + $('#seaCheck').val() + ' AND services: ' + $('#poolCheck').val() + ' AND services: ' + $('#receptionCheck').val() + ' AND number_of_rooms >= ' + $('#min-rooms').val() + ' AND ' + "number_of_beds >= " + $('#min-beds').val() + ' AND visibility = 1',
     // filters: `number_of_beds >= `+ $('#min-beds').val(),
     hitsPerPage: 20
   }).then(function (_ref) {
@@ -24409,7 +24422,7 @@ function sliderRadius(lat, lng) {
 
     var algoliasearch = __webpack_require__(/*! algoliasearch */ "./node_modules/algoliasearch/src/browser/builds/algoliasearch.js");
 
-    var client = algoliasearch('C50JGFH5DN', '4301d4422ac7e4fff78b3a9db7965ffc');
+    var client = algoliasearch('Y49WMBJIFT', '63b572a22a729de27551ac2f07780053');
     var index = client.initIndex('apartments'); // if($('#address').val()){
 
     index.setSettings({
@@ -24420,12 +24433,15 @@ function sliderRadius(lat, lng) {
     index.search('', {
       aroundLatLng: [parseFloat(lat), parseFloat(lng)],
       // aroundLatLng: [41.9 , 12.5 ],
-      filters: 'services:' + $('#saunaCheck').val() + ' AND services: ' + $('#wifiCheck').val() + ' AND services: ' + $('#parkingCheck').val() + ' AND services: ' + $('#seaCheck').val() + ' AND services: ' + $('#poolCheck').val() + ' AND services: ' + $('#receptionCheck').val() + ' AND number_of_rooms >= ' + $('#min-rooms').val() + ' AND ' + "number_of_beds >= " + $('#min-beds').val(),
+      filters: 'services:' + $('#saunaCheck').val() + ' AND services: ' + $('#wifiCheck').val() + ' AND services: ' + $('#parkingCheck').val() + ' AND services: ' + $('#seaCheck').val() + ' AND services: ' + $('#poolCheck').val() + ' AND services: ' + $('#receptionCheck').val() + ' AND number_of_rooms >= ' + $('#min-rooms').val() + ' AND ' + "number_of_beds >= " + $('#min-beds').val() + ' AND visibility = 1',
       aroundRadius: slider.val(),
       hitsPerPage: 20
     }).then(function (_ref2) {
       var hits = _ref2.hits;
-      Object(_mapApiSlider_js__WEBPACK_IMPORTED_MODULE_1__["searchOnMapSlider"])(lat, lng, mySliderValue);
+      var slider = $("#mySliderRadius").val();
+      Object(_mapApiSliderChecked_js__WEBPACK_IMPORTED_MODULE_2__["searchOnMapSliderChecked"])(lat, lng, slider, hits); // searchOnMapSliderChecked(lat, lng, slider, hits);
+      // searchOnMapSlider(lat, lng, mySliderValue);
+
       printData(hits);
     });
   });
@@ -24490,7 +24506,7 @@ function getDataValue(aparts, lat, lng) {
 
   var algoliasearch = __webpack_require__(/*! algoliasearch */ "./node_modules/algoliasearch/src/browser/builds/algoliasearch.js");
 
-  var client = algoliasearch('C50JGFH5DN', '4301d4422ac7e4fff78b3a9db7965ffc');
+  var client = algoliasearch('Y49WMBJIFT', '63b572a22a729de27551ac2f07780053');
   var index = client.initIndex('apartments');
 
   for (var i = 0; i < aparts.length; i++) {
@@ -24501,15 +24517,31 @@ function getDataValue(aparts, lat, lng) {
 
   index.saveObjects(aparts).then(function (_ref3) {
     var objectIDs = _ref3.objectIDs;
-    console.log(aparts);
+    console.log(aparts); // index.setSettings({
+    // attributesForFaceting: [
+    //   'services', // or 'filterOnly(categories)' for filtering purposes only
+    //   'visibility'
+    // ]
+    // }).then(() => {
+    // // done
+    // });
+
+    index.setSettings({
+      attributesForFaceting: ['services' // or 'filterOnly(categories)' for filtering purposes only
+      ]
+    }).then(function () {// done
+    });
     index.search('', {
       aroundLatLng: lat + ',' + lng,
       // aroundLatLng: '41.9, 12.5',
-      aroundRadius: 20 * 1000
+      aroundRadius: 20 * 1000,
+      filters: 'services:' + $('#saunaCheck').val() + ' AND services: ' + $('#wifiCheck').val() + ' AND services: ' + $('#parkingCheck').val() + ' AND services: ' + $('#seaCheck').val() + ' AND services: ' + $('#poolCheck').val() + ' AND services: ' + $('#receptionCheck').val() + ' AND number_of_rooms >= ' + $('#min-rooms').val() + ' AND ' + "number_of_beds >= " + $('#min-beds').val() + ' AND visibility = 1'
     }).then(function (_ref4) {
       var hits = _ref4.hits;
       console.log('hits', hits);
       printData(hits);
+      var slider = $("#mySliderRadius").val();
+      Object(_mapApiSliderChecked_js__WEBPACK_IMPORTED_MODULE_2__["searchOnMapSliderChecked"])(lat, lng, slider, hits);
     }); // getResults(aparts,lat,lng);
   });
 }
@@ -24539,8 +24571,8 @@ function init() {
   var lat = parseFloat($('#mylatitude').text());
   var lng = parseFloat($('#mylongitude').text());
   console.log(lat, lng, 'oiasjdoisdoiasdoih'); // mySliderValue(lat, lng);
+  // searchOnMap(lat, lng);
 
-  Object(_mapApi_js__WEBPACK_IMPORTED_MODULE_0__["searchOnMap"])(lat, lng);
   getData(lat, lng);
   search();
   sliderRadius(lat, lng);
@@ -24569,8 +24601,8 @@ window.$ = __webpack_require__(/*! jquery */ "./node_modules/jquery/dist/jquery.
 // };
 
 function searchOnMap(lat, lng) {
-  var APPLICATION_ID = 'C50JGFH5DN';
-  var SEARCH_ONLY_API_KEY = '4301d4422ac7e4fff78b3a9db7965ffc';
+  var APPLICATION_ID = 'Y49WMBJIFT';
+  var SEARCH_ONLY_API_KEY = '63b572a22a729de27551ac2f07780053';
   var INDEX_NAME = 'apartments';
   var PARAMS = {
     hitsPerPage: 60
@@ -24907,8 +24939,8 @@ window.$ = __webpack_require__(/*! jquery */ "./node_modules/jquery/dist/jquery.
 // };
 
 function searchOnMapSlider(lat, lng, slider) {
-  var APPLICATION_ID = 'C50JGFH5DN';
-  var SEARCH_ONLY_API_KEY = '4301d4422ac7e4fff78b3a9db7965ffc';
+  var APPLICATION_ID = 'Y49WMBJIFT';
+  var SEARCH_ONLY_API_KEY = '63b572a22a729de27551ac2f07780053';
   var INDEX_NAME = 'apartments';
   var PARAMS = {
     hitsPerPage: 60
@@ -25282,8 +25314,8 @@ window.$ = __webpack_require__(/*! jquery */ "./node_modules/jquery/dist/jquery.
 
 function searchOnMapSliderChecked(lat, lng, slider, hits) {
   // console.log(hits,'these are my hits');
-  var APPLICATION_ID = 'C50JGFH5DN';
-  var SEARCH_ONLY_API_KEY = '4301d4422ac7e4fff78b3a9db7965ffc';
+  var APPLICATION_ID = 'Y49WMBJIFT';
+  var SEARCH_ONLY_API_KEY = '63b572a22a729de27551ac2f07780053';
   var INDEX_NAME = 'apartments';
   var PARAMS = {
     hitsPerPage: 60
