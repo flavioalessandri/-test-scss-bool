@@ -16011,3 +16011,11 @@ img.handelbar-img {
   padding: 24px;
 }
 
+.card.notVisibleGuest {
+  background: #a8b5bd;
+}
+
+.NoVisibility {
+  display: none;
+}
+

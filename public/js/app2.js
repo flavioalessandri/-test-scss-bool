@@ -24021,8 +24021,8 @@ function selectMinRoomsBeds(lat, lng) {
   var index = client.initIndex('apartments'); // if($('#address').val()){
 
   index.setSettings({
-    attributesForFaceting: ['services' // or 'filterOnly(categories)' for filtering purposes only
-    ]
+    attributesForFaceting: ['services', // or 'filterOnly(categories)' for filtering purposes only
+    'visibility']
   }).then(function () {// done
   });
   index.search('', {
@@ -24165,8 +24165,8 @@ function sliderRadius(lat, lng) {
     var index = client.initIndex('apartments'); // if($('#address').val()){
 
     index.setSettings({
-      attributesForFaceting: ['services' // or 'filterOnly(categories)' for filtering purposes only
-      ]
+      attributesForFaceting: ['services', // or 'filterOnly(categories)' for filtering purposes only
+      'visibility']
     }).then(function () {// done
     });
     index.search('', {

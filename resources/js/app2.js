@@ -35,7 +35,7 @@ window.$ = require('jquery');
 
     const algoliasearch = require('algoliasearch');
 
-    const client = algoliasearch('Y49WMBJIFT', '63b572a22a729de27551ac2f07780053');
+    const client = algoliasearch('C50JGFH5DN', '4301d4422ac7e4fff78b3a9db7965ffc');
     const index = client.initIndex('apartments');
     // if($('#address').val()){
 
@@ -53,8 +53,7 @@ window.$ = require('jquery');
         // aroundLatLng: [41.9 , 12.5 ],
         aroundRadius: $("#mySliderRadius").val(),
         filters:'services:'+ $('#saunaCheck').val() + ' AND services: ' + $('#wifiCheck').val() + ' AND services: ' + $('#parkingCheck').val() + ' AND services: ' + $('#seaCheck').val() + ' AND services: ' + $('#poolCheck').val() + ' AND services: ' + $('#receptionCheck').val() +
-                ' AND number_of_rooms >= ' + $('#min-rooms').val() + ' AND ' +`number_of_beds >= `+ $('#min-beds').val() +
-                'AND visibility = 1'
+                ' AND number_of_rooms >= ' + $('#min-rooms').val() + ' AND ' +`number_of_beds >= `+ $('#min-beds').val(),
         // filters: `number_of_beds >= `+ $('#min-beds').val(),
         hitsPerPage: 20
       }).then(({ hits }) => {
@@ -204,7 +203,7 @@ function sliderRadius(lat,lng) {
       console.log('slider change',lat,lng,slider.val());
       const algoliasearch = require('algoliasearch');
 
-      const client = algoliasearch('Y49WMBJIFT', '63b572a22a729de27551ac2f07780053');
+      const client = algoliasearch('C50JGFH5DN', '4301d4422ac7e4fff78b3a9db7965ffc');
       const index = client.initIndex('apartments');
       // if($('#address').val()){
         index.setSettings({
@@ -220,8 +219,8 @@ function sliderRadius(lat,lng) {
           aroundLatLng: [parseFloat(lat) , parseFloat(lng)],
           // aroundLatLng: [41.9 , 12.5 ],
           filters:'services:'+ $('#saunaCheck').val() + ' AND services: ' + $('#wifiCheck').val() + ' AND services: ' + $('#parkingCheck').val() + ' AND services: ' + $('#seaCheck').val() + ' AND services: ' + $('#poolCheck').val() + ' AND services: ' + $('#receptionCheck').val() +
-                  ' AND number_of_rooms >= ' + $('#min-rooms').val() + ' AND ' +`number_of_beds >= `+ $('#min-beds').val() +
-                  'AND visibility = 1'
+                  ' AND number_of_rooms >= ' + $('#min-rooms').val() + ' AND ' +`number_of_beds >= `+ $('#min-beds').val() ,
+
           aroundRadius: slider.val(),
           hitsPerPage: 20
         }).then(({ hits }) => {
@@ -299,7 +298,7 @@ function sliderRadius(lat,lng) {
     console.log('aparts:', aparts);
     const algoliasearch = require('algoliasearch');
 
-    const client = algoliasearch('Y49WMBJIFT', '63b572a22a729de27551ac2f07780053');
+    const client = algoliasearch('C50JGFH5DN', '4301d4422ac7e4fff78b3a9db7965ffc');
     const index = client.initIndex('apartments');
 
     for (var i = 0; i < aparts.length; i++) {
