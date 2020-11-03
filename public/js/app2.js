@@ -24263,7 +24263,7 @@ function selectMinRoomsBeds(lat, lng) {
 
   var algoliasearch = __webpack_require__(/*! algoliasearch */ "./node_modules/algoliasearch/src/browser/builds/algoliasearch.js");
 
-  var client = algoliasearch('C50JGFH5DN', '4301d4422ac7e4fff78b3a9db7965ffc');
+  var client = algoliasearch('Y49WMBJIFT', '63b572a22a729de27551ac2f07780053');
   var index = client.initIndex('apartments'); // if($('#address').val()){
 
   index.setSettings({
@@ -24409,7 +24409,7 @@ function sliderRadius(lat, lng) {
 
     var algoliasearch = __webpack_require__(/*! algoliasearch */ "./node_modules/algoliasearch/src/browser/builds/algoliasearch.js");
 
-    var client = algoliasearch('C50JGFH5DN', '4301d4422ac7e4fff78b3a9db7965ffc');
+    var client = algoliasearch('Y49WMBJIFT', '63b572a22a729de27551ac2f07780053');
     var index = client.initIndex('apartments'); // if($('#address').val()){
 
     index.setSettings({
@@ -24490,7 +24490,7 @@ function getDataValue(aparts, lat, lng) {
 
   var algoliasearch = __webpack_require__(/*! algoliasearch */ "./node_modules/algoliasearch/src/browser/builds/algoliasearch.js");
 
-  var client = algoliasearch('C50JGFH5DN', '4301d4422ac7e4fff78b3a9db7965ffc');
+  var client = algoliasearch('Y49WMBJIFT', '63b572a22a729de27551ac2f07780053');
   var index = client.initIndex('apartments');
 
   for (var i = 0; i < aparts.length; i++) {
@@ -24569,8 +24569,8 @@ window.$ = __webpack_require__(/*! jquery */ "./node_modules/jquery/dist/jquery.
 // };
 
 function searchOnMap(lat, lng) {
-  var APPLICATION_ID = 'C50JGFH5DN';
-  var SEARCH_ONLY_API_KEY = '4301d4422ac7e4fff78b3a9db7965ffc';
+  var APPLICATION_ID = 'Y49WMBJIFT';
+  var SEARCH_ONLY_API_KEY = '63b572a22a729de27551ac2f07780053';
   var INDEX_NAME = 'apartments';
   var PARAMS = {
     hitsPerPage: 60
@@ -24907,8 +24907,8 @@ window.$ = __webpack_require__(/*! jquery */ "./node_modules/jquery/dist/jquery.
 // };
 
 function searchOnMapSlider(lat, lng, slider) {
-  var APPLICATION_ID = 'C50JGFH5DN';
-  var SEARCH_ONLY_API_KEY = '4301d4422ac7e4fff78b3a9db7965ffc';
+  var APPLICATION_ID = 'Y49WMBJIFT';
+  var SEARCH_ONLY_API_KEY = '63b572a22a729de27551ac2f07780053';
   var INDEX_NAME = 'apartments';
   var PARAMS = {
     hitsPerPage: 60
@@ -25282,8 +25282,8 @@ window.$ = __webpack_require__(/*! jquery */ "./node_modules/jquery/dist/jquery.
 
 function searchOnMapSliderChecked(lat, lng, slider, hits) {
   // console.log(hits,'these are my hits');
-  var APPLICATION_ID = 'C50JGFH5DN';
-  var SEARCH_ONLY_API_KEY = '4301d4422ac7e4fff78b3a9db7965ffc';
+  var APPLICATION_ID = 'Y49WMBJIFT';
+  var SEARCH_ONLY_API_KEY = '63b572a22a729de27551ac2f07780053';
   var INDEX_NAME = 'apartments';
   var PARAMS = {
     hitsPerPage: 60

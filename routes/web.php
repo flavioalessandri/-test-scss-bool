@@ -61,3 +61,14 @@ Route::get('list/apart/{id}/msg', 'UserController@messageList') -> name('msgs.li
 
 
 Route::get('/api/statistic/message/{id}', 'ChartClickController@messageStatisticJson')->name('message.statisticJson');
+
+
+
+
+
+
+
+
+// visibilty
+Route::get('list/apart/{id}/hide', 'UserController@apartHide') -> name('apart.hide');
+Route::get('list/apart/{id}/vis', 'UserController@apartVisible') -> name('apart.visib');

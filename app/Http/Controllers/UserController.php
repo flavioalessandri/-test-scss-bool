@@ -255,4 +255,30 @@ class UserController extends Controller
 
       return view('apart-messages',compact('messages'));
     }
+
+    public function apartHide($id) {
+
+      $apart = Apartment::findOrFail($id);
+
+        $apart['visibility'] = false;
+        $apart -> save();
+      $services = $apart->services()->get();
+      $count=0;
+
+      return view('show-apartment',compact('apart','services','count'));
+
+    }
+
+    public function apartVisible($id) {
+
+      $apart = Apartment::findOrFail($id);
+
+        $apart['visibility'] = true;
+        $apart -> save();
+      $services = $apart->services()->get();
+      $count=0;
+
+      return view('show-apartment',compact('apart','services','count'));
+
+    }
 }

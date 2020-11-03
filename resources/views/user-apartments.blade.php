@@ -19,7 +19,11 @@
 
             @foreach ($aparts as $apart)
 
-              <div class="card" data-card="{{$count=0}}">
+              <div class="card
+              @if (($apart -> visibility) == 0)
+              notVisibleGuest
+              @endif
+              " data-card="{{$count=0}}">
               <div class="card-body">
                 <div class="d-flex flex-row flex-wrap">
                   <div class="mycarousel">
@@ -50,7 +54,7 @@
                     <div class="  pl-3 col-12 col-md-6 p-2 d-flex flex-column ">
 
                         <div class="border-bottom border-dark">
-                          <h5 class="">{{ $apart -> description }}
+                          <h5 class="">{{ $apart -> description }} @if (($apart -> visibility) == 0) : Non disponibile @endif
                             <br>
                             <small class="text-muted"> {{ $apart -> address }} - {{ $apart -> city }} - {{ $apart -> state }}  </small>
                           </h5>

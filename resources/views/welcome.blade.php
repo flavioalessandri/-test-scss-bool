@@ -31,6 +31,70 @@
       </div> --}}
     </div>
   </div>
-</section>
+  <div class="sponsorship-welcome">
+    @foreach ($aparts as $apart)
+
+      <div class="sponsorship card
+      @if (($apart -> visibility) == 0)
+      NoVisibility
+      @endif
+      " data-card="{{$count=0}}">
+      <div class="card-body">
+        <div class="d-flex flex-row flex-wrap">
+          <div class="mycarousel">
+            <div class="carousel-container">
+
+              @foreach ($apart->images as $image)
+                <div class="carousel-images  @if ($count==0) active  @endif
+                " data-id="{{$count++}}">
+
+                    <img src="{{asset($image->image_path)}}" alt="{{$image->image_path}}">
+
+                </div>
+
+              @endforeach
+            </div>
+
+            <div class="prev"><i class="fas fa-chevron-circle-left"></i> </div>
+            <div class="next"><i class="fas fa-chevron-circle-right"></i> </div>
+
+
+          </div>
+
+
+            <div class="  pl-3 col-12 col-md-6 p-2 d-flex flex-column ">
+
+                <div class="border-bottom border-dark">
+                  <h5 class="">
+                    <a href="{{route('search.apart.show', $apart -> id)}}">{{ $apart -> description }}</a>
+                    <br>
+                    <small class="text-muted"> {{ $apart -> address }} - {{ $apart -> city }} - {{ $apart -> state }}  </small>
+                  </h5>
+                </div>
+
+                <div class="flex-grow-1 text-secondary">
+                  <div class="pt-2">
+                    <span> {{ $apart -> square_meters }} mq  </span>
+                </div>
+                  <div class="">
+                    <span class="pt-2"> Stanze: {{ $apart -> number_of_rooms }} </span>
+                  </div>
+                  <div class="">
+                    <span class="pt-2"> Letti: {{ $apart -> number_of_beds }}  </span>
+                  </div>
+                </div>
+
+
+
+            </div>
+
+        </div>
+      </div>
+    </div>
+
+  @endforeach
+  </div>
+
+  </section>
 <script src="{{ asset('js/app1.js') }}" defer></script>
 @endsection
