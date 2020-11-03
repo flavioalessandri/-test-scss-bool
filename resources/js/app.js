@@ -1,5 +1,16 @@
+import { searchOnMap } from './mapApi.js';
+// ***************PROVA IMPORT ******
+// import { Course } from './mapApi.js';
+// var ciao = 'IT WORKS!!!';
+// var ciao2 = 'IT WORKS 2!!!';
+// console.log(Course(ciao));
+// console.log(Course(ciao2));
+
+
+
 
 require('./bootstrap');
+
 
 // require('./js/app1');
 // require('./js/app2');
@@ -85,6 +96,14 @@ function init(){
     $('#form-img-layout > #images').on('change', function() {
         imgPreview(this, 'div.imgEditPreview');
     });
+
+
+    // provaprova
+
+
+
+
+
 
 }
 
