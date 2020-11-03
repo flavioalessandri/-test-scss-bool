@@ -10998,8 +10998,12 @@ function getMsgChart(msgToMatch, week) {
       datasets: [{
         label: 'Numero di Messaggi',
         data: msgToMatch,
-        backgroundColor: ['rgba(30, 150, 235, 0.2)', 'rgba(200, 80, 132, 0.2)', 'rgba(255, 206, 86, 0.2)', 'rgba(135, 90, 255, 0.2)', 'rgba(60, 80, 130, 0.2)', 'rgba(75, 192, 192, 0.2)', 'rgba(220, 159, 64, 0.2)'],
-        borderColor: ['rgba(30, 150, 235, 1)', 'rgba(200, 80, 132, 1)', 'rgba(255, 206, 86, 1)', 'rgba(135, 90, 255, 1)', 'rgba(60, 80, 130, 1)', 'rgba(75, 192, 192, 1)', 'rgba(220, 159, 64, 1)'],
+        pointBackgroundColor: "#55bae7",
+        pointBorderColor: "#55bae7",
+        pointHoverBackgroundColor: "#55bae7",
+        pointHoverBorderColor: "#55bae7",
+        backgroundColor: ['rgba(75, 192, 192, 0.2)'],
+        borderColor: ['rgba(75, 192, 192, 1)'],
         borderWidth: 1
       }]
     },
