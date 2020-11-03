@@ -51,3 +51,13 @@ Route::get('/api/statistic/{id}', 'ChartClickController@statisticJson')->name('s
 // messages
 Route::post('/apart/message', 'MessageController@create') -> name('message.create');
 Route::get('list/apart/{id}/msg', 'UserController@messageList') -> name('msgs.list');
+
+
+
+
+
+
+
+
+
+Route::get('/api/statistic/message/{id}', 'ChartClickController@messageStatisticJson')->name('message.statisticJson');
