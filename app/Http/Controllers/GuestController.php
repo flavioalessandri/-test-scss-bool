@@ -150,7 +150,7 @@ class GuestController extends Controller
 
             // dd($currentdate,$today);
 
-    return view('show-guest-apartment', compact('apart','services'));
+    return view('show-guest-apartment', compact('apart','services','user'));
   }
 
    // inizio nuova funzione -------------------------------------------------------------------------

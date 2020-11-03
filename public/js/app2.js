@@ -24248,11 +24248,15 @@ function getDataValue(aparts, lat, lng) {
     var apart = aparts[i];
     apart.objectID = 'App\Apartment::' + (i + 1);
   } // console.log(objects);
+  //     index.saveObject(...).wait().then(response => {
+  //   console.log(response);
+  // });
 
 
-  index.saveObjects(aparts).then(function (_ref3) {
+  index.saveObjects(aparts) // .wait()
+  .then(function (_ref3) {
     var objectIDs = _ref3.objectIDs;
-    console.log(aparts);
+    console.log(objectIDs);
     index.search('', {
       aroundLatLng: lat + ',' + lng,
       // aroundLatLng: '41.9, 12.5',

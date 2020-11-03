@@ -44,3 +44,10 @@ Route::post('/checkout', 'SponsorshipController@checkout')-> name('sponsor.check
 // messages
 Route::post('/apart/message', 'MessageController@create') -> name('message.create');
 Route::get('list/apart/{id}/msg', 'UserController@messageList') -> name('msgs.list');
+
+
+
+
+// visibilty
+Route::get('list/apart/{id}/hide', 'UserController@apartHide') -> name('apart.hide');
+Route::get('list/apart/{id}/vis', 'UserController@apartVisible') -> name('apart.visib');

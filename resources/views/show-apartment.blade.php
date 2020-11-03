@@ -11,12 +11,23 @@
   <div class="row justify-content-center">
     <div class="col-md-8">
       {{-- <a  href="{{route('user.index')}}">Elenco appartamenti</a> --}}
-      <div id="show_card" class="card mt-5 mb-5" data-card="{{$count=0}}">
+      <div id="show_card" class="card
+      @if (($apart -> visibility) == 0)
+            notVisibleGuest
+            @endif
+        mt-5 mb-5" data-card="{{$count=0}}">
         <div class="card-header">
           <h1>{{$apart -> description}}</h1>
           <div class="">
             <a class="btn btn-light" href="{{route('apart.edit',$apart -> id)}}">Edit</a>
             <a class="btn btn-light" href="{{route('apart.delete', $apart -> id)}}">Delete</a>
+            @if (($apart -> visibility) == 1)
+              <a class="btn btn-light" href="{{route('apart.hide',$apart -> id)}}">Hide</a>
+
+            @elseif (($apart -> visibility) == 0)
+              <a class="btn btn-light" href="{{route('apart.visib',$apart -> id)}}">Make visible</a>
+
+            @endif
           </div>
         </div>
 
