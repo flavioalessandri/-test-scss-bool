@@ -55,7 +55,7 @@
         </div>
 
         {{-- MAP TEMPLATE --}}
-        <script type="text/template" id="hits-template">
+        {{-- <script type="text/template" id="hits-template">
           @{{#hits}}
           <div class="hit">
             <h3 class="hit-airport-code">@{{{ _highlightResult.iata_code.value }}}</h3>
@@ -63,15 +63,15 @@
             <p class="hit-location">@{{{ _highlightResult.country.value }}}<span class="hit-distance"> @{{ distance }}</span></p>
           </div>
           @{{/hits}}
-        </script>
+        </script> --}}
         {{-- END MAP TEMPLATE --}}
 
         {{-- No-Results template --}}
-      <script type="text/template" id="no-results-template">
+      {{-- <script type="text/template" id="no-results-template">
         <div id="no-results-message">
-          <p>We didn't find any airports in this location.</p>
+          <p>We didn't find any appar in this location.</p>
         </div>
-      </script>
+      </script> --}}
 
         {{-- END map API  --}}
 

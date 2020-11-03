@@ -106,33 +106,11 @@ function beginPageState(state) {
           outputForApi.append(myKms.toFixed(2));
           sliderForApi.val(getEditableRadius);
 
-
-          // var algolia = algoliasearch(APPLICATION_ID, SEARCH_ONLY_API_KEY);
-          // var algoliaHelper = algoliasearchHelper(algolia, INDEX_NAME, PARAMS);
-
-
-          // const algoliasearch = require('algoliasearch');
-          //
-          // const client = algoliasearch('C50JGFH5DN', '4301d4422ac7e4fff78b3a9db7965ffc');
-          // const index = client.initIndex('apartments');
-
-          // index.search('', {
-          //   aroundLatLng: [parseFloat(lat) , parseFloat(lng)],
-          //   // aroundLatLng: [41.9 , 12.5 ],
-          //   aroundRadius: getEditableRadius,
-          //   hitsPerPage: 20
-          // }).then(({ hits }) => {
-          //   printData(hits);
-          // });
-
         }
         setMySliderRadius();
 
       });
 
-      // console.log(boundingBox.radius,'myradius');
-      //
-      // console.log(slider,'apsdjapsodjaspdojaspdojaspdojaspodj');
 
       algoliaHelper.setQueryParameter('insideBoundingBox', rectangleToAlgoliaParams(boundingBox));
       boundingBoxListeners.push(google.maps.event.addListener(
@@ -238,32 +216,32 @@ function renderMap(content) {
 
 // EVENTS BINDING
 // ==============
-$('.change_page_state').on('click', function (e) {
-  e.preventDefault();
-  updateMenu($(this).data('state'), $(this).data('mode'));
-  switch ($(this).data('state')) {
-    case 'rectangle':
-      setPageState(PAGE_STATES.BOUNDING_BOX_RECTANGLE);
-      break;
-    case 'polygon':
-      setPageState(PAGE_STATES.BOUNDING_BOX_POLYGON);
-      break;
-    case 'ip':
-      setPageState(PAGE_STATES.AROUND_IP);
-      break;
-    case 'nyc':
-      setPageState(PAGE_STATES.AROUND_NYC);
-      break;
-    case 'london':
-      setPageState(PAGE_STATES.AROUND_LONDON);
-      break;
-    case 'sydney':
-      setPageState(PAGE_STATES.AROUND_SYDNEY);
-      break;
-    default:
-      // No op
-  }
-});
+// $('.change_page_state').on('click', function (e) {
+//   e.preventDefault();
+//   updateMenu($(this).data('state'), $(this).data('mode'));
+//   switch ($(this).data('state')) {
+//     case 'rectangle':
+//       setPageState(PAGE_STATES.BOUNDING_BOX_RECTANGLE);
+//       break;
+//     case 'polygon':
+//       setPageState(PAGE_STATES.BOUNDING_BOX_POLYGON);
+//       break;
+//     case 'ip':
+//       setPageState(PAGE_STATES.AROUND_IP);
+//       break;
+//     case 'nyc':
+//       setPageState(PAGE_STATES.AROUND_NYC);
+//       break;
+//     case 'london':
+//       setPageState(PAGE_STATES.AROUND_LONDON);
+//       break;
+//     case 'sydney':
+//       setPageState(PAGE_STATES.AROUND_SYDNEY);
+//       break;
+//     default:
+//       // No op
+//   }
+// });
 
 // HELPER METHODS
 // ==============
