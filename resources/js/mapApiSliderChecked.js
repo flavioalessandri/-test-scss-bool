@@ -1,4 +1,4 @@
-require('./bootstrap');
+// require('./bootstrap');
 window.$ = require('jquery');
 // export function Course(ciao) {
 //   var id = '123';
