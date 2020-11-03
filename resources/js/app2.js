@@ -497,9 +497,10 @@ function sliderRadius(lat,lng) {
 
   var handtemplate = $('#handlebar-template').html();
   var compiled = Handlebars.compile(handtemplate);
-  // var handtargetSpons = $('#hand-target-spons');
+  var handtargetSpons = $('#hand-target-spons');
   var handtarget = $('#hand-target');
   handtarget.text('');
+  handtargetSpons.text('');
 
     for (var i = 0; i < hits.length; i++) {
 
@@ -508,9 +509,19 @@ function sliderRadius(lat,lng) {
       var img = imgs[0];
       hit['img'] = img;
       console.log(i,hit);
-      var resultHtml = compiled(hit);
+      if (hit['sponsorship']) {
 
-        handtarget.append(resultHtml);
+        var resultHtml = compiled(hit);
+
+          handtargetSpons.append(resultHtml);
+
+      }
+      else {
+        var resultHtml = compiled(hit);
+
+          handtarget.append(resultHtml);
+      }
+
     }
   }
 
