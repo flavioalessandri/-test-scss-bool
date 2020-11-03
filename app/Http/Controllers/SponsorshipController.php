@@ -7,11 +7,6 @@ use Illuminate\Support\Facades\Auth;
 
 // Braintree
 use Braintree;
-use Braintree\Gateway;
-use Braintree\Transaction;
-use Braintree\Exception\Authentication;
-use Braintree\Exception\Configuration;
-use Illuminate\Support\Session;
 
 // Time
 use Carbon\Carbon;
@@ -53,7 +48,7 @@ class SponsorshipController extends Controller
     $clientToken = $this -> gateway() -> clientToken() -> generate();
     return view('sponsorship', compact('sponsorships', 'apartments', 'clientToken'));
   }
-  
+
 
   public function checkout(Request $request) {
 
