@@ -31,10 +31,10 @@
       </div> --}}
     </div>
   </div>
-  <div class="sponsorship-welcome">
+  <div class="sponsorship-welcome col-md-8 m-auto">
     @foreach ($aparts as $apart)
 
-      <div class="sponsorship card
+      <div class="sponsorship card ml-2 mr-2
       @if (($apart -> visibility) == 0)
       NoVisibility
       @endif
@@ -55,14 +55,14 @@
               @endforeach
             </div>
 
-            <div class="prev"><i class="fas fa-chevron-circle-left"></i> </div>
-            <div class="next"><i class="fas fa-chevron-circle-right"></i> </div>
+            {{-- <div class="prev"><i class="fas fa-chevron-circle-left"></i> </div>
+            <div class="next"><i class="fas fa-chevron-circle-right"></i> </div> --}}
 
 
           </div>
 
 
-            <div class="  pl-3 col-12 col-md-6 p-2 d-flex flex-column ">
+            <div class="  pl-4 pr-4 col-12 ">
 
                 <div class="border-bottom border-dark">
                   <h5 class="">

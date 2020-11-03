@@ -349,7 +349,7 @@ img.handelbar-img {
   flex-wrap: wrap;
   justify-content: space-around;
   & > * {
-    width: 32%;
+    width: 48%;
     // padding: 0;
     margin-bottom: 2%;
   }
@@ -374,4 +374,12 @@ img.handelbar-img {
 
 .NoVisibility {
   display: none;
+}
+
+@media all and (max-width: 767px) {
+
+  .white-radius-center{
+
+    width:100%;
+  }
 }
