@@ -11258,7 +11258,7 @@ function getFakeData(id, week, msgToMatch) {
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
-module.exports = __webpack_require__(/*! C:\Users\flavi\Desktop\image-27-multiple-images\resources\js\mychart.js */"./resources/js/mychart.js");
+module.exports = __webpack_require__(/*! C:\Users\andrea\Desktop\developer\Boolean\progetto_finale\-test-scss-bool\resources\js\mychart.js */"./resources/js/mychart.js");
 
 
 /***/ })

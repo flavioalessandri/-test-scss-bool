@@ -49675,8 +49675,7 @@ window.axios.defaults.headers.common['X-Requested-With'] = 'XMLHttpRequest';
 "use strict";
 __webpack_require__.r(__webpack_exports__);
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "searchOnMap", function() { return searchOnMap; });
-__webpack_require__(/*! ./bootstrap */ "./resources/js/bootstrap.js");
-
+// require('./bootstrap');
 window.$ = __webpack_require__(/*! jquery */ "./node_modules/jquery/dist/jquery.js"); // export function Course(ciao) {
 //   var id = '123';
 //   var name = 'davit';
@@ -50022,8 +50021,8 @@ function searchOnMap(lat, lng) {
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
-__webpack_require__(/*! C:\Users\alfof\OneDrive\Desktop\-test-scss-bool\resources\js\app.js */"./resources/js/app.js");
-module.exports = __webpack_require__(/*! C:\Users\alfof\OneDrive\Desktop\-test-scss-bool\resources\sass\app.scss */"./resources/sass/app.scss");
+__webpack_require__(/*! C:\Users\andrea\Desktop\developer\Boolean\progetto_finale\-test-scss-bool\resources\js\app.js */"./resources/js/app.js");
+module.exports = __webpack_require__(/*! C:\Users\andrea\Desktop\developer\Boolean\progetto_finale\-test-scss-bool\resources\sass\app.scss */"./resources/sass/app.scss");
 
 
 /***/ })
