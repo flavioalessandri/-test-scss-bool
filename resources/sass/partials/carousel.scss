@@ -28,7 +28,7 @@
 
       .carousel-images{
         opacity:.5;
-        width:80%;
+        width:340px;
         height:190px;
         position:absolute;
         top:50%;
@@ -47,6 +47,10 @@
         }
       }
 
+      .carousel-images.dim {
+
+        width: 80%;
+      }
 
 
 

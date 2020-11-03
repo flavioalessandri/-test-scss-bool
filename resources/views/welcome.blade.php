@@ -45,7 +45,7 @@
             <div class="carousel-container">
 
               @foreach ($apart->images as $image)
-                <div class="carousel-images  @if ($count==0) active  @endif
+                <div class="carousel-images dim  @if ($count==0) active  @endif
                 " data-id="{{$count++}}">
 
                     <img src="{{asset($image->image_path)}}" alt="{{$image->image_path}}">
@@ -64,11 +64,11 @@
 
             <div class="  pl-4 pr-4 col-12 ">
 
-                <div class="border-bottom border-dark">
+                <div class="border-bottom border-white">
                   <h5 class="">
                     <a href="{{route('search.apart.show', $apart -> id)}}">{{ $apart -> description }}</a>
                     <br>
-                    <small class="text-muted"> {{ $apart -> address }} - {{ $apart -> city }} - {{ $apart -> state }}  </small>
+                    <small class=""> {{ $apart -> address }} - {{ $apart -> city }} - {{ $apart -> state }}  </small>
                   </h5>
                 </div>
 

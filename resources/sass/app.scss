@@ -354,9 +354,11 @@ img.handelbar-img {
     margin-bottom: 2%;
   }
   .sponsorship {
-    background-color: #ffc3a3;
+    background-color: #FF5170;
     position: relative;
     z-index: -1;
+
+    span, h5,a,small {color:white;}
   }
 }
 
