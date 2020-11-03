@@ -49553,7 +49553,7 @@ function imgPreview(input, imgPreviewPlaceholder) {
     console.log(input.files);
     var filesAmount = input.files.length;
 
-    for (i = 0; i < filesAmount; i++) {
+    for (var i = 0; i < filesAmount; i++) {
       var reader = new FileReader();
 
       reader.onload = function (event) {
@@ -50021,8 +50021,8 @@ function searchOnMap(lat, lng) {
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
-__webpack_require__(/*! C:\Users\andrea\Desktop\developer\Boolean\progetto_finale\-test-scss-bool\resources\js\app.js */"./resources/js/app.js");
-module.exports = __webpack_require__(/*! C:\Users\andrea\Desktop\developer\Boolean\progetto_finale\-test-scss-bool\resources\sass\app.scss */"./resources/sass/app.scss");
+__webpack_require__(/*! /home/caterina/boolean-project/-test-scss-bool/resources/js/app.js */"./resources/js/app.js");
+module.exports = __webpack_require__(/*! /home/caterina/boolean-project/-test-scss-bool/resources/sass/app.scss */"./resources/sass/app.scss");
 
 
 /***/ })

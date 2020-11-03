@@ -13,7 +13,7 @@ class MessageSeeder extends Seeder
      */
     public function run()
     {
-      factory(Message::class, 100)
+      factory(Message::class, 3)
     -> make()
     -> each(function($msg){
       $apart = Apartment::inRandomOrder() -> first();

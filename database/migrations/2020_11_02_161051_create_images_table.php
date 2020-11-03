@@ -18,7 +18,7 @@ class CreateImagesTable extends Migration
 
           $table->id();
           $table->unsignedBigInteger('apartment_id');
-          $table->string('image_path');
+          $table->string('image_path')->default('img/notFound.jpg');
           $table->timestamps();
         });
     }

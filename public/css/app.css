@@ -15725,7 +15725,7 @@ section#section_home #div-search {
 section#section_user_apartment_list {
   background-position: 0 0;
   padding-top: 80px;
-  width: 100vw;
+  width: 100%;
   background-repeat: repeat-y;
   background-repeat: repeat-x;
   background-repeat-y: repeat;
@@ -15734,7 +15734,7 @@ section#section_user_apartment_list {
 section#sponsorship {
   background-position: 0 0;
   padding-top: 80px;
-  width: 100vw;
+  width: 100%;
 }
 
 .mycarousel {

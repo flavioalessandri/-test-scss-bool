@@ -6,6 +6,7 @@ use App\Model;
 use Faker\Generator as Faker;
 use App\Statistic;
 use App\Apartment;
+use Carbon\Carbon;
 
 $factory->define(Statistic::class, function (Faker $faker) {
     return [

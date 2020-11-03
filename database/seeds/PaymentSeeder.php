@@ -14,7 +14,7 @@ class PaymentSeeder extends Seeder
      */
     public function run()
     {
-      factory(Payment::class, 100)
+      factory(Payment::class, 3)
     -> make()
     -> each(function($pay){
       $apart = Apartment::inRandomOrder() -> first();

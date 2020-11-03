@@ -17,12 +17,12 @@ $factory->define(Apartment::class, function (Faker $faker) {
       'address'                   => $faker -> streetAddress(),
       'city'                      => $faker -> city(),
       'state'                     => $faker -> state(),
-      'lat'                       => $faker -> latitude($min = 45, $max = 46),
-      'lng'                       => $faker -> longitude($min = 9, $max = 10),
+      'lat'                       => $faker -> latitude($min = 89, $max = 90),
+      'lng'                       => $faker -> longitude($min = 0, $max = 1),
 
       // 'date_of_creation'       =>'',
-      'sponsorship'               => $faker -> boolean(),
-      'visibility'                => $faker -> boolean()
+      // 'sponsorship'               => $faker -> boolean(),
+      // 'visibility'                => $faker -> boolean()
 
     ];
 });
