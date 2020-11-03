@@ -68,7 +68,7 @@
             </a>
           </div> --}}
 
-          <h2>Informazioni relative all'appartamento</h2>
+          <h2>Informazioni relative all'appartamento Statistiche</h2>
           <ul>
               <li>Numero di letti: {{ $apart -> number_of_beds }}</li>
               <li>Numero di camere: {{ $apart -> number_of_rooms }}</li>
@@ -82,6 +82,19 @@
               <li>{{ $serv -> service }}</li>
             @endforeach
           </ul>
+
+
+          <form class="form" action="{{route('myroute', $apart->id )}}" method="post">
+                    @csrf
+                    @method('POST')
+
+                    <input type="text" name="id" value=" {{$apart->id}}">
+                    <button type="submit" name="button">Vai a statistiche</button>
+        </form>
+
+
+            <a class="btn btn-light" href="{{route('msgs.list', $apart -> id )}}">Messaggi</a>
+
         </div>
       </div>
       {{-- <a href="#">Statistiche</a>

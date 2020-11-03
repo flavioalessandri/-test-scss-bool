@@ -276,7 +276,7 @@ button.search {
 }
 
 #slidecontainer {
-  width: 70%;
+  width: 90%;
   margin: auto;
   display: block;
 }
@@ -302,4 +302,34 @@ button.search {
 // create indirizzo autocomplete Algolia
 span.algolia-places.prova{
   display: inline!important;
+}
+// <<<<<<< HEAD
+
+// handelbar handlebar-template
+img.handelbar-img {
+  width: 45%;
+}
+
+// messaggi
+.form-messaggio{
+    margin-top: 24px ;
+    width: 65% ;
+    margin-left: 30%;
+    border-width: 1px ;
+    border-style: solid ;
+    border-color: rgb(221, 221, 221) ;
+    border-image: initial ;
+    border-radius: 8px ;
+    border-top-left-radius: 8px ;
+    border-top-right-radius: 8px ;
+    border-bottom-right-radius: 8px ;
+    border-bottom-left-radius: 8px ;
+    padding: 24px ;
+  }
+// =======
+#mapApiGoogle{
+  width:90%;
+  height:500px;
+  margin:auto;
+  margin-top: 30px;
 }

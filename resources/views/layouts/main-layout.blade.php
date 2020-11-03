@@ -30,10 +30,12 @@
 
 
 
+
         </div>
         {{-- <script src="{{ asset('js/app2.js') }}" defer></script>
         <script src="{{ asset('js/app1.js') }}" defer></script> --}}
 
         {{-- @include('partials.js') --}}
+        
     </body>
 </html>
