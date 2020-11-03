@@ -15789,6 +15789,10 @@ section#sponsorship {
   z-index: 6;
 }
 
+.carousel-images.dim {
+  width: 80%;
+}
+
 .stored-image img {
   width: 100%;
 }
@@ -16075,14 +16079,21 @@ img.handelbar-img {
 }
 
 .sponsorship-welcome > * {
-  width: 32%;
+  width: 48%;
   margin-bottom: 2%;
 }
 
 .sponsorship-welcome .sponsorship {
-  background-color: #ffc3a3;
+  background-color: #FF5170;
   position: relative;
   z-index: -1;
+}
+
+.sponsorship-welcome .sponsorship span,
+.sponsorship-welcome .sponsorship h5,
+.sponsorship-welcome .sponsorship a,
+.sponsorship-welcome .sponsorship small {
+  color: white;
 }
 
 #hand-target-sponsorship div.card {
@@ -16095,5 +16106,11 @@ img.handelbar-img {
 
 .NoVisibility {
   display: none;
+}
+
+@media all and (max-width: 767px) {
+  .white-radius-center {
+    width: 100%;
+  }
 }
 

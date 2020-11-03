@@ -349,14 +349,16 @@ img.handelbar-img {
   flex-wrap: wrap;
   justify-content: space-around;
   & > * {
-    width: 32%;
+    width: 48%;
     // padding: 0;
     margin-bottom: 2%;
   }
   .sponsorship {
-    background-color: #ffc3a3;
+    background-color: #FF5170;
     position: relative;
     z-index: -1;
+
+    span, h5,a,small {color:white;}
   }
 }
 
@@ -374,4 +376,12 @@ img.handelbar-img {
 
 .NoVisibility {
   display: none;
+}
+
+@media all and (max-width: 767px) {
+
+  .white-radius-center{
+
+    width:100%;
+  }
 }
