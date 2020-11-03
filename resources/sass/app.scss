@@ -333,3 +333,45 @@ img.handelbar-img {
   margin:auto;
   margin-top: 30px;
 }
+
+
+
+
+
+
+
+
+// aggiunte
+.sponsorship-welcome {
+
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  justify-content: space-around;
+  & > * {
+    width: 32%;
+    // padding: 0;
+    margin-bottom: 2%;
+  }
+  .sponsorship {
+    background-color: #ffc3a3;
+    position: relative;
+    z-index: -1;
+  }
+}
+
+#hand-target-sponsorship {
+  div.card {
+    background-color: #ffc3a3;
+  }
+}
+
+
+// visibility
+.card.notVisibleGuest {
+  background: #a8b5bd;
+}
+
+.NoVisibility {
+  display: none;
+}

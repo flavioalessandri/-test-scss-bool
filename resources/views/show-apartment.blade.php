@@ -17,6 +17,15 @@
           <div class="">
             <a class="btn btn-light" href="{{route('apart.edit',$apart -> id)}}">Edit</a>
             <a class="btn btn-light" href="{{route('apart.delete', $apart -> id)}}">Delete</a>
+
+            @if (($apart -> visibility) == 1)
+              <a class="btn btn-light" href="{{route('apart.hide',$apart -> id)}}">Hide</a>
+
+            @elseif (($apart -> visibility) == 0)
+              <a class="btn btn-light" href="{{route('apart.visib',$apart -> id)}}">Make visible</a>
+
+            @endif
+
           </div>
         </div>
 

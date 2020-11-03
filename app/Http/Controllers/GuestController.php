@@ -63,7 +63,7 @@ class GuestController extends Controller
     // $val = json_decode($request->cookie('thisUser'),true);
 
       $count=0;
-      $aparts = Apartment::all();
+      $aparts = Apartment::where('sponsorship', '=', true) -> get();
 
         return view('welcome',compact('aparts','count'));
   }
@@ -150,7 +150,7 @@ class GuestController extends Controller
 
             // dd($currentdate,$today);
 
-    return view('show-guest-apartment', compact('apart','services'));
+    return view('show-guest-apartment', compact('apart','services','user'));
   }
 
    // inizio nuova funzione -------------------------------------------------------------------------

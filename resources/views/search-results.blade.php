@@ -119,7 +119,9 @@
               </select>
         </div>
 
+        <ul id="hand-target-sponsorship">
 
+          </ul>
 
         <ul id="hand-target">
 
