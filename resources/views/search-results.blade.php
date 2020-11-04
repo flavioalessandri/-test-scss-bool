@@ -135,6 +135,7 @@
 <script id="handlebar-template" type="text/x-handlebars-template">
   <div class="card" data-card="{{$count=0}}">
     <div class="card-body">
+      <div class="sponsored-label" class=""></div>
       <div class="d-flex flex-row flex-wrap">
 
         <img class="handelbar-img  mx-auto" src="@{{{ img }}}" alt="nophoto">
