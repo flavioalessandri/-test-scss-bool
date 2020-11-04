@@ -56949,6 +56949,54 @@ function prevCarouselImg() {
   }
 }
 
+function createAlgolia() {
+  $('#createAlgolia').on('click', function () {
+    var id = $(this).data('id');
+    console.log(id);
+
+    var algoliasearch = __webpack_require__(/*! algoliasearch */ "./node_modules/algoliasearch/src/browser/builds/algoliasearch.js");
+
+    var client = algoliasearch('Y49WMBJIFT', '63b572a22a729de27551ac2f07780053');
+    var index = client.initIndex('apartments');
+  });
+}
+
+function visibilityAlgolia() {
+  console.log('prova');
+  $('.hideAlgolia').on('click', function () {
+    var id = $(this).data('id');
+    console.log(id);
+
+    var algoliasearch = __webpack_require__(/*! algoliasearch */ "./node_modules/algoliasearch/src/browser/builds/algoliasearch.js");
+
+    var client = algoliasearch('Y49WMBJIFT', '63b572a22a729de27551ac2f07780053');
+    var index = client.initIndex('apartments');
+    index.partialUpdateObject({
+      visibility: 0,
+      objectID: id
+    }).then(function (_ref) {
+      var objectID = _ref.objectID;
+      console.log(objectID);
+    });
+  });
+  $('.showAlgolia').on('click', function () {
+    var id = $(this).data('id');
+    console.log(id);
+
+    var algoliasearch = __webpack_require__(/*! algoliasearch */ "./node_modules/algoliasearch/src/browser/builds/algoliasearch.js");
+
+    var client = algoliasearch('Y49WMBJIFT', '63b572a22a729de27551ac2f07780053');
+    var index = client.initIndex('apartments');
+    index.partialUpdateObject({
+      visibility: 1,
+      objectID: id
+    }).then(function (_ref2) {
+      var objectID = _ref2.objectID;
+      console.log(objectID);
+    });
+  });
+}
+
 function init() {
   // $("#mycreate").on('click', function() {
   //
@@ -56974,7 +57022,9 @@ function init() {
     var client = algoliasearch('Y49WMBJIFT', '63b572a22a729de27551ac2f07780053');
     var index = client.initIndex('apartments');
     index.deleteObject(id).then(function () {});
-  }); // console.log($('.deleteAlgolia').data('id'));
+  });
+  visibilityAlgolia();
+  createAlgolia();
 }
 
 $(document).ready(init); // Vue.component('example-component', require('./components/ExampleComponent.vue').default);
