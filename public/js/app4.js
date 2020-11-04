@@ -21756,7 +21756,7 @@ $(document).ready(init);
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
-module.exports = __webpack_require__(/*! C:\Users\flavi\Desktop\image-27-multiple-images\resources\js\app4.js */"./resources/js/app4.js");
+module.exports = __webpack_require__(/*! /home/caterina/boolean-project/-test-scss-bool/resources/js/app4.js */"./resources/js/app4.js");
 
 
 /***/ })

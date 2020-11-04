@@ -70,7 +70,53 @@ function prevCarouselImg() {
   }
 }
 
+function createAlgolia() {
+  $('#createAlgolia').on('click',function() {
+    var id = $(this).data('id');
+    console.log(id);
+    const algoliasearch = require('algoliasearch');
 
+    const client = algoliasearch('Y49WMBJIFT', '63b572a22a729de27551ac2f07780053');
+    const index = client.initIndex('apartments');
+
+  
+  });
+}
+
+function visibilityAlgolia() {
+  console.log('prova');
+  $('.hideAlgolia').on('click',function() {
+    var id = $(this).data('id');
+    console.log(id);
+    const algoliasearch = require('algoliasearch');
+
+    const client = algoliasearch('Y49WMBJIFT', '63b572a22a729de27551ac2f07780053');
+    const index = client.initIndex('apartments');
+
+    index.partialUpdateObject({
+      visibility: 0,
+      objectID: id
+    }).then(({ objectID }) => {
+      console.log(objectID);
+    });
+  });
+
+  $('.showAlgolia').on('click',function() {
+    var id = $(this).data('id');
+    console.log(id);
+    const algoliasearch = require('algoliasearch');
+
+    const client = algoliasearch('Y49WMBJIFT', '63b572a22a729de27551ac2f07780053');
+    const index = client.initIndex('apartments');
+
+    index.partialUpdateObject({
+      visibility: 1,
+      objectID: id
+    }).then(({ objectID }) => {
+      console.log(objectID);
+    });
+  });
+}
 
 
 function init(){
@@ -111,10 +157,9 @@ function init(){
       index.deleteObject(id).then(() => {
 
       });
-
     });
-
-    // console.log($('.deleteAlgolia').data('id'));
+    visibilityAlgolia();
+    createAlgolia();
 }
 
 
