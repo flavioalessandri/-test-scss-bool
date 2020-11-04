@@ -15,18 +15,18 @@
     <div class="row justify-content-center">
       <div class="col-md-8 ">
 
-        <h2 class="mt-4 mb-0 text-center bg-light pb-3 pt-3">I miei annunci</h2>
+        <h2 class="mt-4 text-center bg-light pb-3 pt-3   mb-sm-2 mb-md-2 mb-lg-0">I miei annunci</h2>
 
             @foreach ($aparts as $apart)
 
-              <div class="card
+              <div class="card mb-sm-2 mb-md-2 mb-lg-0
               @if (($apart -> visibility) == 0)
               notVisibleGuest
               @endif
               " data-card="{{$count=0}}">
               <div class="card-body">
                 <div class="d-flex flex-row flex-wrap">
-                  <div class="mycarousel">
+                  <div class="mycarousel list">
                     <div class="carousel-container">
 
                       @foreach ($apart->images as $image)
@@ -40,8 +40,8 @@
                       @endforeach
                     </div>
 
-                    <div class="prev"><i class="fas fa-chevron-circle-left"></i> </div>
-                    <div class="next"><i class="fas fa-chevron-circle-right"></i> </div>
+                    <div class="invisible prev"><i class="fas fa-chevron-circle-left"></i> </div>
+                    <div class="invisible next"><i class="fas fa-chevron-circle-right"></i> </div>
 
 
                   </div>
@@ -51,7 +51,7 @@
 
 
 
-                    <div class="  pl-3 col-12 col-md-6 p-2 d-flex flex-column ">
+                    <div class="  mt-3 pl-3 col-lg-6 p-2 d-flex flex-column ">
 
                         <div class="border-bottom border-dark">
                           <h5 class="">{{ $apart -> description }} @if (($apart -> visibility) == 0) : Non disponibile @endif

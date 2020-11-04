@@ -8,7 +8,7 @@
     <div class="container">
       <div class="col-6 mb-5 mt-5">
 
-    <div id="views-chart" class="chart" style="margin-top: 80px; background-color: white;position: relative; height:60vh; width:80vw">
+    <div id="views-chart" class="chart" style="margin-top: 150px; background-color: white;position: relative; height:60vh; width:80vw">
 
                 <canvas id="myChart" > </canvas>
 

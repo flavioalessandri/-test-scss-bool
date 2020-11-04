@@ -9,7 +9,7 @@
 
 <div class="container">
   <div class="row justify-content-center">
-    <div class="col-md-8">
+    <div class="col-md-8 col-lg-8">
       {{-- <a  href="{{route('user.index')}}">Elenco appartamenti</a> --}}
       <div id="show_card" class="card mt-5 mb-5" data-card="{{$count=0}}">
         <div class="card-header">
@@ -64,7 +64,7 @@
             </a>
           </div> --}}
 
-          <h2>Informazioni relative all'appartamento sdsds</h2>
+          <h2>Informazioni relative all'appartamento</h2>
           <ul>
               <li>Numero di letti: {{ $apart -> number_of_beds }}</li>
               <li>Numero di camere: {{ $apart -> number_of_rooms }}</li>

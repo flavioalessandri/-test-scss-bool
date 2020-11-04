@@ -9,7 +9,7 @@
 
 <div class="container">
   <div class="row justify-content-center">
-    <div class="col-md-8">
+    <div class="col-md-8 col-lg-8">
       {{-- <a  href="{{route('user.index')}}">Elenco appartamenti</a> --}}
       <div id="show_card" class="card mt-5 mb-5" data-card="{{$count=0}}">
         <div class="card-header">
@@ -97,12 +97,12 @@
                     @csrf
                     @method('POST')
 
-                    <input type="text" name="id" value=" {{$apart->id}}">
-                    <button type="submit" name="button">Vai a statistiche</button>
+                    <a class="btn btn-light" href="{{route('msgs.list', $apart -> id )}}">Messaggi</a>
+                    <button class="btn btn-light" type="submit" name="button">Vai a statistiche</button>
+                    <input class="invisible" type="text" name="id" value=" {{$apart->id}}">
         </form>
 
 
-            <a class="btn btn-light" href="{{route('msgs.list', $apart -> id )}}">Messaggi</a>
 
         </div>
       </div>

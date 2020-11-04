@@ -122,11 +122,11 @@
                   @foreach ($apart->images as $image)
 
                     <div class="row">
-                      <div class=" ml-2 mb-2 stored-image col-md-6">
+                      <div class=" mt-2 ml-2 mb-2 stored-image col-md-6">
                         <img src="{{asset($image->image_path)}}" alt="{{$image->image_path}}">
                       </div>
                       <div class="edit-button-delete col-md-2">
-                          <a class=" ml-3 btn btn-danger" href="{{route('destroy', $image->id)}}" data-input = "{{asset($image->image_path)}}" type="button" name="button">Delete</a>
+                          <a class=" mt-2 ml-3 mb-2 btn btn-danger" href="{{route('destroy', $image->id)}}" data-input = "{{asset($image->image_path)}}" type="button" name="button">Delete</a>
                       </div>
                     </div>
                   @endforeach
