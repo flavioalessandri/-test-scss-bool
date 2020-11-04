@@ -99,9 +99,22 @@ function init(){
 
 
     // provaprova
+    var targetDeleteAlgolia = $('.deleteAlgolia');
+    $('.deleteAlgolia').on('click',function() {
+      var id = $(this).data('id');
+      console.log(id);
+      const algoliasearch = require('algoliasearch');
 
+      const client = algoliasearch('Y49WMBJIFT', '63b572a22a729de27551ac2f07780053');
+      const index = client.initIndex('apartments');
 
+      index.deleteObject(id).then(() => {
 
+      });
+
+    });
+
+    // console.log($('.deleteAlgolia').data('id'));
 }
 
 

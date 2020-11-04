@@ -124,7 +124,7 @@
 
                           <input
                           @auth
-                          value='{{$user -> email }}'
+                          value="{{$user -> email }}"
                           @endauth
                             type="email" name="email" class="form-control" tabindex="2" placeholder="Email address" required>
                       </div>

@@ -79,7 +79,7 @@
 
                           <a class="btn btn-light" href="{{route('apart.show',$apart -> id)}}">Show</a>
                           <a class="btn btn-light" href="{{route('apart.edit',$apart -> id)}}">Edit</a>
-                          <a class="btn btn-light" href="{{route('apart.delete', $apart -> id)}}">Delete</a>
+                          <a data-id="{{$apart -> id}}" class="btn btn-light deleteAlgolia" href="{{route('apart.delete', $apart -> id)}}">Delete</a>
                         </div>
 
                     </div>

@@ -16,7 +16,7 @@
           <h1>{{$apart -> description}}</h1>
           <div class="">
             <a class="btn btn-light" href="{{route('apart.edit',$apart -> id)}}">Edit</a>
-            <a class="btn btn-light" href="{{route('apart.delete', $apart -> id)}}">Delete</a>
+            <a  data-id="{{$apart -> id}}" class="btn btn-light deleteAlgolia" href="{{route('apart.delete', $apart -> id)}}">Delete</a>
 
             @if (($apart -> visibility) == 1)
               <a class="btn btn-light" href="{{route('apart.hide',$apart -> id)}}">Hide</a>

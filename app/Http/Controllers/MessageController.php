@@ -35,6 +35,6 @@ class MessageController extends Controller
     Mail::to($proprietario['email'])
           ->send(new MessageSend($msg,$apart,$action));
     // dd($apart);
-    return view('show-guest-apartment',compact('apart','services'));
+    return view('show-guest-apartment',compact('apart','services','user'));
   }
 }
