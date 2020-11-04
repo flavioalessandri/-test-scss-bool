@@ -15,6 +15,15 @@
 //   }
 
 ////////////////////////
+
+.apartment-info  i {
+  color: #6c757d;
+  font-size: 20px;
+
+}
+
+
+
 *{
   margin: 0;
   padding: 0;
@@ -303,7 +312,7 @@ img.handelbar-img {
 .form-messaggio{
     margin-top: 24px ;
     width: 65% ;
-    margin-left: 30%;
+    // margin-left: 30%;
     border-width: 1px ;
     border-style: solid ;
     border-color: rgb(221, 221, 221) ;
