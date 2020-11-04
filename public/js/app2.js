@@ -24451,19 +24451,28 @@ function sliderRadius(lat, lng) {
 function printData(hits) {
   console.log('printData');
   var handtemplate = $('#handlebar-template').html();
-  var compiled = Handlebars.compile(handtemplate); // var handtargetSpons = $('#hand-target-spons');
-
+  var compiled = Handlebars.compile(handtemplate);
+  var handtargetSpons = $('#hand-target-sponsorship');
   var handtarget = $('#hand-target');
   handtarget.text('');
+  handtargetSpons.text('');
 
   for (var i = 0; i < hits.length; i++) {
     var hit = hits[i];
     var imgs = hit['imgs'];
     var img = imgs[0];
     hit['img'] = img;
+    console.log(hit['sponsorship']);
+
+    if (hit['sponsorship'] == 1) {
+      var resultHtml = compiled(hit);
+      handtargetSpons.append(resultHtml);
+    } else {
+      var resultHtml = compiled(hit);
+      handtarget.append(resultHtml);
+    }
+
     console.log(i, hit);
-    var resultHtml = compiled(hit);
-    handtarget.append(resultHtml);
   }
 } // function getResults(objects,lat,lng) {
 //   // console.log(objects);
@@ -24511,21 +24520,23 @@ function getDataValue(aparts, lat, lng) {
 
   for (var i = 0; i < aparts.length; i++) {
     var apart = aparts[i];
-    apart.objectID = 'App\Apartment::' + (i + 1);
+    apart.objectID = apart.id;
   } // console.log(objects);
+  // index.clearObjects();
 
+
+  console.log(); // if (true) {
+  //
+  // }
 
   index.saveObjects(aparts).then(function (_ref3) {
     var objectIDs = _ref3.objectIDs;
-    console.log(aparts); // index.setSettings({
-    // attributesForFaceting: [
-    //   'services', // or 'filterOnly(categories)' for filtering purposes only
-    //   'visibility'
-    // ]
-    // }).then(() => {
-    // // done
-    // });
-
+    console.log(aparts);
+    index.setSettings({
+      attributesForFaceting: ['services', // or 'filterOnly(categories)' for filtering purposes only
+      'visibility']
+    }).then(function () {// done
+    });
     index.setSettings({
       attributesForFaceting: ['services' // or 'filterOnly(categories)' for filtering purposes only
       ]

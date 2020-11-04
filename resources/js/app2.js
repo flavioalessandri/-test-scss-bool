@@ -518,20 +518,29 @@ function sliderRadius(lat,lng) {
 
   var handtemplate = $('#handlebar-template').html();
   var compiled = Handlebars.compile(handtemplate);
-  // var handtargetSpons = $('#hand-target-spons');
+  var handtargetSpons = $('#hand-target-sponsorship');
   var handtarget = $('#hand-target');
   handtarget.text('');
-
+  handtargetSpons.text('');
     for (var i = 0; i < hits.length; i++) {
 
       var hit = hits[i];
       var imgs = hit['imgs'];
       var img = imgs[0];
       hit['img'] = img;
-      console.log(i,hit);
-      var resultHtml = compiled(hit);
+      console.log(hit['sponsorship']);
+      if (hit['sponsorship'] == 1) {
+        var resultHtml = compiled(hit);
 
-        handtarget.append(resultHtml);
+          handtargetSpons.append(resultHtml);
+      }
+      else {
+        var resultHtml = compiled(hit);
+
+          handtarget.append(resultHtml);
+      }
+      console.log(i,hit);
+
     }
   }
 
@@ -579,20 +588,27 @@ function sliderRadius(lat,lng) {
 
     for (var i = 0; i < aparts.length; i++) {
       var apart = aparts[i];
-      apart.objectID = 'App\Apartment::' + (i+1);
+      apart.objectID = apart.id;
+
     }
     // console.log(objects);
+    // index.clearObjects();
+    console.log();
+
+    // if (true) {
+    //
+    // }
 
     index.saveObjects(aparts).then(({ objectIDs }) => {
     console.log(aparts);
-    // index.setSettings({
-    // attributesForFaceting: [
-    //   'services', // or 'filterOnly(categories)' for filtering purposes only
-    //   'visibility'
-    // ]
-    // }).then(() => {
-    // // done
-    // });
+    index.setSettings({
+    attributesForFaceting: [
+      'services', // or 'filterOnly(categories)' for filtering purposes only
+      'visibility'
+    ]
+    }).then(() => {
+    // done
+    });
     index.setSettings({
     attributesForFaceting: [
       'services', // or 'filterOnly(categories)' for filtering purposes only
