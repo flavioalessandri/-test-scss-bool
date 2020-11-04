@@ -8,7 +8,7 @@
 <div class="container">
   <div id="div-search" class="flex mb-4 mt-0">
     <div class="white-radius-center r2">
-      <input type="search" value="" name="places" id="mysearch" placeholder="Cerca appartamento">
+      <input type="search" value="" name="places" id="mysearch" placeholder="Cerca">
       {{-- <div class="search"> --}}
         <!-- <a href="#"><i class="fas fa-search"></i></a> -->
         {{-- <i class="fas fa-search"></i> --}}
@@ -97,7 +97,7 @@
           <input id='receptionCheck' type="checkbox" name="reception">
         </div>
         <!-- selezione numero minimo camere e letti -->
-        <div class="searchOptions">
+        <div class="searchOptions pl-5 col-12">
           <label for="min-rooms">Numero minimo di stanze</label>
             <select id="min-rooms" name="min-rooms">
               <option selected value="1"></option>
@@ -137,7 +137,7 @@
     <div class="card-body">
       <div class="d-flex flex-row flex-wrap">
 
-        <img class="handelbar-img" src="@{{{ img }}}" alt="nophoto">
+        <img class="handelbar-img  mx-auto" src="@{{{ img }}}" alt="nophoto">
 
           <div class="  pl-3 col-12 col-md-6 p-2 d-flex flex-column ">
 

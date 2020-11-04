@@ -101,6 +101,11 @@ header{
       border:none;
     }
 
+    .dropdown-item{
+      width:255px;
+      line-height: 2;
+    }
+
 
 
 }
@@ -108,4 +113,20 @@ header{
 #bg-white{
   background: white;
   box-shadow: 5px 0px 5px 0px rgba(0,0,0,0.3);
+}
+
+
+@media all and (max-width: 767px) {
+
+  header{
+
+      .dropdown-item{
+        width:100vw!important;
+        line-height: 4;
+        }
+
+    }
+
+
+
 }

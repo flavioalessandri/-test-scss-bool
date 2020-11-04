@@ -6,7 +6,7 @@
   <div class="container">
 
     <div class="row justify-content-center">
-      <div class="col-md-8">
+      <div class="mt-4 col-md-8">
         <div class="card">
           <div class="card-header">
             <h1 class="text-center">Sponsorizza il tuo appartamento</h1>
@@ -32,11 +32,11 @@
                 </div>
               @endif
 
-              <h1>Scegli la sponsorizzazione</h1>
+              <h1 >Scegli la sponsorizzazione</h1>
 
               @foreach ($sponsorships as $sponsor)
 
-                <div class="form-check">
+                <div class="form-check mb-4">
                   <input class="form-check-input" type="radio" name="sponsors" id="sponsors" value="{{ $sponsor -> id}}">
                   <label class="form-check-label" for="sponsors">
                     {{ $sponsor -> type_of_sponsorship }} - {{ $sponsor -> price }}€ / {{ $sponsor -> deadline }}h
@@ -45,7 +45,7 @@
 
               @endforeach
 
-              <h1>Scegli il tuo appartamento</h1>
+              <h1 >Scegli il tuo appartamento</h1>
 
 
               @foreach ($apartments as $apartment)

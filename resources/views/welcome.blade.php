@@ -4,12 +4,15 @@
 @endsection --}}
 @section('content')
 
+  <div class="container">
+
+
   <section id="section_home">
 
 
 
   <div id="div-search" class="flex" >
-    <div class="white-radius-center w100">
+    <div class="white-radius-center">
 
       <form class="flex formSearch" action="{{route('aparts.search')}}" method="post">
           @csrf
@@ -31,16 +34,21 @@
       </div> --}}
     </div>
   </div>
-  <div class="sponsorship-welcome col-md-8 m-auto">
+  <div class="sponsorship-welcome m-auto">
     @foreach ($aparts as $apart)
 
-      <div class="sponsorship card ml-2 mr-2
+      <div class="sponsorship card ml-2 mr-2 mb-4
       @if (($apart -> visibility) == 0)
       NoVisibility
       @endif
       " data-card="{{$count=0}}">
       <div class="card-body">
+
+        <div class="sponsored-label" class=""></div>
+
+
         <div class="d-flex flex-row flex-wrap">
+          <label class="sponsortext"> Premium </label>
           <div class="mycarousel">
             <div class="carousel-container">
 
@@ -48,7 +56,7 @@
                 <div class="carousel-images dim  @if ($count==0) active  @endif
                 " data-id="{{$count++}}">
 
-                    <img src="{{asset($image->image_path)}}" alt="{{$image->image_path}}">
+                    <img class="scaleOnHover" src="{{asset($image->image_path)}}" alt="{{$image->image_path}}">
 
                 </div>
 
@@ -64,11 +72,11 @@
 
             <div class="  pl-4 pr-4 col-12 ">
 
-                <div class="border-bottom border-white">
+                <div class="border-bottom border-dark">
                   <h5 class="">
                     <a href="{{route('search.apart.show', $apart -> id)}}">{{ $apart -> description }}</a>
                     <br>
-                    <small class=""> {{ $apart -> address }} - {{ $apart -> city }} - {{ $apart -> state }}  </small>
+                    <small class="text-muted"> {{ $apart -> address }} - {{ $apart -> city }} - {{ $apart -> state }}  </small>
                   </h5>
                 </div>
 
@@ -96,5 +104,6 @@
   </div>
 
   </section>
+</div>
 <script src="{{ asset('js/app1.js') }}" defer></script>
 @endsection
