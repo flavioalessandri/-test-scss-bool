@@ -53,7 +53,7 @@
             <div class="carousel-container">
 
               @foreach ($apart->images as $image)
-                <div class="carousel-images dim  @if ($count==0) active  @endif
+                <div class="carousel-images dim spons @if ($count==0) active  @endif
                 " data-id="{{$count++}}">
 
                     <img class="scaleOnHover" src="{{asset($image->image_path)}}" alt="{{$image->image_path}}">
@@ -70,7 +70,7 @@
           </div>
 
 
-            <div class="  pl-4 pr-4 col-12 ">
+            <div class=" spons-card pl-4 pr-4 col-12 ">
 
                 <div class="border-bottom border-dark">
                   <h5 class="">

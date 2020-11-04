@@ -65,17 +65,46 @@
           </div> --}}
 
           <h2>Informazioni relative all'appartamento</h2>
-          <ul>
-              <li>Numero di letti: {{ $apart -> number_of_beds }}</li>
-              <li>Numero di camere: {{ $apart -> number_of_rooms }}</li>
-              <li>Numero di bagni: {{ $apart -> number_of_bathrooms }}</li>
-              <li>Grandezza : {{ $apart -> square_meters }} m²</li>
-              <li>Indirizzo: via <span style="text-transform: capitalize;">{{$apart -> address}}</span>, <span style="text-transform: capitalize;">{{$apart -> city}}</span>, <span style="text-transform: capitalize;">{{$apart -> state}}</span></li>
-          </ul>
+
+          <table class="table table-borderless">
+          <thead>
+            <tr>
+            </tr>
+          </thead>
+          <tbody class="apartment-info">
+            <tr>
+              <th scope="row"><i class="fas fa-bed"></i></th>
+              <td>Numero di letti: {{ $apart -> number_of_beds }}</td>
+            </tr>
+            <tr>
+              <th scope="row"><i class="fas fa-cube"></i></th>
+              <td>Numero di camere: {{ $apart -> number_of_rooms }}</td>
+            </tr>
+            <tr>
+              <th scope="row"><i class="fas fa-toilet"></i></th>
+              <td>Numero di bagni: {{ $apart -> number_of_bathrooms }}</td>
+            </tr>
+            <tr>
+              <th scope="row"><i class="fas fa-home"></i></th>
+              <td>Grandezza : {{ $apart -> square_meters }} m²</td>
+            </tr>
+            <tr>
+              <th scope="row"><i class="fas fa-map-marker-alt"></i></th>
+              <td> Indirizzo: via <span style="text-transform: capitalize;">{{$apart -> address}}</span>, <span style="text-transform: capitalize;">{{$apart -> city}}</span>, <span style="text-transform: capitalize;">{{$apart -> state}}</span></td>
+            </tr>
+          </tbody>
+        </table>
+          {{-- <ul>
+              <li><i class="fas fa-bed"></i> Numero di letti: {{ $apart -> number_of_beds }}</li>
+              <li><i class="fas fa-cube"></i> Numero di camere: {{ $apart -> number_of_rooms }}</li>
+              <li><i class="fas fa-toilet"></i> Numero di bagni: {{ $apart -> number_of_bathrooms }}</li>
+              <li> <i class="fas fa-home"></i> Grandezza : {{ $apart -> square_meters }} m²</li>
+              <li><i class="fas fa-map-marker-alt"></i>   Indirizzo: via <span style="text-transform: capitalize;">{{$apart -> address}}</span>, <span style="text-transform: capitalize;">{{$apart -> city}}</span>, <span style="text-transform: capitalize;">{{$apart -> state}}</span></li>
+          </ul> --}}
           <h2>Servizi aggiuntivi</h2>
-          <ul>
+          <ul class="apartment-info-services">
             @foreach ($services as $serv)
-              <li>{{ $serv -> service }}</li>
+              <li class="mt-4 d-inline p-2 bg-primary text-white">{{ $serv -> service }}</li>
             @endforeach
           </ul>
 
