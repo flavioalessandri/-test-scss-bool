@@ -168,7 +168,8 @@ class GuestController extends Controller
     $aparts = Apartment::all();
 
     foreach ($aparts as $apart) {
-
+      $i = 1;
+      $i++;
       $arrayImgs = [];
         $imgs = $apart -> images() -> get();
         // dd($imgs);
@@ -207,7 +208,11 @@ class GuestController extends Controller
         // $apart['imgs'] = [1,2,3,4];
       }
 
+
     }
+
+
+
     return response()->json($aparts);
   }
 

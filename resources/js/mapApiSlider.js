@@ -10,8 +10,8 @@ export function searchOnMapSlider(lat, lng, slider){
 
 
 
-var APPLICATION_ID = 'C50JGFH5DN';
-var SEARCH_ONLY_API_KEY = '4301d4422ac7e4fff78b3a9db7965ffc';
+var APPLICATION_ID = 'Y49WMBJIFT';
+var SEARCH_ONLY_API_KEY = '63b572a22a729de27551ac2f07780053';
 var INDEX_NAME = 'apartments';
 var PARAMS = {hitsPerPage: 60};
 
