@@ -44,19 +44,21 @@ class SponsorCheck extends Command
                    -> where('sponsorship', '=', true)
                    -> get();
 
+
       $sponsorsDead = DB::table('payments')
                      -> select('deadline')
                      -> join('apartments', 'apartments.id', '=', 'payments.apartment_id')
                      -> where('apartments.sponsorship', '=', true)
                      -> get();
-
+                     
       $presentDate = Carbon::now();
 
       foreach ($sponsorsDead as $sponsorDead) {
 
-        if ($presentDate > $sponsorDead) {
+        if ($presentDate ->greaterThan($sponsorDead-> deadline) ) {
 
           $apartExpire = DB::table('apartments') -> update(['sponsorship' => false]);
+          $this -> info('ok');
         }
       }
     }
