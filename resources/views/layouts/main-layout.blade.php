@@ -28,7 +28,7 @@
           {{-- @yield('header') --}}
           @yield('content')
 
-
+          @include('partials.footer')
 
 
         </div>
@@ -36,6 +36,6 @@
         <script src="{{ asset('js/app1.js') }}" defer></script> --}}
 
         {{-- @include('partials.js') --}}
-        
+
     </body>
 </html>
