@@ -15898,6 +15898,47 @@ section#sponsorship h2 {
   }
 }
 
+footer {
+  line-height: 2;
+  width: 100%;
+  background-color: white;
+}
+
+footer img.footer-logo {
+  width: 25px;
+}
+
+footer img.footer-logo.small {
+  width: 20px;
+}
+
+footer .max-width-1200 {
+  max-width: 1200px;
+  width: 90%;
+}
+
+footer ul.links {
+  list-style-type: none;
+}
+
+footer ul.links i {
+  width: 30px;
+  font-size: 20px;
+  color: #fc3c60;
+}
+
+footer ul.links li {
+  display: block;
+  width: 125px;
+  text-align: left;
+  margin: auto;
+}
+
+footer table i {
+  width: 30px;
+  font-size: 20px;
+}
+
 .ap-input-icon svg {
   display: none;
 }
