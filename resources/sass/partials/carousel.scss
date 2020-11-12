@@ -25,9 +25,11 @@
       .next > i, .prev > i {
         font-size: 30px;
         color:#fc3c60;
+        filter: drop-shadow(0 2px 5px rgba(255, 81, 112,0.25));
       }
 
       .carousel-images{
+        border-radius: 3px;
         opacity:.5;
         width:325px;
         height:200px;
@@ -37,6 +39,7 @@
         transform:translate(-50% , -50%);
         overflow: hidden;
         transition: all 0.2s;
+        filter: drop-shadow(0px 1px 1px rgba(108, 117, 125,0.45));
           & > img {
             width:100%;
             height:auto;

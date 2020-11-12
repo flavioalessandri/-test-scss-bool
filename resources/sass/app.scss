@@ -22,6 +22,15 @@
 
 }
 
+  .previous-page{
+    position: fixed;
+    left: 5%;
+    top: 100px;
+    z-index: 999;
+    background-color: white;
+    border-radius: 20px;
+    padding: 5px 10px;    
+  }
 
 
 *{
@@ -123,7 +132,6 @@ a{
   height: 50px;
   width: 50px;
   background-color: #FF385C;
-  // transform: translate(0, -5px);
   margin:0;
   padding: 0;
 }
@@ -158,7 +166,6 @@ a{
     display: inline-block;
 }
     #my-img-inp{
-      // width: 150px;
       margin-top: 15px;
       margin-bottom: 15px;
 
@@ -222,14 +229,7 @@ a{
   border-radius: 30px;
   padding:5px 5px 5px 15px;
 
-
-  //
-  // & > button{
-  //     padding-top:0px;
-  // }
 }
-
-
 
 .white-radius-center p{
   color: grey;
@@ -282,7 +282,6 @@ button.search {
 }
 
 #mysearch{
-
   background-color: transparent;
   border:none!important;
   outline: none;
@@ -314,17 +313,23 @@ img.handelbar-img {
 .form-messaggio{
     margin-top: 24px ;
     width: 65% ;
-    // margin-left: 30%;
     border-width: 1px ;
     border-style: solid ;
     border-color: rgb(221, 221, 221) ;
     border-image: initial ;
-    border-radius: 8px ;
-    border-top-left-radius: 8px ;
-    border-top-right-radius: 8px ;
-    border-bottom-right-radius: 8px ;
-    border-bottom-left-radius: 8px ;
+    border-radius: 8px ;    
     padding: 24px ;
+    background: linear-gradient(0.25turn, #ff264d, #ff5170,#fb768e);
+    position: relative;
+
+              i.msg-icon{
+                color:white;
+                position: absolute;
+                right: 20px;
+                font-size: 20px;
+                top:26px;
+              }
+
   }
 // =======
 #mapApiGoogle{
@@ -333,12 +338,6 @@ img.handelbar-img {
   margin:auto;
   margin-top: 30px;
 }
-
-
-
-
-
-
 
 
 // aggiunte
@@ -351,16 +350,8 @@ img.handelbar-img {
 
   .sponsorship {
     position: relative;
-    // z-index: -1;
-
-    // span, h5,a,small {color:white;}
   }
 
-  // .sponsorship.card{
-  //   width: 48%;
-  //   // padding: 0;
-  //   margin-bottom: 2%;
-  // }
 }
 
 #hand-target-sponsorship {
@@ -372,7 +363,6 @@ img.handelbar-img {
   top: -3px;
   right: -4px;
   transform: rotate(1deg);
-    // background-color: #FF5170;
   }
 }
 
@@ -420,22 +410,10 @@ img.handelbar-img {
     transform: translate(0%, -100%);
   }
   .test{background-color: red;}
-  // .w100{
-  //   width: 80%;
   }
 
-
-  .flex-column{}
-  .mb-4{}
-  .d-flex{}
-  .justify-content-center{}
-  .d-block{}
-  .flex-column{}
-  .mt-5{}
-  .mx-auto{}
   .mrg-r20{margin-right: 20%;}
   .mrg-t100{margin-top: 100px;}
-  // .mrg-t300{margin-top: 300px;}
   .pad-t100{padding-top: 100px;}
   .mrg-t50{margin-top: 50px;}
 
@@ -451,7 +429,6 @@ img.handelbar-img {
 
    .sponsorship.card{
      width: 360px;
-     // padding: 0;
      margin-bottom: 2%;
    }
 
@@ -475,8 +452,6 @@ img.handelbar-img {
    .r3{
      transform: translate(0%, -100%);
    }
-   .test{background-color: red;}
-   // .w100{
-   //   width: 80%;
-
+   .test{background-color: red;} 
+  
   }

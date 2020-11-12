@@ -4,16 +4,20 @@
 
 
   <section id="section">
-
+    <a href="{{ url()->previous() }}" class="previous-page text-secondary"><i class="fas fa-reply"></i> 
+      <span class="d-none d-md-inline">Pagina Precedente</span>
+    </a>
+    
     <div class="container">
       <div class="col-6 mb-5 mt-5">
+
 
     <div id="views-chart" class="chart" style="margin-top: 150px; background-color: white;position: relative; height:60vh; width:80vw">
 
                 <canvas id="myChart" > </canvas>
 
-        <div id="chart-prev" style=" cursor:pointer; position: absolute; top:100%;left:0; z-index:3;"><i class="fas fa-chevron-circle-left" style="font-size:30px;"></i> </div>
-        <div id="chart-next" style=" cursor:pointer; position: absolute; top:100%; right:0;z-index:3;"><i class="fas fa-chevron-circle-right" style="font-size:30px;"></i> </div>
+        <div id="chart-prev" ><i class="fas fa-chevron-circle-left"></i> </div>
+        <div id="chart-next" ><i class="fas fa-chevron-circle-right"></i> </div>
 
     </div>
 

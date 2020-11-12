@@ -40,6 +40,9 @@
           <br>
           <br>
           Contenuto del messaggio: {{$msg -> message}}
+          <br>
+          <br>
+          Messaggio inviato il: {{$msg -> created_at}}
         </div>
 
       </div>

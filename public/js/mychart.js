@@ -10989,7 +10989,7 @@ function removeOldChart() {
 } // ----------------------------------------------------------------------------------------
 
 
-function getMsgChart(msgToMatch, week) {
+function printMsgChart(msgToMatch, week) {
   var ctx = document.getElementById('mymessageChart').getContext('2d');
   var myMsgChart = new Chart(ctx, {
     type: 'line',
@@ -11028,7 +11028,7 @@ function getMsgChart(msgToMatch, week) {
 } // ----------------------------------------------------------------------------------------
 
 
-function getClickChart(arrayNewClick, week) {
+function printClickChart(arrayNewClick, week) {
   var ctx = document.getElementById('myChart').getContext('2d');
   var myClickChart = new Chart(ctx, {
     type: 'bar',
@@ -11064,7 +11064,7 @@ function getClickChart(arrayNewClick, week) {
 } // ----------------------------------------------------------------------------------------
 
 
-function getMessageData(id, week) {
+function getApiMessageData(id, week) {
   //console.log('ENTER MESSAGE DATA');
   var msgToMatch = [0, 0, 0, 0, 0, 0, 0];
   $.ajax({
@@ -11093,7 +11093,7 @@ function getMessageData(id, week) {
       //console.log("MESSAGGI INTERCETTATI",msgToMatch);
 
 
-      getMsgChart(msgToMatch, week);
+      printMsgChart(msgToMatch, week);
     },
     error: function error(err) {//console.log('error', err);
     }
@@ -11101,7 +11101,7 @@ function getMessageData(id, week) {
 } // -----------------------------------------------------------------------------------------
 
 
-function getClickData(id, week) {
+function getApiClickData(id, week) {
   //console.log('ENTER');
   var clickToMatch = [0, 0, 0, 0, 0, 0, 0];
   $.ajax({
@@ -11126,7 +11126,7 @@ function getClickData(id, week) {
       }
 
       var arrayNewClick = clickToMatch;
-      getClickChart(arrayNewClick, week);
+      printClickChart(arrayNewClick, week);
     },
     error: function error(err) {//console.log('error', err);
     }
@@ -11148,8 +11148,8 @@ function nextWeek(id) {
   }
 
   ;
-  getClickData(id, nxtweek);
-  getMessageData(id, nxtweek);
+  getApiClickData(id, nxtweek);
+  getApiMessageData(id, nxtweek);
 } // -----------------------------------------------------------------------------------------
 
 
@@ -11167,8 +11167,8 @@ function prevWeek(id) {
   }
 
   ;
-  getClickData(id, prvweek);
-  getMessageData(id, prvweek);
+  getApiClickData(id, prvweek);
+  getApiMessageData(id, prvweek);
 } // -----------------------------------------------------------------------------------------
 
 
@@ -11185,8 +11185,8 @@ function init() {
 
   ;
   week.reverse();
-  getMessageData(id, week);
-  getClickData(id, week);
+  getApiMessageData(id, week);
+  getApiClickData(id, week);
   var prevbuttonAttr = $('#chart-prev').attr('click', startdate.format("YYYY-MM-DD"));
   var nextbuttonAttr = $('#chart-next').attr('click', startdate.format("YYYY-MM-DD"));
   $('#chart-prev').on('click', function () {
@@ -11258,7 +11258,7 @@ function getFakeData(id, week, msgToMatch) {
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
-module.exports = __webpack_require__(/*! /home/caterina/boolean-project/-test-scss-bool/resources/js/mychart.js */"./resources/js/mychart.js");
+module.exports = __webpack_require__(/*! C:\Users\flavi\Desktop\image-27-multiple-images\resources\js\mychart.js */"./resources/js/mychart.js");
 
 
 /***/ })
