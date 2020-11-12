@@ -41,7 +41,7 @@
                 <div class="carousel-images  @if ($count==0) active  @endif
                 " data-id="{{$count++}}">
 
-                    <img src="{{asset($image->image_path)}}" alt="{{$image->image_path}}">
+            <img src="{{asset($image->image_path)}}" alt="{{asset($image->image_path)}}">
 
                 </div>
 

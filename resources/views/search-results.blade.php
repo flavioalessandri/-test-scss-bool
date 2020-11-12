@@ -138,7 +138,7 @@
       <div class="sponsored-label" class=""></div>
       <div class="d-flex flex-row flex-wrap">
 
-        <img class="handelbar-img  mx-auto" src="@{{{ img }}}" alt="nophoto">
+      <img class="handelbar-img  mx-auto" src="@{{{ img }}}" onerror="this.onerror=null; this.src='/img/notFound.jpg'">
 
           <div class="  pl-3 col-12 col-md-6 p-2 d-flex flex-column ">
 
