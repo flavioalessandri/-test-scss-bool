@@ -15541,6 +15541,10 @@ body {
   background-attachment: fixed;
 }
 
+#app {
+  min-height: 780px;
+}
+
 header {
   z-index: 999;
   top: 0;
@@ -16413,6 +16417,10 @@ img.handelbar-img {
 }
 
 @media all and (min-width: 767px) and (max-width: 2000px) {
+  #app {
+    min-height: 530px;
+  }
+
   .sponsorship.card {
     width: 360px;
     margin-bottom: 2%;

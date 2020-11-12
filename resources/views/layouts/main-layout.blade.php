@@ -4,6 +4,7 @@
     @include('partials.head')
 
     <body>
+      <div class="d-flex flex-column">
 
         <div id="app" class="flex-center position-ref full-height">
 
@@ -28,14 +29,16 @@
           {{-- @yield('header') --}}
           @yield('content')
 
-          @include('partials.footer')
-
-
+          
+          
         </div>
         {{-- <script src="{{ asset('js/app2.js') }}" defer></script>
         <script src="{{ asset('js/app1.js') }}" defer></script> --}}
-
+        
         {{-- @include('partials.js') --}}
+        
+        @include('partials.footer')
 
+      </div>
     </body>
 </html>
