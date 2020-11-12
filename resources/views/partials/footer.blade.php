@@ -96,35 +96,35 @@
             <tr>
               <th scope="row "><i class="fab fa-github pr-2"></i></th>              
               <td class="border-top-0" >
-                 <a class="text-secondary" href="">Caterina Marian</a>
+                 <a class="text-secondary" href="https://github.com/caterinamrn">Caterina Marian</a>
               </td>
             </tr>
             
             <tr>
               <th scope="row"><i class="fab fa-github pr-2"></i></th>
               <td class="border-top-0">
-                <a class="text-secondary" href="">Davit Janashia</a>           
+                <a class="text-secondary" href="https://github.com/DavitJanashia">Davit Janashia</a>           
               </td>
             </tr>
 
             <tr>
               <th scope="row"><i class="fab fa-github pr-2"></i></th>
               <td class="border-top-0">
-                <a class="text-secondary" href="">Flavio Alessandri</a>
+                <a class="text-secondary" href="https://github.com/flavioalessandri">Flavio Alessandri</a>
               </td>                
             </tr>
 
             <tr>
               <th scope="row"><i class="fab fa-github pr-2"></i></th>
               <td class="border-top-0">
-                <a class="text-secondary" href="">Andrea Caprara</a>
+                <a class="text-secondary" href="https://github.com/andreacapntd">Andrea Caprara</a>
               </td>
             </tr>
 
             <tr>
               <th scope="row"><i class="fab fa-github pr-2"></i></th>
               <td class="border-top-0">
-                <a class="text-secondary" href="">Alfonso Ferrara</a>                
+                <a class="text-secondary" href="https://github.com/alfof87">Alfonso Ferrara</a>                
               </td>
             </tr>
           </tbody>

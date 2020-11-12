@@ -15516,6 +15516,16 @@ a.text-dark:focus {
   font-size: 20px;
 }
 
+.previous-page {
+  position: fixed;
+  left: 5%;
+  top: 100px;
+  z-index: 999;
+  background-color: white;
+  border-radius: 20px;
+  padding: 5px 10px;
+}
+
 * {
   margin: 0;
   padding: 0;
@@ -15678,6 +15688,34 @@ section#section_create h2 {
   font-size: 20px;
 }
 
+section#section #chart-prev {
+  cursor: pointer;
+  position: absolute;
+  top: 100%;
+  left: 0;
+  z-index: 3;
+}
+
+section#section #chart-next {
+  cursor: pointer;
+  position: absolute;
+  top: 100%;
+  right: 0;
+  z-index: 3;
+}
+
+section#section #chart-prev > i,
+section#section #chart-next > i {
+  color: grey;
+  font-size: 30px;
+  transition: all 0.3s;
+}
+
+section#section #chart-prev > i:hover,
+section#section #chart-next > i:hover {
+  color: #fc3c60;
+}
+
 section#section_show {
   padding-top: 80px;
 }
@@ -15688,28 +15726,64 @@ section#section_show h1 {
 
 section#section_show h2 {
   font-size: 20px;
+  padding-right: 15px;
+}
+
+section#section_show .card-header {
+  color: white;
+  background: linear-gradient(0.25turn, #ff264d, #ff5170, #fb768e);
+  border-color: 2px solid #ff5170;
+  background-color: #ff5170;
+  filter: drop-shadow(0px 2px 6px rgba(108, 117, 125, 0.65));
+}
+
+section#section_show .apartment-services-list,
+section#section_show .apartment-info {
+  padding-bottom: 5px;
+  border-bottom: 1px solid #ff5170;
+}
+
+section#section_show li {
+  border-radius: 3px;
+}
+
+section#section_home .sponsorship.card {
+  position: relative;
+  width: 360px;
+  height: 280px;
+  overflow: hidden;
+  filter: drop-shadow(-2px 8px 7px rgba(108, 117, 125, 0.85));
+  transition: all 0.3s;
+  border: none;
+}
+
+section#section_home .sponsorship.card:hover {
+  transform: scale(1.01);
+}
+
+section#section_home .card-body {
+  position: relative;
+  padding: 0;
 }
 
 section#section_home .spons-card {
-  margin-top: 40px;
+  width: 100%;
+  position: absolute;
+  z-index: 2;
+  bottom: 0;
+  padding: 5px 10px 5px 10px;
+  filter: drop-shadow(0px -2px 7px rgba(108, 117, 125, 0.85));
+  background-color: rgba(255, 255, 255, 0.85);
 }
 
-section#section_home .mycarousel {
-  min-width: 240px;
-  max-height: 140px;
+section#section_home .carousel-images.dim.spons {
+  position: absolute;
+  width: 100%;
 }
 
-section#section_home .mycarousel .carousel-images.dim.spons {
-  margin-top: 40px;
-  width: 200px;
-}
-
-section#section_home .sponsorship.card img.scaleOnHover {
-  transition: all 0.3s;
-}
-
-section#section_home .sponsorship.card:hover img.scaleOnHover {
-  transform: scale(1.02);
+section#section_home .carousel-images.dim.spons > img {
+  width: 100%;
+  max-height: 280px;
 }
 
 section#section_home .sponsored-label {
@@ -15717,9 +15791,11 @@ section#section_home .sponsored-label {
   border-right: 100px solid #FF5170;
   border-bottom: 95px solid transparent;
   position: absolute;
-  top: -6px;
-  right: -4px;
+  top: -14px;
+  right: -2px;
   transform: rotate(1deg);
+  z-index: 4;
+  filter: drop-shadow(0 2px 5px rgba(255, 81, 112, 0.85));
 }
 
 section#section_home .sponsortext {
@@ -15731,6 +15807,7 @@ section#section_home .sponsortext {
   color: white;
   font-weight: bold;
   font-size: 16px;
+  z-index: 5;
 }
 
 section#section_user_apartment_list {
@@ -15740,6 +15817,15 @@ section#section_user_apartment_list {
   background-repeat: repeat-y;
   background-repeat: repeat-x;
   background-repeat-y: repeat;
+}
+
+section#section_user_apartment_list h2 {
+  background: linear-gradient(0.25turn, #ff264d, #ff5170, #fb768e);
+  color: white;
+}
+
+section#section_user_apartment_list .previous-page {
+  top: 120px;
 }
 
 section#section_user_apartment_list .mycarousel.list {
@@ -15819,9 +15905,11 @@ section#sponsorship h2 {
 .mycarousel .prev > i {
   font-size: 30px;
   color: #fc3c60;
+  filter: drop-shadow(0 2px 5px rgba(255, 81, 112, 0.25));
 }
 
 .mycarousel .carousel-images {
+  border-radius: 3px;
   opacity: 0.5;
   width: 325px;
   height: 200px;
@@ -15831,6 +15919,7 @@ section#sponsorship h2 {
   transform: translate(-50%, -50%);
   overflow: hidden;
   transition: all 0.2s;
+  filter: drop-shadow(0px 1px 1px rgba(108, 117, 125, 0.45));
 }
 
 .mycarousel .carousel-images > img {
@@ -15899,6 +15988,7 @@ section#sponsorship h2 {
 }
 
 footer {
+  filter: drop-shadow(0px -5px 7px rgba(108, 117, 125, 0.85));
   line-height: 2;
   width: 100%;
   background-color: white;
@@ -16212,11 +16302,17 @@ img.handelbar-img {
   -o-border-image: initial;
      border-image: initial;
   border-radius: 8px;
-  border-top-left-radius: 8px;
-  border-top-right-radius: 8px;
-  border-bottom-right-radius: 8px;
-  border-bottom-left-radius: 8px;
   padding: 24px;
+  background: linear-gradient(0.25turn, #ff264d, #ff5170, #fb768e);
+  position: relative;
+}
+
+.form-messaggio i.msg-icon {
+  color: white;
+  position: absolute;
+  right: 20px;
+  font-size: 20px;
+  top: 26px;
 }
 
 #mapApiGoogle {

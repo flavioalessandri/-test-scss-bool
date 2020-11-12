@@ -37,68 +37,64 @@
   <div class="sponsorship-welcome m-auto">
     @foreach ($aparts as $apart)
 
-      <div class="sponsorship card ml-2 mr-2 mb-4
-      @if (($apart -> visibility) == 0)
-      NoVisibility
-      @endif
-      " data-card="{{$count=0}}">
-      <div class="card-body">
+              <div class="sponsorship card ml-2 mr-2 mb-4
+                  @if (($apart -> visibility) == 0)
+                  NoVisibility
+                  @endif
+                          " data-card="{{$count=0}}">
 
-        <div class="sponsored-label" class=""></div>
+                          <a href="{{route('search.apart.show', $apart -> id)}}">
 
 
-        <div class="d-flex flex-row flex-wrap">
-          <label class="sponsortext"> Premium </label>
-          <div class="mycarousel">
-            <div class="carousel-container">
+              <div class="card-body">
+                
 
-              @foreach ($apart->images as $image)
-                <div class="carousel-images dim spons @if ($count==0) active  @endif
-                " data-id="{{$count++}}">
+                <div class="sponsored-label" class=""></div>
 
-                    <img class="scaleOnHover" src="{{asset($image->image_path)}}" alt="{{$image->image_path}}">
 
-                </div>
+                
+                  <label class="sponsortext"> Premium </label>   
+                  
+                  <div class="images-card">
+                        @foreach ($apart->images as $image)
+                          <div class="carousel-images dim spons @if ($count==0) active  @endif
+                          " data-id="{{$count++}}">
+                              <img class="nocarousel" src="{{asset($image->image_path)}}" alt="{{$image->image_path}}">
+                          </div>
+                        @endforeach              
+                    </div>
 
-              @endforeach
+                    <div class=" spons-card" >
+
+                        <div class="border-bottom border-dark">
+                          <h5 class="">
+                            <a href="{{route('search.apart.show', $apart -> id)}}">{{ $apart -> description }}</a>
+                            <br>
+                            <small class="text-muted"> {{ $apart -> address }} - {{ $apart -> city }} - {{ $apart -> state }}  </small>
+                          </h5>
+                        </div>
+
+                        <div class="d-flex" >
+                          <div class="pt-2 pr-2">
+                            <span> {{ $apart -> square_meters }} mq  </span>
+                        </div>
+                          <div class="pt-2 pr-2">
+                            <span > Stanze: {{ $apart -> number_of_rooms }} </span>
+                          </div>
+                          <div class="pt-2 pr-2">
+                            <span > Letti: {{ $apart -> number_of_beds }}  </span>
+                          </div>
+                        </div>
+
+
+
+                    </div>
+
+                
+              </div>
+
+              </a>
             </div>
-
-            {{-- <div class="prev"><i class="fas fa-chevron-circle-left"></i> </div>
-            <div class="next"><i class="fas fa-chevron-circle-right"></i> </div> --}}
-
-
-          </div>
-
-
-            <div class=" spons-card pl-4 pr-4 col-12 ">
-
-                <div class="border-bottom border-dark">
-                  <h5 class="">
-                    <a href="{{route('search.apart.show', $apart -> id)}}">{{ $apart -> description }}</a>
-                    <br>
-                    <small class="text-muted"> {{ $apart -> address }} - {{ $apart -> city }} - {{ $apart -> state }}  </small>
-                  </h5>
-                </div>
-
-                <div class="flex-grow-1 text-secondary">
-                  <div class="pt-2">
-                    <span> {{ $apart -> square_meters }} mq  </span>
-                </div>
-                  <div class="">
-                    <span class="pt-2"> Stanze: {{ $apart -> number_of_rooms }} </span>
-                  </div>
-                  <div class="">
-                    <span class="pt-2"> Letti: {{ $apart -> number_of_beds }}  </span>
-                  </div>
-                </div>
-
-
-
-            </div>
-
-        </div>
-      </div>
-    </div>
 
   @endforeach
   </div>

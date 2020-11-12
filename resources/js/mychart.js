@@ -14,7 +14,7 @@ function removeOldChart(){
 }
 
 // ----------------------------------------------------------------------------------------
-function getMsgChart(msgToMatch, week){
+function printMsgChart(msgToMatch, week){
 
   var ctx = document.getElementById('mymessageChart').getContext('2d');
   var myMsgChart = new Chart(ctx, {
@@ -56,7 +56,7 @@ function getMsgChart(msgToMatch, week){
 }
 
 // ----------------------------------------------------------------------------------------
-function getClickChart(arrayNewClick, week){
+function printClickChart(arrayNewClick, week){
 
   var ctx = document.getElementById('myChart').getContext('2d');
   var myClickChart = new Chart(ctx, {
@@ -108,7 +108,7 @@ function getClickChart(arrayNewClick, week){
   myClickChart.update();
 }
 // ----------------------------------------------------------------------------------------
-function  getMessageData(id, week ){
+function  getApiMessageData(id, week ){
     //console.log('ENTER MESSAGE DATA');
       var msgToMatch = [0,0,0,0,0,0,0];
 
@@ -143,7 +143,7 @@ function  getMessageData(id, week ){
             //console.log("GIORNI SETTIMANA",week);
             //console.log("MESSAGGI INTERCETTATI",msgToMatch);
 
-            getMsgChart(msgToMatch, week);
+            printMsgChart(msgToMatch, week);
 
         },
         error: function(err) {
@@ -153,7 +153,7 @@ function  getMessageData(id, week ){
 }
 
 // -----------------------------------------------------------------------------------------
-function getClickData( id, week ){
+function getApiClickData( id, week ){
   //console.log('ENTER');
   var clickToMatch = [0,0,0,0,0,0,0];
 
@@ -184,7 +184,7 @@ function getClickData( id, week ){
 
         var arrayNewClick = clickToMatch;
 
-      getClickChart(arrayNewClick, week);
+      printClickChart(arrayNewClick, week);
 
     },
     error: function(err) {
@@ -213,8 +213,8 @@ function nextWeek(id){
       nxtweek.push(day);
     };
 
-    getClickData(id, nxtweek );
-    getMessageData(id, nxtweek);
+    getApiClickData(id, nxtweek );
+    getApiMessageData(id, nxtweek);
 }
 
 // -----------------------------------------------------------------------------------------
@@ -237,8 +237,8 @@ function prevWeek(id){
       prvweek.push(day);
     };
 
-    getClickData(id, prvweek );
-    getMessageData(id, prvweek );
+    getApiClickData(id, prvweek );
+    getApiMessageData(id, prvweek );
 }
 
 // -----------------------------------------------------------------------------------------
@@ -258,9 +258,9 @@ function init(){
 
   week.reverse();
 
-  getMessageData( id, week);
+  getApiMessageData( id, week);
 
-  getClickData( id, week );
+  getApiClickData( id, week );
 
   var prevbuttonAttr = $('#chart-prev').attr('click', startdate.format("YYYY-MM-DD"));
   var nextbuttonAttr = $('#chart-next').attr('click', startdate.format("YYYY-MM-DD"));
