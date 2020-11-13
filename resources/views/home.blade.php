@@ -8,18 +8,19 @@
 
 <div class="container">
     <div class="row justify-content-center">
-        <div class="col-md-8 d-flex justify-content-center mt-5 mb-5">
-          <div id="my_dashboard" class="r card flex">
-            <div class="card-header ">{{ __('Dashboard') }}</div>
-
-              <div class="card-body ">
-                  @if (session('status'))
-                      <div class="alert alert-success" role="alert">
-                          {{ session('status') }}
-                      </div>
-                  @endif
-
-                  {{ __('You are logged in!') }}
+        <div class="col-md-8 text-center">   
+                   
+          <div id="my_dashboard" class="">
+            <div class="card-header"> {{ __('Ti sei Loggato Correttamente !') }}</div>
+            
+            <div class="card-body ">
+              @if (session('status'))
+              <div class="alert alert-success" role="alert">
+                {{ session('status') }}
+              </div>
+              @endif
+              
+              <div> Benvenuto {{ $user-> firstname }}</div>
               </div>
           </div>
         </div>

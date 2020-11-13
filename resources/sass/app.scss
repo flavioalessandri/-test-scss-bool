@@ -9,17 +9,45 @@
 
 @import '~@fortawesome/fontawesome-free/css/all.css';
 
-// Small devices--------------------------------------
-// @media all and (min-width: 768px) and (max-width: 992px) {
-//
-//   }
+*{
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: sans-serif;
+}
 
-////////////////////////
+body{
+  display: flex;
+  flex-direction: column;
+  width:100%;
+  min-height: 100vh;
+  background-image: url('../img/jumbo.jpg');
+  background-size: cover;
+  background-attachment: fixed;
+}
+
+
+
+
+
+@import 'partials/header';
+
+@import 'partials/sections';
+
+@import 'partials/carousel';
+
+@import 'partials/footer';
+
+.card-header.coloured{
+  color:white;
+  background: linear-gradient(0.25turn, #ff264d, #ff5170,#fb768e);
+
+    h1{ font-size: 24px;}
+}
 
 .apartment-info  i {
   color: #6c757d;
   font-size: 20px;
-
 }
 
   .previous-page{
@@ -32,40 +60,12 @@
     padding: 5px 10px;    
   }
 
-
-*{
-  margin: 0;
-  padding: 0;
-  box-sizing: border-box;
-  font-family: sans-serif;
-}
-
-body{
-  width:100%;
-  min-height: 100vh;
-  background-image: url('../img/jumbo.jpg');
-  background-size: cover;
-
-  background-attachment: fixed;
-
-}
-
-#app{
-  min-height: 780px;
-}
-
-
-@import 'partials/header';
-
-@import 'partials/sections';
-
-@import 'partials/carousel';
-
-@import 'partials/footer';
-
 .ap-input-icon svg{display:none}
 
-#min-rooms, #min-beds{max-width:60px}
+#min-rooms, #min-beds{
+    max-width:60px;
+    border-radius:3px;
+    }
 
 
 #div-search{
@@ -208,10 +208,7 @@ a{
   }
 }
 
-#my_dashboard{
-  width:60%;
-  top:10%;
-}
+
 
 .white-radius{
   text-align: center;
@@ -240,9 +237,10 @@ a{
 }
 
 #my-box{
-  top:20%;
+  margin-top: 120px;
   box-shadow: 0px 0px 10px 0px rgba(0,0,0,0.4);
   border-radius: 9px;
+  margin-bottom: 30px;
 }
 
 
@@ -309,9 +307,22 @@ span.algolia-places.prova{
 // <<<<<<< HEAD
 
 // handelbar handlebar-template
-img.handelbar-img {
-  width: 45%;
-}
+.img-container{
+  
+  width:100%;
+  filter: drop-shadow(0px 1px 4px rgba(108, 117, 125,0.55));
+  margin-right: 0px;
+  margin-bottom: 20px;
+
+  .handelbar-img {
+    width: 100%;
+    border-radius: 5px;
+
+  }
+
+  } 
+
+
 
 // messaggi
 .form-messaggio{
@@ -431,9 +442,9 @@ img.handelbar-img {
  // Large devices-------------------------------------------
  @media all and (min-width: 767px) and (max-width: 2000px) {
 
-  #app{
-    min-height: 530px;
-  }
+  // #app{
+  //   min-height: 530px;
+  // }
 
    .sponsorship.card{
      width: 360px;
@@ -461,5 +472,13 @@ img.handelbar-img {
      transform: translate(0%, -100%);
    }
    .test{background-color: red;} 
+
+   .img-container{  
+    width:45%;
+    margin-right: 20px;
+    margin-bottom: 0;
+  }
   
   }
+
+ 

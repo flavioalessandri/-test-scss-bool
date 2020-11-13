@@ -8,7 +8,7 @@
 <div class="container">
     <div class="row justify-content-center">
         <div class="col-md-8">
-            <div id="my-box" class="card mt-5">
+            <div id="my-box" class="card ">
                 <div class="card-header">{{ __('Login') }}</div>
 
                 <div class="card-body">

@@ -4,7 +4,7 @@
     @include('partials.head')
 
     <body>
-      <div class="d-flex flex-column">
+
 
         <div id="app" class="flex-center position-ref full-height">
 
@@ -39,6 +39,6 @@
         
         @include('partials.footer')
 
-      </div>
+
     </body>
 </html>
