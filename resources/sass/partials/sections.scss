@@ -76,6 +76,25 @@ section#section_show {
 
   section#section_home{
 
+
+                #my_dashboard{                 
+                  border-radius: 5px;
+                  margin-top: 120px;
+                  margin-bottom: 80px;
+                  filter: drop-shadow(0px -2px 7px rgba(108, 117, 125,0.85));
+
+                  .card-header{
+                    color:white;
+                    background: linear-gradient(0.25turn, #ff264d, #ff5170,#fb768e);
+                    border:1px solid #ff264d;
+                  }
+
+                  .card-body{
+                    padding:20px 0px;
+                    background-color: white;
+                  }
+                }
+
               .sponsorship.card{
                 position: relative;
                 width: 360px;      

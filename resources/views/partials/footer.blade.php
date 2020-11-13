@@ -2,7 +2,7 @@
 
 <!-- <div class="container fluid"> -->
 
-<footer class=" mt-5 page-footer font-small mdb-color pt-4 text-secondary">
+<footer class="page-footer font-small mdb-color pt-4 text-secondary">
 
   <!-- Footer Links -->
   <div class="container max-width-1200 text-center text-md-left">

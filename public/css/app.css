@@ -15511,21 +15511,6 @@ a.text-dark:focus {
   }
 }
 
-.apartment-info i {
-  color: #6c757d;
-  font-size: 20px;
-}
-
-.previous-page {
-  position: fixed;
-  left: 5%;
-  top: 100px;
-  z-index: 999;
-  background-color: white;
-  border-radius: 20px;
-  padding: 5px 10px;
-}
-
 * {
   margin: 0;
   padding: 0;
@@ -15534,15 +15519,13 @@ a.text-dark:focus {
 }
 
 body {
+  display: flex;
+  flex-direction: column;
   width: 100%;
   min-height: 100vh;
   background-image: url(/images/jumbo.jpg?3760848bab31a6e935c55ed38dd9c9ec);
   background-size: cover;
   background-attachment: fixed;
-}
-
-#app {
-  min-height: 780px;
 }
 
 header {
@@ -15749,6 +15732,24 @@ section#section_show .apartment-info {
 
 section#section_show li {
   border-radius: 3px;
+}
+
+section#section_home #my_dashboard {
+  border-radius: 5px;
+  margin-top: 120px;
+  margin-bottom: 80px;
+  filter: drop-shadow(0px -2px 7px rgba(108, 117, 125, 0.85));
+}
+
+section#section_home #my_dashboard .card-header {
+  color: white;
+  background: linear-gradient(0.25turn, #ff264d, #ff5170, #fb768e);
+  border: 1px solid #ff264d;
+}
+
+section#section_home #my_dashboard .card-body {
+  padding: 20px 0px;
+  background-color: white;
 }
 
 section#section_home .sponsorship.card {
@@ -15992,6 +15993,9 @@ section#sponsorship h2 {
 }
 
 footer {
+  margin-top: auto !important;
+  flex: 0 0 50px;
+  /*or just height:50px;*/
   filter: drop-shadow(0px -5px 7px rgba(108, 117, 125, 0.85));
   line-height: 2;
   width: 100%;
@@ -16033,6 +16037,30 @@ footer table i {
   font-size: 20px;
 }
 
+.card-header.coloured {
+  color: white;
+  background: linear-gradient(0.25turn, #ff264d, #ff5170, #fb768e);
+}
+
+.card-header.coloured h1 {
+  font-size: 24px;
+}
+
+.apartment-info i {
+  color: #6c757d;
+  font-size: 20px;
+}
+
+.previous-page {
+  position: fixed;
+  left: 5%;
+  top: 100px;
+  z-index: 999;
+  background-color: white;
+  border-radius: 20px;
+  padding: 5px 10px;
+}
+
 .ap-input-icon svg {
   display: none;
 }
@@ -16040,6 +16068,7 @@ footer table i {
 #min-rooms,
 #min-beds {
   max-width: 60px;
+  border-radius: 3px;
 }
 
 #div-search {
@@ -16198,11 +16227,6 @@ a {
   transform: translate(0%, 0%);
 }
 
-#my_dashboard {
-  width: 60%;
-  top: 10%;
-}
-
 .white-radius {
   text-align: center;
   width: 60px;
@@ -16228,9 +16252,10 @@ a {
 }
 
 #my-box {
-  top: 20%;
+  margin-top: 120px;
   box-shadow: 0px 0px 10px 0px rgba(0, 0, 0, 0.4);
   border-radius: 9px;
+  margin-bottom: 30px;
 }
 
 #lat-form,
@@ -16293,8 +16318,16 @@ span.algolia-places.prova {
   display: inline !important;
 }
 
-img.handelbar-img {
-  width: 45%;
+.img-container {
+  width: 100%;
+  filter: drop-shadow(0px 1px 4px rgba(108, 117, 125, 0.55));
+  margin-right: 0px;
+  margin-bottom: 20px;
+}
+
+.img-container .handelbar-img {
+  width: 100%;
+  border-radius: 5px;
 }
 
 .form-messaggio {
@@ -16417,10 +16450,6 @@ img.handelbar-img {
 }
 
 @media all and (min-width: 767px) and (max-width: 2000px) {
-  #app {
-    min-height: 530px;
-  }
-
   .sponsorship.card {
     width: 360px;
     margin-bottom: 2%;
@@ -16452,6 +16481,12 @@ img.handelbar-img {
 
   .test {
     background-color: red;
+  }
+
+  .img-container {
+    width: 45%;
+    margin-right: 20px;
+    margin-bottom: 0;
   }
 }
 

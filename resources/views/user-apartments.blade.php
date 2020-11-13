@@ -13,7 +13,7 @@
 <div class="container">
 
     <div class="row justify-content-center">
-      <div class="col-md-8 ">
+      <div class="col-md-8 mb-4">
 
         <h2 class="mt-4 text-center bg-light pb-3 pt-3   mb-sm-2 mb-md-2 mb-lg-0">I miei annunci</h2>
 

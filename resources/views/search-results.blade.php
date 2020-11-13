@@ -20,11 +20,11 @@
 
   <div class="row justify-content-center">
 
-    <div class="col-md-8">
+    <div class="col-md-10 col-lg-8 mb-4">
 
       <div class="card mrg-t100">
 
-        <div class="card-header">
+        <div class="card-header coloured">
 
           <h1 class="text-center">Risultati</h1>
         </div>
@@ -137,27 +137,33 @@
     <div class="card-body">
       <div class="sponsored-label" class=""></div>
       <div class="d-flex flex-row flex-wrap">
+        <div class="img-container">
 
-      <img class="handelbar-img  mx-auto" src="@{{{ img }}}" onerror="this.onerror=null; this.src='/img/notFound.jpg'">
+          <img class="handelbar-img  mx-auto" src="@{{{ img }}}" onerror="this.onerror=null; this.src='/img/notFound.jpg'">
 
-          <div class="  pl-3 col-12 col-md-6 p-2 d-flex flex-column ">
+        </div>
 
-              <div class="border-bottom border-dark">
+
+
+
+          <div class="pl-0 col-12 col-md-6 pb-2 d-flex flex-column ">
+
+              <div class="border-bottom border-dark mb-2">
                 <h5 class=""> <a href="apart/@{{ id }}">@{{{ description }}} </a>
                   <br>
                   <small class="text-muted"> @{{{ address }}} - @{{{ city }}} - @{{{ state }}}  </small>
                 </h5>
               </div>
 
-              <div class="flex-grow-1 text-secondary">
-                <div class="pt-2">
+              <div class="d-flex flex-sm-row flex-md-column flex-grow-1 text-secondary">
+                <div  class="mr-3" >
                   <span> @{{{ square_meters }}} mq  </span>
               </div>
-                <div class="">
-                  <span class="pt-2"> Stanze: @{{{ number_of_rooms }}} </span>
+                <div class="mr-3">
+                  <span> Stanze: @{{{ number_of_rooms }}} </span>
                 </div>
-                <div class="">
-                  <span class="pt-2"> Letti: @{{{ number_of_beds }}}  </span>
+                <div class="mr-3">
+                  <span> Letti: @{{{ number_of_beds }}}  </span>
                 </div>
               </div>
 
