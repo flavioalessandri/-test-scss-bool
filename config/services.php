@@ -30,11 +30,18 @@ return [
         'region' => env('AWS_DEFAULT_REGION', 'us-east-1'),
     ],
 
+    //  'braintree' => [
+    //      'environment' => env('BRAINTREE_ENV'),
+    //      'merchant_id' => env('BRAINTREE_MERCHANT_ID'),
+    //      'publicKey' => env('BRAINTREE_PUBLIC_KEY'),
+    //      'privateKey' => env('BRAINTREE_PRIVATE_KEY'),
+    //  ],
+
     'braintree' => [
-        'environment' => env('BRAINTREE_ENV'),
-        'merchant_id' => env('BRAINTREE_MERCHANT_ID'),
-        'publicKey' => env('BRAINTREE_PUBLIC_KEY'),
-        'privateKey' => env('BRAINTREE_PRIVATE_KEY'),
+        'environment' => env('BT_ENVIRONMENT'),
+        'merchant_id' => env('BT_MERCHANT_ID'),
+        'publicKey' => env('BT_PUBLIC_KEY'),
+        'privateKey' => env('BT_PRIVATE_KEY'),
     ],
 
 ];

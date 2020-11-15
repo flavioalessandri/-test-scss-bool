@@ -111,11 +111,19 @@ class SponsorshipController extends Controller
   }
 
   private function gateway(){
-    $gateway = new Braintree\Gateway([
-      'environment' => getenv('BT_ENVIRONMENT'),
-      'merchantId' => getenv('BT_MERCHANT_ID'),
-      'publicKey' => getenv('BT_PUBLIC_KEY'),
-      'privateKey' => getenv('BT_PRIVATE_KEY')
+
+        $gateway = new Braintree\Gateway([
+
+      'environment' => env('BT_ENVIRONMENT'),
+      'merchantId' => env('BT_MERCHANT_ID'),
+      'publicKey' => env('BT_PUBLIC_KEY'),
+      'privateKey' => env('BT_PRIVATE_KEY')
+    
+
+      // 'environment' => getenv('BT_ENVIRONMENT'),
+      // 'merchantId' => getenv('BT_MERCHANT_ID'),
+      // 'publicKey' => getenv('BT_PUBLIC_KEY'),
+      // 'privateKey' => getenv('BT_PRIVATE_KEY')
       ]);
     return $gateway;
   }
